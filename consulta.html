@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Folio - LCDLF Roblox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h2>Consultar Estado de Selección</h2>
+
+        <form id="formConsulta">
+            <div class="form-group">
+                <label for="folio">Ingresa tu Folio:</label>
+                <input type="text" id="folio" name="folio" placeholder="Ej. LCDLF-8A92" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar Folio</button>
+            <a href="index.html" class="btn btn-link">Volver al inicio</a>
+        </form>
+
+        <div id="resultado" style="margin-top: 20px;"></div>
+    </main>
+
+    <script>
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
+
+    function escapar(texto) {
+        if (!texto) return "";
+        return String(texto).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function llamarAPI(accion, parametros = {}) {
+        return new Promise((resolve, reject) => {
+            const callbackName = "jsonp_cb_" + Math.random().toString(36).substring(2, 15);
+            const urlParams = new URLSearchParams({ action: accion, callback: callbackName, ...parametros });
+
+            const script = document.createElement("script");
+            script.src = `${APPS_SCRIPT_URL}?${urlParams.toString()}`;
+
+            window[callbackName] = function (respuesta) {
+                cleanup();
+                if (respuesta && respuesta.success) {
+                    resolve(respuesta);
+                } else {
+                    reject(new Error(respuesta?.message || "Error al consultar la solicitud."));
+                }
+            };
+
+            script.onerror = function () {
+                cleanup();
+                reject(new Error("Error de conexión con el servidor."));
+            };
+
+            function cleanup() {
+                delete window[callbackName];
+                if (script.parentNode) script.parentNode.removeChild(script);
+            }
+
+            document.body.appendChild(script);
+        });
+    }
+
+    // Cargar folio automáticamente si viene por URL (ej. consulta.html?folio=LCDLF-XXXX)
+    window.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const folioUrl = urlParams.get("folio");
+        if (folioUrl) {
+            document.getElementById("folio").value = folioUrl;
+            document.getElementById("formConsulta").requestSubmit();
+        }
+    });
+
+    document.getElementById("formConsulta")?.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const folioInput = document.getElementById("folio");
+        const contenedorResultado = document.getElementById("resultado");
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+
+        const folio = folioInput.value.trim();
+        if (!folio) return;
+
+        try {
+            submitBtn.disabled = true;
+            contenedorResultado.innerHTML = `<p>Buscando folio...</p>`;
+
+            const respuesta = await llamarAPI("consultarFolio", { folio });
+            const datos = respuesta.datos;
+
+            let estadoHtml = "";
+
+            if (datos.estado === "Aceptado") {
+                estadoHtml = `
+                    <div class="result-card">
+                        <span class="selected-badge">¡SELECCIONADO!</span>
+                        <h2>¡Felicidades, ${escapar(datos.nombre)}!</h2>
+                        <p>Has sido seleccionado para ingresar a <strong>La Casa de los Famosos Roblox</strong>.</p>
+                        <p><strong>Usuario Roblox:</strong> ${escapar(datos.roblox)}</p>
+                        <p><strong>Folio:</strong> ${escapar(datos.folio)}</p>
+                    </div>
+                `;
+            } else if (datos.estado === "Rechazado") {
+                estadoHtml = `
+                    <div class="message error">
+                        <h3>Solicitud No Seleccionada</h3>
+                        <p>Gracias por tu interés, <strong>${escapar(datos.nombre)}</strong>. Desafortunadamente no fuiste seleccionado.</p>
+                    </div>
+                `;
+            } else {
+                estadoHtml = `
+                    <div class="message pending">
+                        <h3>Solicitud En Revisión ⏳</h3>
+                        <p>Hola <strong>${escapar(datos.nombre)}</strong>, tu solicitud con folio <code>${escapar(datos.folio)}</code> aún está en evaluación.</p>
+                    </div>
+                `;
+            }
+
+            contenedorResultado.innerHTML = estadoHtml;
+
+        } catch (error) {
+            contenedorResultado.innerHTML = `
+                <div class="message error">
+                    <p>${escapar(error.message)}</p>
+                </div>
+            `;
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+    </script>
+</body>
+</html>
