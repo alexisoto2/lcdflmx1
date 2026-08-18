@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - LCDLF Roblox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <h2>Formulario de Postulación</h2>
+        
+        <form id="formSolicitud">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="roblox">Usuario de Roblox:</label>
+                <input type="text" id="roblox" name="roblox" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="motivo">¿Por qué deberías entrar?:</label>
+                <textarea id="motivo" name="motivo" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+            <a href="index.html" class="btn btn-link">Volver al inicio</a>
+        </form>
+    </main>
+
+    <!-- Modal de Confirmación -->
+    <div id="modal" class="modal hidden">
+        <div id="modalContenido" class="modal-body"></div>
+    </div>
+
+    <script>
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
+
+    function escapar(texto) {
+        if (!texto) return "";
+        return String(texto).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function llamarAPI(accion, parametros = {}) {
+        return new Promise((resolve, reject) => {
+            const callbackName = "jsonp_cb_" + Math.random().toString(36).substring(2, 15);
+            const urlParams = new URLSearchParams({ action: accion, callback: callbackName, ...parametros });
+
+            const script = document.createElement("script");
+            script.src = `${APPS_SCRIPT_URL}?${urlParams.toString()}`;
+
+            window[callbackName] = function (respuesta) {
+                cleanup();
+                if (respuesta && respuesta.success) {
+                    resolve(respuesta);
+                } else {
+                    reject(new Error(respuesta?.message || "Error al procesar la solicitud."));
+                }
+            };
+
+            script.onerror = function () {
+                cleanup();
+                reject(new Error("Error de conexión con el servidor."));
+            };
+
+            function cleanup() {
+                delete window[callbackName];
+                if (script.parentNode) script.parentNode.removeChild(script);
+            }
+
+            document.body.appendChild(script);
+        });
+    }
+
+    function abrirModal(contenidoHtml) {
+        const modal = document.getElementById("modal");
+        const modalContenido = document.getElementById("modalContenido");
+        if (modal && modalContenido) {
+            modalContenido.innerHTML = contenidoHtml;
+            modal.classList.remove("hidden");
+        }
+    }
+
+    function cerrarModal() {
+        document.getElementById("modal")?.classList.add("hidden");
+    }
+
+    document.getElementById("formSolicitud")?.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+
+        const formData = new FormData(form);
+        const datos = {
+            nombre: formData.get("nombre"),
+            roblox: formData.get("roblox"),
+            edad: formData.get("edad"),
+            correo: formData.get("correo"),
+            telefono: formData.get("telefono"),
+            motivo: formData.get("motivo")
+        };
+
+        try {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Enviando...";
+
+            const respuesta = await llamarAPI("guardarSolicitud", datos);
+
+            abrirModal(`
+                <div class="result-card">
+                    <span class="selected-badge">¡REGISTRO EXITOSO!</span>
+                    <div class="welcome-icon">🎉</div>
+                    <h2>¡Solicitud Recibida!</h2>
+                    <p>Guarda tu folio para consultar tu estado:</p>
+                    <div class="folio-box">${escapar(respuesta.folio)}</div>
+                    <a href="consulta.html?folio=${escapar(respuesta.folio)}" class="btn btn-primary">Ir a consultar mi folio</a>
+                </div>
+            `);
+
+            form.reset();
+        } catch (error) {
+            abrirModal(`
+                <div class="message error">
+                    <h3>Error al registrar</h3>
+                    <p>${escapar(error.message)}</p>
+                    <button class="btn" onclick="cerrarModal()">Cerrar</button>
+                </div>
+            `);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
+    </script>
+</body>
+</html>
