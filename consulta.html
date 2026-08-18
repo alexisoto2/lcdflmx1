@@ -3,25 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Folio - LCDLF Roblox</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Registro - LCDLF Roblox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #2e1065, #0f051d);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            max-width: 260px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0, 162, 255, 0.4));
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+
+        .btn-link {
+            background: transparent;
+            color: #94a3b8;
+        }
+
+        .btn-link:hover {
+            color: #ffffff;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .modal-body {
+            background: #1e1b4b;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .folio-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed #38bdf8;
+            padding: 12px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 2px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .selected-badge {
+            display: inline-block;
+            background: #10b981;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
     <main class="container">
-        <h2>Consultar Estado de Selección</h2>
+        <!-- Apartado para Logo -->
+        <div class="logo-container">
+            <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+        </div>
 
-        <form id="formConsulta">
+        <h2>Formulario de Postulación</h2>
+        
+        <form id="formSolicitud">
             <div class="form-group">
-                <label for="folio">Ingresa tu Folio:</label>
-                <input type="text" id="folio" name="folio" placeholder="Ej. LCDLF-8A92" required>
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
             </div>
-            <button type="submit" class="btn btn-primary">Buscar Folio</button>
-            <a href="index.html" class="btn btn-link">Volver al inicio</a>
-        </form>
 
-        <div id="resultado" style="margin-top: 20px;"></div>
+            <div class="form-group">
+                <label for="roblox">Usuario de Roblox:</label>
+                <input type="text" id="roblox" name="roblox" required>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="motivo">¿Por qué deberías entrar?:</label>
+                <textarea id="motivo" name="motivo" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+            <a href="index.html" class="btn btn-link">← Volver al inicio</a>
+        </form>
     </main>
+
+    <!-- Modal de Confirmación -->
+    <div id="modal" class="modal hidden">
+        <div id="modalContenido" class="modal-body"></div>
+    </div>
 
     <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
@@ -44,7 +253,7 @@
                 if (respuesta && respuesta.success) {
                     resolve(respuesta);
                 } else {
-                    reject(new Error(respuesta?.message || "Error al consultar la solicitud."));
+                    reject(new Error(respuesta?.message || "Error al procesar la solicitud."));
                 }
             };
 
@@ -62,71 +271,64 @@
         });
     }
 
-    // Cargar folio automáticamente si viene por URL (ej. consulta.html?folio=LCDLF-XXXX)
-    window.addEventListener("DOMContentLoaded", () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const folioUrl = urlParams.get("folio");
-        if (folioUrl) {
-            document.getElementById("folio").value = folioUrl;
-            document.getElementById("formConsulta").requestSubmit();
+    function abrirModal(contenidoHtml) {
+        const modal = document.getElementById("modal");
+        const modalContenido = document.getElementById("modalContenido");
+        if (modal && modalContenido) {
+            modalContenido.innerHTML = contenidoHtml;
+            modal.classList.remove("hidden");
         }
-    });
+    }
 
-    document.getElementById("formConsulta")?.addEventListener("submit", async function (e) {
+    function cerrarModal() {
+        document.getElementById("modal")?.classList.add("hidden");
+    }
+
+    document.getElementById("formSolicitud")?.addEventListener("submit", async function (e) {
         e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
 
-        const folioInput = document.getElementById("folio");
-        const contenedorResultado = document.getElementById("resultado");
-        const submitBtn = e.target.querySelector('button[type="submit"]');
-
-        const folio = folioInput.value.trim();
-        if (!folio) return;
+        const formData = new FormData(form);
+        const datos = {
+            nombre: formData.get("nombre"),
+            roblox: formData.get("roblox"),
+            edad: formData.get("edad"),
+            correo: formData.get("correo"),
+            telefono: formData.get("telefono"),
+            motivo: formData.get("motivo")
+        };
 
         try {
             submitBtn.disabled = true;
-            contenedorResultado.innerHTML = `<p>Buscando folio...</p>`;
+            submitBtn.innerHTML = "Enviando...";
 
-            const respuesta = await llamarAPI("consultarFolio", { folio });
-            const datos = respuesta.datos;
+            const respuesta = await llamarAPI("guardarSolicitud", datos);
 
-            let estadoHtml = "";
-
-            if (datos.estado === "Aceptado") {
-                estadoHtml = `
-                    <div class="result-card">
-                        <span class="selected-badge">¡SELECCIONADO!</span>
-                        <h2>¡Felicidades, ${escapar(datos.nombre)}!</h2>
-                        <p>Has sido seleccionado para ingresar a <strong>La Casa de los Famosos Roblox</strong>.</p>
-                        <p><strong>Usuario Roblox:</strong> ${escapar(datos.roblox)}</p>
-                        <p><strong>Folio:</strong> ${escapar(datos.folio)}</p>
-                    </div>
-                `;
-            } else if (datos.estado === "Rechazado") {
-                estadoHtml = `
-                    <div class="message error">
-                        <h3>Solicitud No Seleccionada</h3>
-                        <p>Gracias por tu interés, <strong>${escapar(datos.nombre)}</strong>. Desafortunadamente no fuiste seleccionado.</p>
-                    </div>
-                `;
-            } else {
-                estadoHtml = `
-                    <div class="message pending">
-                        <h3>Solicitud En Revisión ⏳</h3>
-                        <p>Hola <strong>${escapar(datos.nombre)}</strong>, tu solicitud con folio <code>${escapar(datos.folio)}</code> aún está en evaluación.</p>
-                    </div>
-                `;
-            }
-
-            contenedorResultado.innerHTML = estadoHtml;
-
-        } catch (error) {
-            contenedorResultado.innerHTML = `
-                <div class="message error">
-                    <p>${escapar(error.message)}</p>
+            abrirModal(`
+                <div class="result-card">
+                    <span class="selected-badge">¡REGISTRO EXITOSO!</span>
+                    <div class="welcome-icon">🎉</div>
+                    <h2>¡Solicitud Recibida!</h2>
+                    <p style="font-size:0.9rem; color:#cbd5e1;">Guarda tu folio para consultar tu estado:</p>
+                    <div class="folio-box">${escapar(respuesta.folio)}</div>
+                    <a href="consulta.html?folio=${escapar(respuesta.folio)}" class="btn btn-primary">Ir a consultar mi folio</a>
                 </div>
-            `;
+            `);
+
+            form.reset();
+        } catch (error) {
+            abrirModal(`
+                <div class="message error">
+                    <h3>Error al registrar</h3>
+                    <p>${escapar(error.message)}</p>
+                    <button class="btn btn-primary" style="margin-top:15px;" onclick="cerrarModal()">Cerrar</button>
+                </div>
+            `);
         } finally {
             submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
         }
     });
     </script>
