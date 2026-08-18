@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - LCDLF Roblox</title>
+    <title>Consulta de Folio - LCDLF Roblox</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
 
         .container {
             width: 100%;
-            max-width: 520px;
+            max-width: 500px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -46,45 +46,40 @@
         }
 
         h2 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 20px;
             color: #ffffff;
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
         label {
             display: block;
-            margin-bottom: 6px;
-            font-size: 0.85rem;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
             color: #cbd5e1;
         }
 
-        input[type="text"],
-        input[type="number"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
+        input[type="text"] {
             width: 100%;
-            padding: 12px 14px;
+            padding: 12px 16px;
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: rgba(0, 0, 0, 0.3);
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 1rem;
             outline: none;
             transition: border-color 0.2s;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        input:focus, textarea:focus {
+        input[type="text"]:focus {
             border-color: #38bdf8;
-        }
-
-        textarea {
-            resize: vertical;
         }
 
         .btn {
@@ -101,15 +96,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            background: linear-gradient(135deg, #059669, #10b981);
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
-            margin-top: 10px;
-            margin-bottom: 10px;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+            margin-bottom: 12px;
         }
 
         .btn-primary:hover {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            background: linear-gradient(135deg, #047857, #059669);
         }
 
         .btn-link {
@@ -121,47 +115,32 @@
             color: #ffffff;
         }
 
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        /* Contenedores de respuesta */
+        #resultado {
+            margin-top: 25px;
+        }
+
+        .result-card, .message {
             padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
-        .hidden {
-            display: none !important;
+        .result-card {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #10b981;
         }
 
-        .modal-body {
-            background: #1e1b4b;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 30px 20px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        .message.pending {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: #f59e0b;
         }
 
-        .folio-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px dashed #38bdf8;
-            padding: 12px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #38bdf8;
-            letter-spacing: 2px;
-            border-radius: 10px;
-            margin: 15px 0;
+        .message.error {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: #ef4444;
         }
 
         .selected-badge {
@@ -170,67 +149,59 @@
             color: #fff;
             font-size: 0.75rem;
             font-weight: bold;
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: 6px;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .welcome-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .result-card h2, .message h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .result-card p, .message p {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #38bdf8;
+            font-family: monospace;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
     <main class="container">
-        <!-- Apartado para Logo -->
+        <!-- Logo de La Casa de los Famosos Roblox -->
         <div class="logo-container">
             <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
         </div>
 
-        <h2>Formulario de Postulación</h2>
-        
-        <form id="formSolicitud">
-            <div class="form-group">
-                <label for="nombre">Nombre Completo:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
+        <h2>Consultar Folio 🔍</h2>
 
+        <form id="formConsulta">
             <div class="form-group">
-                <label for="roblox">Usuario de Roblox:</label>
-                <input type="text" id="roblox" name="roblox" required>
+                <label for="folio">Ingresa tu código de seguimiento:</label>
+                <input type="text" id="folio" name="folio" placeholder="Ej. LCDLF-8A92" required>
             </div>
-
-            <div class="form-group">
-                <label for="edad">Edad:</label>
-                <input type="number" id="edad" name="edad" required>
-            </div>
-
-            <div class="form-group">
-                <label for="correo">Correo Electrónico:</label>
-                <input type="email" id="correo" name="correo" required>
-            </div>
-
-            <div class="form-group">
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" required>
-            </div>
-
-            <div class="form-group">
-                <label for="motivo">¿Por qué deberías entrar?:</label>
-                <textarea id="motivo" name="motivo" rows="4" required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-            <a href="index.html" class="btn btn-link">← Volver al inicio</a>
+            <button type="submit" class="btn btn-primary">Buscar Estado</button>
+            <a href="index.html" class="btn btn-link">← Volver al menú</a>
         </form>
-    </main>
 
-    <!-- Modal de Confirmación -->
-    <div id="modal" class="modal hidden">
-        <div id="modalContenido" class="modal-body"></div>
-    </div>
+        <div id="resultado"></div>
+    </main>
 
     <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
@@ -253,7 +224,7 @@
                 if (respuesta && respuesta.success) {
                     resolve(respuesta);
                 } else {
-                    reject(new Error(respuesta?.message || "Error al procesar la solicitud."));
+                    reject(new Error(respuesta?.message || "Error al consultar el folio."));
                 }
             };
 
@@ -271,64 +242,71 @@
         });
     }
 
-    function abrirModal(contenidoHtml) {
-        const modal = document.getElementById("modal");
-        const modalContenido = document.getElementById("modalContenido");
-        if (modal && modalContenido) {
-            modalContenido.innerHTML = contenidoHtml;
-            modal.classList.remove("hidden");
+    // Cargar folio automáticamente si viene por URL (ej. consulta.html?folio=LCDLF-XXXX)
+    window.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const folioUrl = urlParams.get("folio");
+        if (folioUrl) {
+            document.getElementById("folio").value = folioUrl;
+            document.getElementById("formConsulta").requestSubmit();
         }
-    }
+    });
 
-    function cerrarModal() {
-        document.getElementById("modal")?.classList.add("hidden");
-    }
-
-    document.getElementById("formSolicitud")?.addEventListener("submit", async function (e) {
+    document.getElementById("formConsulta")?.addEventListener("submit", async function (e) {
         e.preventDefault();
-        const form = e.target;
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerHTML;
 
-        const formData = new FormData(form);
-        const datos = {
-            nombre: formData.get("nombre"),
-            roblox: formData.get("roblox"),
-            edad: formData.get("edad"),
-            correo: formData.get("correo"),
-            telefono: formData.get("telefono"),
-            motivo: formData.get("motivo")
-        };
+        const folioInput = document.getElementById("folio");
+        const contenedorResultado = document.getElementById("resultado");
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+
+        const folio = folioInput.value.trim();
+        if (!folio) return;
 
         try {
             submitBtn.disabled = true;
-            submitBtn.innerHTML = "Enviando...";
+            contenedorResultado.innerHTML = `<p style="color: #cbd5e1;">Buscando folio en la base de datos...</p>`;
 
-            const respuesta = await llamarAPI("guardarSolicitud", datos);
+            const respuesta = await llamarAPI("consultarFolio", { folio });
+            const datos = respuesta.datos;
 
-            abrirModal(`
-                <div class="result-card">
-                    <span class="selected-badge">¡REGISTRO EXITOSO!</span>
-                    <div class="welcome-icon">🎉</div>
-                    <h2>¡Solicitud Recibida!</h2>
-                    <p style="font-size:0.9rem; color:#cbd5e1;">Guarda tu folio para consultar tu estado:</p>
-                    <div class="folio-box">${escapar(respuesta.folio)}</div>
-                    <a href="consulta.html?folio=${escapar(respuesta.folio)}" class="btn btn-primary">Ir a consultar mi folio</a>
-                </div>
-            `);
+            let estadoHtml = "";
 
-            form.reset();
+            if (datos.estado === "Aceptado") {
+                estadoHtml = `
+                    <div class="result-card">
+                        <span class="selected-badge">¡SELECCIONADO! 👑</span>
+                        <h2>¡Felicidades, ${escapar(datos.nombre)}!</h2>
+                        <p>Has sido seleccionado para ingresar a <strong>La Casa de los Famosos Roblox</strong>.</p>
+                        <p style="margin-top:10px;"><strong>Usuario Roblox:</strong> <code>${escapar(datos.roblox)}</code></p>
+                        <p><strong>Folio:</strong> <code>${escapar(datos.folio)}</code></p>
+                    </div>
+                `;
+            } else if (datos.estado === "Rechazado") {
+                estadoHtml = `
+                    <div class="message error">
+                        <h3>Solicitud No Seleccionada ❌</h3>
+                        <p>Gracias por tu interés, <strong>${escapar(datos.nombre)}</strong>. Desafortunadamente no fuiste seleccionado en esta ocasión.</p>
+                    </div>
+                `;
+            } else {
+                estadoHtml = `
+                    <div class="message pending">
+                        <h3>Solicitud En Revisión ⏳</h3>
+                        <p>Hola <strong>${escapar(datos.nombre)}</strong>, tu solicitud con folio <code>${escapar(datos.folio)}</code> continúa en proceso de evaluación por el equipo de producción.</p>
+                    </div>
+                `;
+            }
+
+            contenedorResultado.innerHTML = estadoHtml;
+
         } catch (error) {
-            abrirModal(`
+            contenedorResultado.innerHTML = `
                 <div class="message error">
-                    <h3>Error al registrar</h3>
                     <p>${escapar(error.message)}</p>
-                    <button class="btn btn-primary" style="margin-top:15px;" onclick="cerrarModal()">Cerrar</button>
                 </div>
-            `);
+            `;
         } finally {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
         }
     });
     </script>
