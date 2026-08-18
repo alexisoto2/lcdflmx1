@@ -93,6 +93,11 @@
             transform: translateY(-4px);
         }
 
+        /* Span completo para la tarjeta de soporte */
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
         .card h2 {
             font-size: 1.2rem;
             margin-bottom: 8px;
@@ -137,6 +142,16 @@
             background: linear-gradient(135deg, #047857, #059669);
         }
 
+        .btn-info {
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn-info:hover {
+            background: linear-gradient(135deg, #0369a1, #0284c7);
+        }
+
         .btn:active {
             transform: scale(0.98);
         }
@@ -169,6 +184,14 @@
                     <p>Ingresa tu folio para saber si fuiste seleccionado.</p>
                 </div>
                 <a href="consulta.html" class="btn btn-secondary">Buscar Folio</a>
+            </div>
+
+            <div class="card full-width">
+                <div>
+                    <h2>🎫 Soporte y Ayuda</h2>
+                    <p>¿Tienes alguna duda o problema con tu registro? Abre un ticket de atención.</p>
+                </div>
+                <a href="soporte.html" class="btn btn-info">Generar Ticket</a>
             </div>
         </section>
     </main>
