@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte y Tickets - LCDLF Roblox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #2e1065, #0f051d);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            max-width: 260px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0, 162, 255, 0.4));
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        select option {
+            background: #1e1b4b;
+            color: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0369a1, #0284c7);
+        }
+
+        .btn-link {
+            background: transparent;
+            color: #94a3b8;
+        }
+
+        .btn-link:hover {
+            color: #ffffff;
+        }
+
+        /* Styles para Respuestas y Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .modal-body {
+            background: #1e1b4b;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .result-card, .message {
+            text-align: center;
+        }
+
+        .selected-badge {
+            display: inline-block;
+            background: #38bdf8;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .folio-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed #38bdf8;
+            padding: 12px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 2px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .message.error h3 {
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+
+        .message.error p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <!-- Logo del proyecto -->
+        <div class="logo-container">
+            <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+        </div>
+
+        <h2>Generar Ticket de Ayuda 🎫</h2>
+        
+        <form id="formTicket">
+            <div class="form-group">
+                <label for="roblox">Usuario de Roblox:</label>
+                <input type="text" id="roblox" name="roblox" placeholder="Ej. TuUsuario123" required>
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asunto">Categoría de la Consulta:</label>
+                <select id="asunto" name="asunto" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Problema con mi Folio">Problema con mi Folio</option>
+                    <option value="Duda sobre el Registro">Duda sobre el Registro</option>
+                    <option value="Reporte de Error/Bug">Reporte de Error en la Web</option>
+                    <option value="Otro">Otro asunto</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Describe tu problema o duda:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí los detalles..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Abrir Ticket</button>
+            <a href="index.html" class="btn btn-link">Volver al inicio</a>
+        </form>
+    </main>
+
+    <!-- Modal de Confirmación -->
+    <div id="modal" class="modal hidden">
+        <div id="modalContenido" class="modal-body"></div>
+    </div>
+
+    <script>
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
+
+    function escapar(texto) {
+        if (!texto) return "";
+        return String(texto).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
+
+    function llamarAPI(accion, parametros = {}) {
+        return new Promise((resolve, reject) => {
+            const callbackName = "jsonp_cb_" + Math.random().toString(36).substring(2, 15);
+            const urlParams = new URLSearchParams({ action: accion, callback: callbackName, ...parametros });
+
+            const script = document.createElement("script");
+            script.src = `${APPS_SCRIPT_URL}?${urlParams.toString()}`;
+
+            window[callbackName] = function (respuesta) {
+                cleanup();
+                if (respuesta && respuesta.success) {
+                    resolve(respuesta);
+                } else {
+                    reject(new Error(respuesta?.message || "Error al procesar el ticket."));
+                }
+            };
+
+            script.onerror = function () {
+                cleanup();
+                reject(new Error("Error de conexión con el servidor."));
+            };
+
+            function cleanup() {
+                delete window[callbackName];
+                if (script.parentNode) script.parentNode.removeChild(script);
+            }
+
+            document.body.appendChild(script);
+        });
+    }
+
+    function abrirModal(contenidoHtml) {
+        const modal = document.getElementById("modal");
+        const modalContenido = document.getElementById("modalContenido");
+        if (modal && modalContenido) {
+            modalContenido.innerHTML = contenidoHtml;
+            modal.classList.remove("hidden");
+        }
+    }
+
+    function cerrarModal() {
+        document.getElementById("modal")?.classList.add("hidden");
+    }
+
+    document.getElementById("formTicket")?.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+
+        const formData = new FormData(form);
+        const datos = {
+            roblox: formData.get("roblox"),
+            correo: formData.get("correo"),
+            asunto: formData.get("asunto"),
+            mensaje: formData.get("mensaje")
+        };
+
+        try {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "Generando ticket...";
+
+            const respuesta = await llamarAPI("guardarTicket", datos);
+
+            abrirModal(`
+                <div class="result-card">
+                    <span class="selected-badge">TICKET CREADO</span>
+                    <div class="welcome-icon">📩</div>
+                    <h2>¡Ticket Enviado!</h2>
+                    <p style="font-size:0.9rem; color:#cbd5e1;">Guarda el número de tu ticket de soporte:</p>
+                    <div class="folio-box">${escapar(respuesta.ticketId || 'TCK-' + Math.floor(1000 + Math.random() * 9000))}</div>
+                    <p style="font-size:0.8rem; color:#cbd5e1; margin-bottom: 15px;">El equipo revisará tu caso a la brevedad.</p>
+                    <button class="btn btn-primary" onclick="cerrarModal()">Entendido</button>
+                </div>
+            `);
+
+            form.reset();
+        } catch (error) {
+            abrirModal(`
+                <div class="message error">
+                    <h3>Error al enviar</h3>
+                    <p>${escapar(error.message)}</p>
+                    <button class="btn btn-primary" onclick="cerrarModal()">Cerrar</button>
+                </div>
+            `);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
+    </script>
+</body>
+</html>
