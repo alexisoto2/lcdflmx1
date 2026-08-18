@@ -4,27 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Casa de los Famosos Roblox</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #2e1065, #0f051d);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .logo-img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 162, 255, 0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.03);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #a7f3d0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        p.subtitle {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 500px) {
+            .menu-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #38bdf8;
+            transform: translateY(-4px);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #047857, #059669);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+    </style>
 </head>
 <body>
 
     <main class="container">
-        <header>
-            <h1>La Casa de los Famosos Roblox 👁️</h1>
-            <p>Selecciona una opción para continuar</p>
-        </header>
+        <!-- Apartado para el Logo -->
+        <div class="logo-container">
+            <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+        </div>
 
-        <section class="menu-cards">
+        <h1>Panel Principal</h1>
+        <p class="subtitle">Selecciona una de las opciones para ingresar al portal</p>
+
+        <!-- Botones de Acción -->
+        <section class="menu-grid">
             <div class="card">
-                <h2>Registrar Solicitud</h2>
-                <p>Postúlate para entrar a la casa en esta edición.</p>
-                <a href="registro.html" class="btn btn-primary">Ir a Registro</a>
+                <div>
+                    <h2>📝 Postulación</h2>
+                    <p>Llena el formulario para solicitar tu ingreso a la casa.</p>
+                </div>
+                <a href="registro.html" class="btn btn-primary">Registrarme</a>
             </div>
 
             <div class="card">
-                <h2>Consultar Folio</h2>
-                <p>Revisa si tu solicitud ha sido aceptada o sigue en proceso.</p>
-                <a href="consulta.html" class="btn btn-secondary">Consultar Estado</a>
+                <div>
+                    <h2>🔍 Consultar Estado</h2>
+                    <p>Ingresa tu folio para saber si fuiste seleccionado.</p>
+                </div>
+                <a href="consulta.html" class="btn btn-secondary">Buscar Folio</a>
             </div>
         </section>
     </main>
