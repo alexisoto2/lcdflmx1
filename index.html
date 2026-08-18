@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="La Casa de los Famosos Roblox - Solicitud de habitantes"
+    >
+
+    <title>
+        La Casa de los Famosos Roblox
+    </title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    #8ec5fc 0%,
+                    #5261d8 28%,
+                    #8e55d8 52%,
+                    #e8a7d8 75%,
+                    #8ed4ef 100%
+                );
+
+            background-attachment: fixed;
+        }
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            background:
+                rgba(15, 8, 40, 0.45);
+
+            backdrop-filter:
+                blur(20px);
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            width: 100%;
+
+            padding:
+                12px 5%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            background:
+                rgba(8, 5, 25, 0.82);
+
+            border-bottom:
+                1px solid rgba(255,255,255,.15);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+        .logo-small {
+            width: 145px;
+
+            height: 60px;
+
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+        nav button {
+            border: 0;
+
+            padding:
+                11px 17px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                .2s ease;
+        }
+
+        nav button:hover {
+            background:
+                rgba(255,255,255,.18);
+
+            transform:
+                translateY(-2px);
+        }
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        .section {
+            display: none;
+
+            width: min(1100px, 92%);
+
+            margin:
+                0 auto;
+
+            padding:
+                70px 0;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* =========================
+           INICIO
+        ========================= */
+
+        .hero {
+            min-height:
+                calc(100vh - 85px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .main-logo {
+            width:
+                min(780px, 95%);
+
+            max-height:
+                380px;
+
+            object-fit:
+                contain;
+
+            filter:
+                drop-shadow(
+                    0 25px 30px
+                    rgba(0,0,0,.5)
+                );
+        }
+
+        .tag {
+            margin-top: 15px;
+
+            font-size: 13px;
+
+            letter-spacing: 4px;
+
+            font-weight: 900;
+        }
+
+        .hero h1 {
+            margin-top: 15px;
+
+            font-size:
+                clamp(32px, 6vw, 62px);
+
+            line-height: 1.05;
+        }
+
+        .hero p {
+            max-width: 680px;
+
+            margin-top: 18px;
+
+            font-size: 18px;
+
+            color:
+                rgba(255,255,255,.8);
+
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding:
+                13px 22px;
+
+            border-radius: 14px;
+
+            border: 1px solid
+                rgba(255,255,255,.18);
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition:
+                .2s ease;
+        }
+
+        .btn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 25px
+                rgba(0,0,0,.2);
+        }
+
+        .btn-primary {
+            color: #171026;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e0c3fc,
+                    #8ec5fc
+                );
+
+            border: none;
+        }
+
+        .btn-secondary {
+            color: white;
+
+            background:
+                rgba(255,255,255,.09);
+        }
+
+        /* =========================
+           TARJETAS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            padding-bottom: 70px;
+        }
+
+        .info-card {
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(18,12,45,.7);
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.18);
+        }
+
+        .info-number {
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            color:
+                #cce8ff;
+        }
+
+        .info-card h3 {
+            margin-top: 10px;
+
+            font-size: 22px;
+        }
+
+        .info-card p {
+            margin-top: 9px;
+
+            color:
+                rgba(255,255,255,.7);
+
+            line-height: 1.5;
+        }
+
+        /* =========================
+           TITULOS
+        ========================= */
+
+        .page-title {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .page-title span {
+            font-size: 12px;
+
+            letter-spacing: 4px;
+
+            font-weight: 900;
+
+            color:
+                #d9c3ff;
+        }
+
+        .page-title h2 {
+            margin-top: 8px;
+
+            font-size:
+                clamp(30px,5vw,48px);
+        }
+
+        .page-title p {
+            margin-top: 10px;
+
+            color:
+                rgba(255,255,255,.75);
+        }
+
+        /* =========================
+           FORMULARIO
+        ========================= */
+
+        .form-card {
+            width: 100%;
+
+            max-width: 850px;
+
+            margin: auto;
+
+            padding: 30px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(15,10,40,.75);
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.2);
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column:
+                1 / -1;
+        }
+
+        label {
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 14px;
+
+            border-radius: 13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            outline: none;
+
+            color: white;
+
+            background:
+                rgba(0,0,0,.32);
+
+            font-family:
+                inherit;
+
+            font-size: 15px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color:
+                #b9dcff;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(142,197,252,.12);
+        }
+
+        textarea {
+            min-height: 130px;
+
+            resize: vertical;
+        }
+
+        .agreement {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin:
+                22px 0;
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 14px;
+        }
+
+        .agreement input {
+            width: auto;
+
+            margin-top: 3px;
+        }
+
+        /* =========================
+           CONSULTA
+        ========================= */
+
+        .consult-box {
+            max-width: 600px;
+
+            margin: auto;
+        }
+
+        .consult-result {
+            margin-top: 25px;
+        }
+
+        /* =========================
+           FOLIO
+        ========================= */
+
+        .folio-box {
+            margin:
+                20px 0;
+
+            padding: 20px;
+
+            border-radius: 16px;
+
+            text-align: center;
+
+            font-size: 27px;
+
+            letter-spacing: 3px;
+
+            font-weight: 900;
+
+            color:
+                #e6d3ff;
+
+            background:
+                rgba(0,0,0,.25);
+
+            border:
+                1px dashed
+                rgba(224,195,252,.6);
+        }
+
+        /* =========================
+           RESULTADO
+        ========================= */
+
+        .result-card {
+            padding: 35px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(15,10,40,.78);
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.25);
+        }
+
+        .selected-badge {
+            display: inline-block;
+
+            padding:
+                8px 14px;
+
+            border-radius: 999px;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            font-weight: 900;
+
+            background:
+                rgba(150,255,190,.12);
+
+            color:
+                #caffd9;
+        }
+
+        .welcome-icon {
+            font-size: 55px;
+
+            margin: 15px 0;
+        }
+
+        .result-card h2 {
+            font-size:
+                clamp(28px,5vw,45px);
+        }
+
+        .result-card > p {
+            margin-top: 12px;
+
+            color:
+                rgba(255,255,255,.75);
+
+            line-height: 1.6;
+        }
+
+        .resident-data {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 14px;
+
+            margin-top: 30px;
+
+            text-align: left;
+        }
+
+        .data-box {
+            padding: 18px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(0,0,0,.25);
+        }
+
+        .data-box small {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            font-weight: 700;
+        }
+
+        .data-box strong {
+            word-break:
+                break-word;
+
+            font-size: 15px;
+        }
+
+        /* =========================
+           ALERTAS
+        ========================= */
+
+        .message {
+            padding: 18px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            text-align: center;
+        }
+
+        .message.error {
+            background:
+                rgba(255,70,90,.1);
+
+            border-color:
+                rgba(255,100,120,.25);
+        }
+
+        .message.pending {
+            background:
+                rgba(255,210,80,.1);
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .spinner {
+            width: 35px;
+
+            height: 35px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            border:
+                4px solid
+                rgba(255,255,255,.2);
+
+            border-top-color:
+                white;
+
+            animation:
+                spin .8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 500;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,.75);
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+        .modal.hidden {
+            display: none;
+        }
+
+        .modal-content {
+            position: relative;
+
+            width: min(600px,100%);
+
+            padding: 35px;
+
+            border-radius: 25px;
+
+            background:
+                #17102e;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            text-align: center;
+
+            box-shadow:
+                0 30px 90px
+                rgba(0,0,0,.5);
+        }
+
+        .close {
+            position: absolute;
+
+            right: 15px;
+
+            top: 10px;
+
+            border: 0;
+
+            background: none;
+
+            color: white;
+
+            font-size: 30px;
+
+            cursor: pointer;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding:
+                35px 5%;
+
+            text-align: center;
+
+            background:
+                rgba(5,3,20,.45);
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.1);
+
+            color:
+                rgba(255,255,255,.6);
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction:
+                    column;
+            }
+
+            .cards {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .form-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .form-group.full {
+                grid-column:
+                    auto;
+            }
+
+            .resident-data {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .main-logo {
+                max-height:
+                    280px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="#" onclick="mostrarSeccion('inicio')">
+
+        <img
+            src="assets/logo.jpeg"
+            alt="La Casa de los Famosos Roblox"
+            class="logo-small"
+        >
+
+    </a>
+
+    <nav>
+
+        <button
+            onclick="mostrarSeccion('inicio')"
+        >
+            Inicio
+        </button>
+
+        <button
+            onclick="mostrarSeccion('solicitud')"
+        >
+            Solicitud
+        </button>
+
+        <button
+            onclick="mostrarSeccion('consulta')"
+        >
+            Consultar folio
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     INICIO
+========================= -->
+
+<section
+    id="inicio"
+    class="section active"
+>
+
+    <div class="hero">
+
+        <img
+            src="assets/logo.jpeg"
+            alt="La Casa de los Famosos Roblox"
+            class="main-logo"
+        >
+
+        <div class="tag">
+            EDICIÓN ROBLOX
+        </div>
+
+        <h1>
+            ¿Tienes lo necesario para entrar?
+        </h1>
+
+        <p>
+            Realiza tu solicitud para convertirte
+            en habitante de La Casa de los Famosos Roblox.
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="btn btn-primary"
+                onclick="mostrarSeccion('solicitud')"
+            >
+                🏠 Quiero ser habitante
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="mostrarSeccion('consulta')"
+            >
+                🔎 Consultar mi folio
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="cards">
+
+        <article class="info-card">
+
+            <div class="info-number">
+                PASO 01
+            </div>
+
+            <h3>
+                Solicita tu ingreso
+            </h3>
+
+            <p>
+                Completa el formulario con tus
+                datos y participa en el proceso
+                de selección.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-number">
+                PASO 02
+            </div>
+
+            <h3>
+                Recibe tu folio
+            </h3>
+
+            <p>
+                El sistema generará un folio
+                único para tu solicitud.
+            </p>
+
+        </article>
+
+
+        <article class="info-card">
+
+            <div class="info-number">
+                PASO 03
+            </div>
+
+            <h3>
+                Conoce el resultado
+            </h3>
+
+            <p>
+                Consulta tu folio y descubre
+                si fuiste seleccionado.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOLICITUD
+========================= -->
+
+<section
+    id="solicitud"
+    class="section"
+>
+
+    <div class="page-title">
+
+        <span>
+            PROCESO DE REGISTRO
+        </span>
+
+        <h2>
+            Solicitud de habitante
+        </h2>
+
+        <p>
+            Completa todos los campos.
+        </p>
+
+    </div>
+
+
+    <form
+        id="formSolicitud"
+        class="form-card"
+    >
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label>
+                    Nombre completo *
+                </label>
+
+                <input
+                    type="text"
+                    name="nombre"
+                    maxlength="100"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Usuario de Roblox *
+                </label>
+
+                <input
+                    type="text"
+                    name="roblox"
+                    maxlength="50"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Edad *
+                </label>
+
+                <input
+                    type="number"
+                    name="edad"
+                    min="13"
+                    max="99"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Correo electrónico
+                </label>
+
+                <input
+                    type="email"
+                    name="correo"
+                    maxlength="120"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Teléfono
+                </label>
+
+                <input
+                    type="tel"
+                    name="telefono"
+                    maxlength="30"
+                >
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label>
+                    ¿Por qué quieres entrar?
+                </label>
+
+                <textarea
+                    name="motivo"
+                    maxlength="1000"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <label class="agreement">
+
+            <input
+                type="checkbox"
+                required
+            >
+
+            <span>
+                Confirmo que la información proporcionada
+                es verdadera y acepto participar en el
+                proceso de selección.
+            </span>
+
+        </label>
+
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            Enviar solicitud
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- =========================
+     CONSULTA
+========================= -->
+
+<section
+    id="consulta"
+    class="section"
+>
+
+    <div class="page-title">
+
+        <span>
+            RESULTADOS
+        </span>
+
+        <h2>
+            Consulta tu solicitud
+        </h2>
+
+        <p>
+            Introduce el folio que recibiste.
+        </p>
+
+    </div>
+
+
+    <div class="consult-box">
+
+        <form
+            id="formConsulta"
+            class="form-card"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    Folio de solicitud
+                </label>
+
+                <input
+                    id="folio"
+                    type="text"
+                    placeholder="LCDLF-XXXXXXXXXX"
+                    autocomplete="off"
+                    required
+                >
+
+            </div>
+
+            <br>
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+            >
+                🔎 Consultar resultado
+            </button>
+
+        </form>
+
+
+        <div
+            id="resultado"
+            class="consult-result"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 La Casa de los Famosos Roblox
+    </p>
+
+    <p>
+        Proyecto independiente para Roblox.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    id="modal"
+    class="modal hidden"
+>
+
+    <div class="modal-content">
+
+        <button
+            class="close"
+            onclick="cerrarModal()"
+        >
+            ×
+        </button>
+
+        <div id="modalContenido"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+=================================================
+CONFIGURACIÓN
+=================================================
+
+PON AQUÍ LA URL DE TU GOOGLE APPS SCRIPT.
+
+Ejemplo:
+
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/XXXXXXXX/exec";
+
+=================================================
+*/
+
+const APPS_SCRIPT_URL =
+"PEGA_AQUI_TU_URL_DE_APPS_SCRIPT";
+
+
+/*
+=================================================
+NAVEGACIÓN
+=================================================
+*/
+
+function mostrarSeccion(id) {
+
+    document
+        .querySelectorAll(".section")
+        .forEach(
+            seccion =>
+                seccion.classList.remove("active")
+        );
+
+
+    const seccion =
+        document.getElementById(id);
+
+
+    if (seccion) {
+
+        seccion.classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+/*
+=================================================
+ESCAPAR HTML
+=================================================
+*/
+
+function escapar(texto) {
+
+    return String(texto ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/*
+=================================================
+CONEXIÓN CON APPS SCRIPT
+=================================================
+
+Usamos JSONP para que GitHub Pages
+pueda comunicarse con Apps Script.
+=================================================
+*/
+
+function llamarAPI(accion, parametros = {}) {
+
+    return new Promise(
+        (resolve, reject) => {
+
+            if (
+                !APPS_SCRIPT_URL ||
+                APPS_SCRIPT_URL.includes(
+                    "PEGA_AQUI"
+                )
+            ) {
+
+                reject(
+                    new Error(
+                        "Todavía no has colocado la URL de Apps Script."
+                    )
+                );
+
+                return;
+
+            }
+
+
+            const callback =
+                "lcdlfCallback_" +
+                Date.now() +
+                "_" +
+                Math.random()
+                    .toString(36)
+                    .substring(2);
+
+
+            const script =
+                document.createElement("script");
+
+
+            const query =
+                new URLSearchParams();
+
+
+            query.set(
+                "action",
+                accion
+            );
+
+
+            query.set(
+                "callback",
+                callback
+            );
+
+
+            Object.keys(parametros)
+                .forEach(
+                    clave => {
+
+                        query.set(
+                            clave,
+                            parametros[clave]
+                        );
+
+                    }
+                );
+
+
+            window[callback] =
+                function(respuesta) {
+
+                    delete window[callback];
+
+                    script.remove();
+
+
+                    if (
+                        respuesta &&
+                        respuesta.ok === false
+                    ) {
+
+                        reject(
+                            new Error(
+                                respuesta.error ||
+                                "Ocurrió un error."
+                            )
+                        );
+
+                        return;
+
+                    }
+
+
+                    resolve(respuesta);
+
+                };
+
+
+            script.onerror =
+                function() {
+
+                    delete window[callback];
+
+                    script.remove();
+
+                    reject(
+                        new Error(
+                            "No fue posible conectar con el servidor."
+                        )
+                    );
+
+                };
+
+
+            script.src =
+                APPS_SCRIPT_URL +
+                "?" +
+                query.toString();
+
+
+            document.body.appendChild(
+                script
+            );
+
+        }
+    );
+
+}
+
+
+/*
+=================================================
+ENVIAR SOLICITUD
+=================================================
+*/
+
+document
+    .getElementById("formSolicitud")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const formulario =
+                event.target;
+
+
+            const datos =
+                new FormData(
+                    formulario
+                );
+
+
+            const boton =
+                formulario.querySelector(
+                    "button[type='submit']"
+                );
+
+
+            boton.disabled = true;
+
+            boton.textContent =
+                "Enviando solicitud...";
+
+
+            try {
+
+                const respuesta =
+                    await llamarAPI(
+                        "submit",
+                        {
+                            nombre:
+                                datos.get("nombre"),
+
+                            roblox:
+                                datos.get("roblox"),
+
+                            edad:
+                                datos.get("edad"),
+
+                            correo:
+                                datos.get("correo"),
+
+                            telefono:
+                                datos.get("telefono"),
+
+                            motivo:
+                                datos.get("motivo")
+                        }
+                    );
+
+
+                if (
+                    !respuesta ||
+                    !respuesta.folio
+                ) {
+
+                    throw new Error(
+                        "El servidor no devolvió un folio."
+                    );
+
+                }
+
+
+                document
+                    .getElementById(
+                        "modalContenido"
+                    )
+                    .innerHTML = `
+
+                        <div
+                            style="
+                                font-size:55px;
+                                margin-bottom:10px;
+                            "
+                        >
+                            🎉
+                        </div>
+
+                        <h2>
+                            ¡Solicitud recibida!
+                        </h2>
+
+                        <p
+                            style="
+                                margin-top:12px;
+                                color:#ccc;
+                            "
+                        >
+                            Tu folio único es:
+                        </p>
+
+                        <div class="folio-box">
+                            ${escapar(
+                                respuesta.folio
+                            )}
+                        </div>
+
+                        <p
+                            style="
+                                color:#aaa;
+                                line-height:1.5;
+                            "
+                        >
+                            Guarda este folio.
+                            Lo necesitarás para
+                            consultar tu resultado.
+                        </p>
+
+                        <div class="buttons">
+
+                            <button
+                                class="btn btn-primary"
+                                onclick="
+                                    copiarFolio(
+                                        '${escapar(
+                                            respuesta.folio
+                                        )}'
+                                    )
+                                "
+                            >
+                                📋 Copiar folio
+                            </button>
+
+                            <button
+                                class="btn btn-secondary"
+                                onclick="
+                                    cerrarModal();
+                                    mostrarSeccion(
+                                        'consulta'
+                                    );
+
+                                    document
+                                        .getElementById(
+                                            'folio'
+                                        )
+                                        .value =
+                                            '${escapar(
+                                                respuesta.folio
+                                            )}';
+                                "
+                            >
+                                Consultar después
+                            </button>
+
+                        </div>
+                    `;
+
+
+                abrirModal();
+
+
+                formulario.reset();
+
+
+            } catch (error) {
+
+                alert(
+                    error.message ||
+                    "No fue posible enviar la solicitud."
+                );
+
+            } finally {
+
+                boton.disabled = false;
+
+                boton.textContent =
+                    "Enviar solicitud";
+
+            }
+
+        }
+    );
+
+
+/*
+=================================================
+CONSULTAR FOLIO
+=================================================
+*/
+
+document
+    .getElementById("formConsulta")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const folio =
+                document
+                    .getElementById(
+                        "folio"
+                    )
+                    .value
+                    .trim()
+                    .toUpperCase();
+
+
+            const resultado =
+                document.getElementById(
+                    "resultado"
+                );
+
+
+            resultado.innerHTML = `
+
+                <div class="form-card loading">
+
+                    <div class="spinner"></div>
+
+                    <p
+                        style="margin-top:15px"
+                    >
+                        Consultando solicitud...
+                    </p>
+
+                </div>
+            `;
+
+
+            try {
+
+                const respuesta =
+                    await llamarAPI(
+                        "consult",
+                        {
+                            folio: folio
+                        }
+                    );
+
+
+                if (
+                    !respuesta ||
+                    !respuesta.found
+                ) {
+
+                    resultado.innerHTML = `
+
+                        <div class="message error">
+
+                            <h3>
+                                Folio no encontrado
+                            </h3>
+
+                            <p
+                                style="margin-top:8px"
+                            >
+                                Verifica que el folio
+                                esté escrito correctamente.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /*
+                =========================================
+                PENDIENTE
+                =========================================
+                */
+
+                if (
+                    respuesta.estado ===
+                    "PENDIENTE"
+                ) {
+
+                    resultado.innerHTML = `
+
+                        <div class="result-card">
+
+                            <span
+                                class="selected-badge"
+                                style="
+                                    background:
+                                    rgba(255,210,80,.1);
+                                    color:#ffe8a0;
+                                "
+                            >
+                                SOLICITUD EN REVISIÓN
+                            </span>
+
+                            <div
+                                class="welcome-icon"
+                            >
+                                ⏳
+                            </div>
+
+                            <h2>
+                                Hola,
+                                ${escapar(
+                                    respuesta.nombre
+                                )}
+                            </h2>
+
+                            <p>
+                                Tu solicitud continúa
+                                en proceso de revisión.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /*
+                =========================================
+                NO SELECCIONADO
+                =========================================
+                */
+
+                if (
+                    respuesta.estado ===
+                    "NO SELECCIONADO"
+                ) {
+
+                    resultado.innerHTML = `
+
+                        <div class="result-card">
+
+                            <span
+                                class="selected-badge"
+                            >
+                                RESULTADO
+                            </span>
+
+                            <div
+                                class="welcome-icon"
+                            >
+                                📋
+                            </div>
+
+                            <h2>
+                                ${escapar(
+                                    respuesta.nombre
+                                )}
+                            </h2>
+
+                            <p>
+                                Gracias por participar
+                                en el proceso de selección.
+                            </p>
+
+                            <p
+                                style="
+                                    margin-top:15px;
+                                "
+                            >
+                                En esta ocasión
+                                no fuiste seleccionado/a.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                /*
+                =========================================
+                SELECCIONADO
+                =========================================
+                */
+
+                if (
+                    respuesta.estado ===
+                    "SELECCIONADO"
+                ) {
+
+                    resultado.innerHTML = `
+
+                        <div
+                            class="result-card"
+                            style="
+                                border-color:
+                                rgba(180,255,210,.35);
+                            "
+                        >
+
+                            <span
+                                class="selected-badge"
+                            >
+                                HABITANTE SELECCIONADO
+                            </span>
+
+
+                            <div
+                                class="welcome-icon"
+                            >
+                                🏆
+                            </div>
+
+
+                            <h2>
+                                ¡Bienvenido/a,
+                                ${escapar(
+                                    respuesta.nombre
+                                )}!
+                            </h2>
+
+
+                            <p>
+                                Has sido seleccionado/a
+                                para formar parte de
+                                La Casa de los Famosos Roblox.
+                            </p>
+
+
+                            <div
+                                class="resident-data"
+                            >
+
+                                <div
+                                    class="data-box"
+                                >
+
+                                    <small>
+                                        🛏️ HABITACIÓN
+                                    </small>
+
+                                    <strong>
+                                        ${escapar(
+                                            respuesta.habitacion ||
+                                            "Por asignar"
+                                        )}
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="data-box"
+                                >
+
+                                    <small>
+                                        📧 CORREO DEL HABITANTE
+                                    </small>
+
+                                    <strong>
+                                        ${escapar(
+                                            respuesta.correo ||
+                                            ""
+                                        )}
+                                    </strong>
+
+                                </div>
+
+
+                                <div
+                                    class="data-box"
+                                >
+
+                                    <small>
+                                        🔐 CONTRASEÑA
+                                    </small>
+
+                                    <strong>
+                                        ${escapar(
+                                            respuesta.contrasena ||
+                                            ""
+                                        )}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="buttons">
+
+
+                                ${
+                                    respuesta.contrato
+                                    ?
+
+                                    `
+                                    <a
+                                        href="${urlSegura(
+                                            respuesta.contrato
+                                        )}"
+                                        target="_blank"
+                                        rel="noopener"
+                                        class="btn btn-primary"
+                                    >
+                                        📄 Descargar contrato
+                                    </a>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+
+                                ${
+                                    respuesta.whatsapp
+                                    ?
+
+                                    `
+                                    <a
+                                        href="${urlSegura(
+                                            respuesta.whatsapp
+                                        )}"
+                                        target="_blank"
+                                        rel="noopener"
+                                        class="btn btn-secondary"
+                                    >
+                                        💬 WhatsApp
+                                    </a>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+
+                                ${
+                                    respuesta.discord
+                                    ?
+
+                                    `
+                                    <a
+                                        href="${urlSegura(
+                                            respuesta.discord
+                                        )}"
+                                        target="_blank"
+                                        rel="noopener"
+                                        class="btn btn-secondary"
+                                    >
+                                        🎮 Discord
+                                    </a>
+                                    `
+
+                                    :
+
+                                    ""
+                                }
+
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+
+
+            } catch (error) {
+
+                resultado.innerHTML = `
+
+                    <div
+                        class="message error"
+                    >
+
+                        <h3>
+                            Error
+                        </h3>
+
+                        <p
+                            style="
+                                margin-top:8px
+                            "
+                        >
+                            ${escapar(
+                                error.message
+                            )}
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+    );
+
+
+/*
+=================================================
+COPIAR FOLIO
+=================================================
+*/
+
+function copiarFolio(folio) {
+
+    navigator
+        .clipboard
+        .writeText(folio)
+        .then(
+            function() {
+
+                alert(
+                    "Folio copiado: " +
+                    folio
+                );
+
+            }
+        );
+
+}
+
+
+/*
+=================================================
+MODAL
+=================================================
+*/
+
+function abrirModal() {
+
+    document
+        .getElementById(
+            "modal"
+        )
+        .classList.remove(
+            "hidden"
+        );
+
+}
+
+
+function cerrarModal() {
+
+    document
+        .getElementById(
+            "modal"
+        )
+        .classList.add(
+            "hidden"
+        );
+
+}
+
+
+/*
+=================================================
+URL SEGURA
+=================================================
+*/
+
+function urlSegura(url) {
+
+    if (
+        /^https?:\/\//i.test(
+            String(url || "")
+        )
+    ) {
+
+        return String(url);
+
+    }
+
+    return "#";
+
+}
+
+</script>
+
+</body>
+</html>
