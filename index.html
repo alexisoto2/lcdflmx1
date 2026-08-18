@@ -1,28 +1,15 @@
-/*
-=================================================
-CONFIGURACIÓN DE CONEXIÓN CON GOOGLE APPS SCRIPT
-=================================================
-*/
+<!-- ... Resto de tu HTML anterior (formularios, secciones, modales) ... -->
+
+<script>
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbfbxhAjyycBE407RPv9TW_6pHKClC5_9aVqqmvEF0qUmRzO9-Bq-m9ZmLDXUOGfoM/exec";
 
-/*
-=================================================
-CONTINUACIÓN DE LA FUNCIÓN llamarAPI Y EVENTOS
-=================================================
-*/
 function llamarAPI(accion, parametros = {}) {
     return new Promise((resolve, reject) => {
-        if (
-            !APPS_SCRIPT_URL ||
-            APPS_SCRIPT_URL.includes("PON_AQUI_TU_URL")
-        ) {
+        if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("PON_AQUI_TU_URL")) {
             return reject(new Error("La URL de Google Apps Script no está configurada correctamente."));
         }
 
-        // Crear un nombre único para la función callback JSONP
         const callbackName = "jsonp_cb_" + Math.random().toString(36).substring(2, 15);
-
-        // Construir los parámetros URL
         const urlParams = new URLSearchParams({
             action: accion,
             callback: callbackName,
@@ -32,7 +19,6 @@ function llamarAPI(accion, parametros = {}) {
         const script = document.createElement("script");
         script.src = `${APPS_SCRIPT_URL}?${urlParams.toString()}`;
 
-        // Manejo del callback global
         window[callbackName] = function (respuesta) {
             cleanup();
             if (respuesta && respuesta.success) {
@@ -42,7 +28,6 @@ function llamarAPI(accion, parametros = {}) {
             }
         };
 
-        // Manejo de errores de red/script
         script.onerror = function () {
             cleanup();
             reject(new Error("Error de conexión con el servidor. Revisa tu URL de Apps Script."));
@@ -58,3 +43,164 @@ function llamarAPI(accion, parametros = {}) {
         document.body.appendChild(script);
     });
 }
+
+function abrirModal(contenidoHtml) {
+    const modal = document.getElementById("modal");
+    const modalContenido = document.getElementById("modalContenido");
+
+    if (modal && modalContenido) {
+        modalContenido.innerHTML = contenidoHtml;
+        modal.classList.remove("hidden");
+    }
+}
+
+function cerrarModal() {
+    const modal = document.getElementById("modal");
+    if (modal) {
+        modal.classList.add("hidden");
+    }
+}
+
+window.addEventListener("click", (e) => {
+    const modal = document.getElementById("modal");
+    if (e.target === modal) {
+        cerrarModal();
+    }
+});
+
+document.getElementById("formSolicitud")?.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+
+    const formData = new FormData(form);
+    const datos = {
+        nombre: formData.get("nombre"),
+        roblox: formData.get("roblox"),
+        edad: formData.get("edad"),
+        correo: formData.get("correo"),
+        telefono: formData.get("telefono"),
+        motivo: formData.get("motivo")
+    };
+
+    try {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+            <div class="spinner" style="width:20px; height:20px; border-width:2px; display:inline-block; vertical-align:middle; margin-right:8px;"></div>
+            Enviando...
+        `;
+
+        const respuesta = await llamarAPI("guardarSolicitud", datos);
+
+        abrirModal(`
+            <div class="result-card">
+                <span class="selected-badge">¡REGISTRO EXITOSO!</span>
+                <div class="welcome-icon">🎉</div>
+                <h2>¡Solicitud Recibida!</h2>
+                <p>Guarda muy bien tu folio para consultar el estado de tu selección posteriormente:</p>
+                <div class="folio-box">${escapar(respuesta.folio)}</div>
+                <button class="btn btn-primary" onclick="cerrarModal(); mostrarSeccion('consulta'); document.getElementById('folio').value='${escapar(respuesta.folio)}';">
+                    Ir a consultar mi folio
+                </button>
+            </div>
+        `);
+
+        form.reset();
+
+    } catch (error) {
+        abrirModal(`
+            <div class="message error">
+                <h3>Error al registrar</h3>
+                <p>${escapar(error.message)}</p>
+            </div>
+        `);
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+    }
+});
+
+document.getElementById("formConsulta")?.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const folioInput = document.getElementById("folio");
+    const contenedorResultado = document.getElementById("resultado");
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+
+    const folio = folioInput.value.trim();
+
+    if (!folio) return;
+
+    try {
+        submitBtn.disabled = true;
+        contenedorResultado.innerHTML = `
+            <div class="loading">
+                <div class="spinner"></div>
+                <p style="margin-top:15px; color:rgba(255,255,255,.7);">Buscando folio...</p>
+            </div>
+        `;
+
+        const respuesta = await llamarAPI("consultarFolio", { folio });
+        const datos = respuesta.datos;
+
+        let estadoHtml = "";
+
+        if (datos.estado === "Aceptado") {
+            estadoHtml = `
+                <div class="result-card">
+                    <span class="selected-badge">¡SELECCIONADO!</span>
+                    <div class="welcome-icon">👑</div>
+                    <h2>¡Felicidades, ${escapar(datos.nombre)}!</h2>
+                    <p>Has sido seleccionado para ingresar a <strong>La Casa de los Famosos Roblox</strong>.</p>
+                    
+                    <div class="resident-data">
+                        <div class="data-box">
+                            <small>USUARIO ROBLOX</small>
+                            <strong>${escapar(datos.roblox)}</strong>
+                        </div>
+                        <div class="data-box">
+                            <small>FOLIO</small>
+                            <strong>${escapar(datos.folio)}</strong>
+                        </div>
+                        <div class="data-box">
+                            <small>ESTADO</small>
+                            <strong style="color:#caffd9;">ACEPTADO</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (datos.estado === "Rechazado") {
+            estadoHtml = `
+                <div class="message error">
+                    <h3>Solicitud No Seleccionada</h3>
+                    <p>Gracias por tu interés en participar, <strong>${escapar(datos.nombre)}</strong>. Desafortunadamente no fuiste seleccionado en esta edición.</p>
+                </div>
+            `;
+        } else {
+            estadoHtml = `
+                <div class="message pending">
+                    <h3>Solicitud En Revisión ⏳</h3>
+                    <p>Hola <strong>${escapar(datos.nombre)}</strong>, tu solicitud con folio <code>${escapar(datos.folio)}</code> aún está en proceso de evaluación por la producción.</p>
+                    <p style="margin-top:8px; font-size:13px; opacity:.8;">Vuelve a consultar más adelante.</p>
+                </div>
+            `;
+        }
+
+        contenedorResultado.innerHTML = estadoHtml;
+
+    } catch (error) {
+        contenedorResultado.innerHTML = `
+            <div class="message error">
+                <p>${escapar(error.message)}</p>
+            </div>
+        `;
+    } finally {
+        submitBtn.disabled = false;
+    }
+});
+</script>
+
+</body>
+</html>
