@@ -4,11 +4,206 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - LCDLF Roblox</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #2e1065, #0f051d);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .logo-img {
+            max-width: 260px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0, 162, 255, 0.4));
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #38bdf8;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+        }
+
+        .btn-link {
+            background: transparent;
+            color: #94a3b8;
+        }
+
+        .btn-link:hover {
+            color: #ffffff;
+        }
+
+        /* Styles para Respuestas y Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .modal-body {
+            background: #1e1b4b;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .result-card, .message {
+            text-align: center;
+        }
+
+        .selected-badge {
+            display: inline-block;
+            background: #10b981;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .folio-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed #38bdf8;
+            padding: 12px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #38bdf8;
+            letter-spacing: 2px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .message.error h3 {
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+
+        .message.error p {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 
     <main class="container">
+        <!-- Logo del proyecto -->
+        <div class="logo-container">
+            <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+        </div>
+
         <h2>Formulario de Postulación</h2>
         
         <form id="formSolicitud">
@@ -131,7 +326,7 @@
                     <span class="selected-badge">¡REGISTRO EXITOSO!</span>
                     <div class="welcome-icon">🎉</div>
                     <h2>¡Solicitud Recibida!</h2>
-                    <p>Guarda tu folio para consultar tu estado:</p>
+                    <p style="font-size:0.9rem; color:#cbd5e1;">Guarda tu folio para consultar tu estado:</p>
                     <div class="folio-box">${escapar(respuesta.folio)}</div>
                     <a href="consulta.html?folio=${escapar(respuesta.folio)}" class="btn btn-primary">Ir a consultar mi folio</a>
                 </div>
@@ -143,7 +338,7 @@
                 <div class="message error">
                     <h3>Error al registrar</h3>
                     <p>${escapar(error.message)}</p>
-                    <button class="btn" onclick="cerrarModal()">Cerrar</button>
+                    <button class="btn btn-primary" onclick="cerrarModal()">Cerrar</button>
                 </div>
             `);
         } finally {
