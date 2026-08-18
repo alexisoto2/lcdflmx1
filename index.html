@@ -1,8 +1,19 @@
-<!-- ... Resto de tu HTML anterior (formularios, secciones, modales) ... -->
-
 <script>
+// 1. Configuración de URL
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwbfbxhAjyycBE407RPv9TW_6pHKClC5_9aVqqmvEF0qUmRzO9-Bq-m9ZmLDXUOGfoM/exec";
 
+// 2. Función auxiliar para evitar errores de sintaxis y XSS
+function escapar(texto) {
+    if (!texto) return "";
+    return String(texto)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+// 3. Conexión JSONP con Google Apps Script
 function llamarAPI(accion, parametros = {}) {
     return new Promise((resolve, reject) => {
         if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("PON_AQUI_TU_URL")) {
@@ -44,6 +55,7 @@ function llamarAPI(accion, parametros = {}) {
     });
 }
 
+// 4. Manejo del Modal
 function abrirModal(contenidoHtml) {
     const modal = document.getElementById("modal");
     const modalContenido = document.getElementById("modalContenido");
@@ -68,6 +80,7 @@ window.addEventListener("click", (e) => {
     }
 });
 
+// 5. Envío de Formulario
 document.getElementById("formSolicitud")?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -122,6 +135,7 @@ document.getElementById("formSolicitud")?.addEventListener("submit", async funct
     }
 });
 
+// 6. Consulta de Folio
 document.getElementById("formConsulta")?.addEventListener("submit", async function (e) {
     e.preventDefault();
 
