@@ -1,1930 +1,1227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>Consultar Folio | La Casa de los Famosos Roblox</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<style>
 
-    <title>
-        Consulta de Folio | La Casa de los Famosos Roblox
-    </title>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
 
+body{
 
-    <style>
+    min-height:100vh;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", Arial, sans-serif;
-        }
+    padding:20px 15px;
 
+    color:#fff;
 
-        body {
+    background:
+        radial-gradient(circle at 10% 10%,rgba(0,220,255,.75),transparent 30%),
+        radial-gradient(circle at 90% 10%,rgba(170,80,255,.75),transparent 32%),
+        radial-gradient(circle at 50% 90%,rgba(255,150,220,.65),transparent 38%),
+        linear-gradient(135deg,#063d50,#292b88 48%,#7337a7);
 
-            min-height: 100vh;
+    background-attachment:fixed;
 
-            padding: 20px 15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-            color: #ffffff;
+}
 
-            background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(0, 220, 255, .75),
-                    transparent 30%
-                ),
+body::before{
 
-                radial-gradient(
-                    circle at 90% 10%,
-                    rgba(170, 80, 255, .75),
-                    transparent 32%
-                ),
+    content:"";
 
-                radial-gradient(
-                    circle at 50% 90%,
-                    rgba(255, 150, 220, .65),
-                    transparent 38%
-                ),
+    position:fixed;
 
-                linear-gradient(
-                    135deg,
-                    #063d50,
-                    #292b88 48%,
-                    #7337a7
-                );
+    width:420px;
+    height:420px;
 
-            background-attachment: fixed;
+    top:-170px;
+    left:-130px;
 
-            overflow-x: hidden;
+    border-radius:50%;
 
-        }
+    background:rgba(65,225,255,.35);
 
+    filter:blur(90px);
 
-        body::before,
-        body::after {
+    pointer-events:none;
 
-            content: "";
+}
 
-            position: fixed;
+body::after{
 
-            z-index: -1;
+    content:"";
 
-            border-radius: 50%;
+    position:fixed;
 
-            filter: blur(90px);
+    width:520px;
+    height:520px;
 
-            pointer-events: none;
+    right:-200px;
+    bottom:-220px;
 
-        }
+    border-radius:50%;
 
+    background:rgba(226,135,255,.35);
 
-        body::before {
+    filter:blur(90px);
 
-            width: 420px;
-            height: 420px;
+    pointer-events:none;
 
-            top: -170px;
-            left: -130px;
+}
 
-            background:
-                rgba(65, 225, 255, .35);
+.container{
 
-        }
+    width:100%;
+    max-width:570px;
 
+    padding:30px 25px 35px;
 
-        body::after {
+    text-align:center;
 
-            width: 520px;
-            height: 520px;
+    background:rgba(255,255,255,.11);
 
-            right: -200px;
-            bottom: -220px;
+    border:1px solid rgba(255,255,255,.28);
 
-            background:
-                rgba(226, 135, 255, .35);
+    border-radius:32px;
 
-        }
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
 
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.38),
+        inset 0 1px 2px rgba(255,255,255,.35);
 
-        /* =====================================
-           CONTENEDOR PRINCIPAL
-        ===================================== */
+}
 
-        .container {
+.logo-box{
 
-            width: 100%;
+    width:min(390px,100%);
 
-            max-width: 590px;
+    min-height:145px;
 
-            margin: auto;
+    margin:0 auto 20px;
 
-            padding:
-                30px
-                25px
-                35px;
+    display:flex;
 
-            text-align: center;
+    justify-content:center;
+    align-items:center;
 
-            background:
-                rgba(255, 255, 255, .11);
+    padding:12px;
 
-            border:
-                1px solid
-                rgba(255, 255, 255, .28);
+    border-radius:28px;
 
-            border-radius: 32px;
+    background:rgba(255,255,255,.10);
 
-            backdrop-filter: blur(22px);
+    border:1px solid rgba(255,255,255,.25);
 
-            -webkit-backdrop-filter:
-                blur(22px);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25),
+        inset 0 1px 2px rgba(255,255,255,.3);
 
-            box-shadow:
+}
 
-                0 25px 70px
-                rgba(0, 0, 0, .38),
+.logo-img{
 
-                inset 0 1px 2px
-                rgba(255, 255, 255, .35);
+    width:100%;
+    max-width:350px;
+    max-height:155px;
 
-        }
+    object-fit:contain;
 
+    filter:
+        drop-shadow(0 10px 12px rgba(0,0,0,.35))
+        drop-shadow(0 0 25px rgba(0,190,255,.35));
 
-        /* =====================================
-           LOGO
-        ===================================== */
+}
 
-        .logo-container {
+h1{
 
-            display: flex;
+    font-size:clamp(1.6rem,5vw,2.2rem);
 
-            justify-content: center;
+    font-weight:1000;
 
-            margin-bottom: 20px;
+    text-transform:uppercase;
 
-        }
+    letter-spacing:1.5px;
 
+    margin-bottom:8px;
 
-        .logo-box {
+    text-shadow:
+        0 3px 0 #1556c5,
+        0 7px 15px rgba(0,0,0,.45);
 
-            width:
-                min(390px, 100%);
+}
 
-            min-height: 145px;
+.subtitle{
 
-            display: flex;
+    color:rgba(255,255,255,.75);
 
-            justify-content: center;
+    font-size:.9rem;
 
-            align-items: center;
+    line-height:1.5;
 
-            padding: 12px;
+    margin-bottom:20px;
 
-            border-radius: 28px;
+}
 
-            background:
-                rgba(255, 255, 255, .10);
+.tag{
 
-            border:
-                1px solid
-                rgba(255, 255, 255, .25);
+    display:inline-block;
 
-            backdrop-filter:
-                blur(15px);
+    margin-bottom:22px;
 
-            box-shadow:
+    padding:6px 14px;
 
-                0 15px 40px
-                rgba(0, 0, 0, .25),
+    border-radius:30px;
 
-                inset 0 1px 2px
-                rgba(255, 255, 255, .3);
+    background:rgba(255,255,255,.12);
 
-        }
+    border:1px solid rgba(255,255,255,.22);
 
+    color:#dff8ff;
 
-        .logo-img {
+    font-size:.7rem;
 
-            width: 100%;
+    font-weight:900;
 
-            max-width: 350px;
+    letter-spacing:1px;
 
-            max-height: 155px;
+    text-transform:uppercase;
 
-            object-fit: contain;
+}
 
-            filter:
+.form-card{
 
-                drop-shadow(
-                    0 10px 12px
-                    rgba(0, 0, 0, .35)
-                )
+    padding:22px 20px;
 
-                drop-shadow(
-                    0 0 25px
-                    rgba(0, 190, 255, .35)
-                );
+    border-radius:22px;
 
-            transition:
-                transform .3s ease;
+    background:rgba(255,255,255,.07);
 
-        }
+    border:1px solid rgba(255,255,255,.16);
 
+}
 
-        .logo-img:hover {
+.form-group{
 
-            transform:
-                scale(1.035);
+    margin-bottom:18px;
 
-        }
+    text-align:left;
 
+}
 
-        /* =====================================
-           ENCABEZADO
-        ===================================== */
+label{
 
-        .header h1 {
+    display:block;
 
-            margin-top: 12px;
+    margin-bottom:8px;
 
-            margin-bottom: 8px;
+    font-size:.84rem;
 
-            font-size:
-                clamp(
-                    1.6rem,
-                    5vw,
-                    2.2rem
-                );
+    font-weight:700;
 
-            font-weight: 1000;
+    color:rgba(255,255,255,.88);
 
-            text-transform:
-                uppercase;
+}
 
-            letter-spacing:
-                1.5px;
+input{
 
-            text-shadow:
+    width:100%;
 
-                0 3px 0
-                #1556c5,
+    padding:15px;
 
-                0 7px 15px
-                rgba(0, 0, 0, .45);
+    border-radius:14px;
 
-        }
+    border:1px solid rgba(255,255,255,.22);
 
+    background:rgba(5,15,45,.35);
 
-        .header p {
+    color:white;
 
-            color:
-                rgba(255, 255, 255, .75);
+    font-size:1rem;
 
-            font-size:
-                .9rem;
+    outline:none;
 
-            line-height:
-                1.5;
+    text-align:center;
 
-            margin-bottom:
-                20px;
+    letter-spacing:1.5px;
 
-        }
+    text-transform:uppercase;
 
+}
 
-        .tag {
+input:focus{
 
-            display:
-                inline-block;
+    border-color:#55dfff;
 
-            margin-bottom:
-                22px;
+    box-shadow:0 0 0 3px rgba(85,223,255,.1);
 
-            padding:
-                6px 14px;
+}
 
-            border-radius:
-                30px;
+.btn{
 
-            background:
-                rgba(255, 255, 255, .12);
+    display:block;
 
-            border:
-                1px solid
-                rgba(255, 255, 255, .22);
+    width:100%;
 
-            color:
-                #dff8ff;
+    padding:14px 18px;
 
-            font-size:
-                .7rem;
+    border-radius:14px;
 
-            font-weight:
-                900;
+    border:none;
 
-            letter-spacing:
-                1px;
+    font-size:.92rem;
 
-            text-transform:
-                uppercase;
+    font-weight:900;
 
-        }
+    text-decoration:none;
 
+    cursor:pointer;
 
-        /* =====================================
-           FORMULARIO
-        ===================================== */
+    text-align:center;
 
-        .form-card {
+}
 
-            padding:
-                22px 20px;
+.btn-primary{
 
-            border-radius:
-                22px;
+    color:white;
 
-            background:
-                rgba(255, 255, 255, .07);
+    background:
+        linear-gradient(
+            135deg,
+            #078fff,
+            #513cff,
+            #a53dff
+        );
 
-            border:
-                1px solid
-                rgba(255, 255, 255, .16);
+    box-shadow:
+        0 8px 25px rgba(47,102,255,.4);
 
-            box-shadow:
-                inset 0 1px 1px
-                rgba(255, 255, 255, .15);
+}
 
-        }
+.btn-primary:disabled{
 
+    opacity:.6;
 
-        .form-group {
+    cursor:wait;
 
-            margin-bottom:
-                18px;
+}
 
-            text-align:
-                left;
+.btn-link{
 
-        }
+    margin-top:10px;
 
+    color:rgba(255,255,255,.7);
 
-        label {
+    background:rgba(255,255,255,.05);
 
-            display:
-                block;
+    border:1px solid rgba(255,255,255,.12);
 
-            margin-bottom:
-                8px;
+}
 
-            color:
-                rgba(255, 255, 255, .88);
+#resultado{
 
-            font-size:
-                .84rem;
+    margin-top:22px;
 
-            font-weight:
-                700;
+}
 
-        }
+.loading{
 
+    padding:20px;
 
-        input[type="text"] {
+    border-radius:18px;
 
-            width:
-                100%;
+    background:rgba(255,255,255,.07);
 
-            padding:
-                14px 15px;
+    border:1px solid rgba(255,255,255,.15);
 
-            border-radius:
-                14px;
+}
 
-            border:
-                1px solid
-                rgba(255, 255, 255, .22);
+.spinner{
 
-            background:
-                rgba(5, 15, 45, .35);
+    width:28px;
+    height:28px;
 
-            color:
-                #ffffff;
+    margin:0 auto 12px;
 
-            font-size:
-                1rem;
+    border:3px solid rgba(255,255,255,.2);
 
-            outline:
-                none;
+    border-top-color:#55dcff;
 
-            text-align:
-                center;
+    border-radius:50%;
 
-            letter-spacing:
-                1.5px;
+    animation:giro .8s linear infinite;
 
-            text-transform:
-                uppercase;
+}
 
-            transition:
-                .25s ease;
+@keyframes giro{
 
-        }
+    to{
+        transform:rotate(360deg);
+    }
 
+}
 
-        input[type="text"]::placeholder {
+.result-card,
+.message{
 
-            color:
-                rgba(255, 255, 255, .35);
+    padding:22px;
 
-        }
+    border-radius:20px;
 
+    text-align:left;
 
-        input[type="text"]:focus {
+    animation:entrada .3s ease;
 
-            border-color:
-                #55dfff;
+}
 
-            background:
-                rgba(5, 15, 45, .48);
+.result-card{
 
-            box-shadow:
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16,185,129,.2),
+            rgba(0,200,255,.1)
+        );
 
-                0 0 0 3px
-                rgba(85, 223, 255, .10),
+    border:1px solid rgba(52,211,153,.7);
 
-                0 0 20px
-                rgba(85, 223, 255, .12);
+}
 
-            transform:
-                translateY(-1px);
+.message.pending{
 
-        }
+    background:rgba(245,158,11,.17);
 
+    border:1px solid rgba(245,158,11,.7);
 
-        /* =====================================
-           BOTONES
-        ===================================== */
+}
 
-        .btn {
+.message.error{
 
-            display:
-                block;
+    background:rgba(239,68,68,.17);
 
-            width:
-                100%;
+    border:1px solid rgba(239,68,68,.7);
 
-            padding:
-                14px 18px;
+}
 
-            border-radius:
-                14px;
+.icon{
 
-            border:
-                none;
+    font-size:2.8rem;
 
-            font-size:
-                .92rem;
+    text-align:center;
 
-            font-weight:
-                900;
+    margin-bottom:10px;
 
-            text-decoration:
-                none;
+}
 
-            cursor:
-                pointer;
+.badge{
 
-            text-align:
-                center;
+    display:block;
 
-            transition:
-                .25s ease;
+    width:max-content;
 
-        }
+    margin:0 auto 12px;
 
+    padding:6px 12px;
 
-        .btn-primary {
+    border-radius:20px;
 
-            color:
-                #ffffff;
+    background:rgba(16,185,129,.25);
 
-            background:
+    color:#6ee7b7;
 
-                linear-gradient(
-                    135deg,
-                    #078fff,
-                    #513cff,
-                    #a53dff
-                );
+    font-size:.72rem;
 
-            box-shadow:
+    font-weight:900;
 
-                0 8px 25px
-                rgba(47, 102, 255, .40),
+}
 
-                inset 0 1px 1px
-                rgba(255, 255, 255, .45);
+.result-card h2,
+.message h3{
 
-        }
+    color:white;
 
+    font-size:1.25rem;
 
-        .btn-primary:hover {
+    margin-bottom:10px;
 
-            transform:
-                translateY(-2px)
-                scale(1.01);
+}
 
-            box-shadow:
+.result-card p,
+.message p{
 
-                0 12px 32px
-                rgba(79, 83, 255, .55),
+    color:rgba(255,255,255,.8);
 
-                0 0 25px
-                rgba(57, 195, 255, .20);
+    font-size:.88rem;
 
-        }
+    line-height:1.55;
 
+    margin-bottom:10px;
 
-        .btn-primary:disabled {
+}
 
-            opacity:
-                .6;
+.dato{
 
-            cursor:
-                wait;
+    margin-top:10px;
 
-            transform:
-                none;
+    padding:10px;
 
-        }
+    border-radius:10px;
 
+    background:rgba(0,0,0,.18);
 
-        .btn-link {
+}
 
-            margin-top:
-                10px;
+.dato strong{
 
-            color:
-                rgba(255, 255, 255, .65);
+    display:block;
 
-            background:
-                rgba(255, 255, 255, .05);
+    margin-bottom:4px;
 
-            border:
-                1px solid
-                rgba(255, 255, 255, .12);
+    color:white;
 
-        }
+}
 
+code{
 
-        .btn-link:hover {
+    color:#65ddff;
 
-            color:
-                #ffffff;
+    word-break:break-word;
 
-            background:
-                rgba(255, 255, 255, .12);
+    font-family:monospace;
 
-        }
+}
 
+@keyframes entrada{
 
-        /* =====================================
-           RESULTADO
-        ===================================== */
+    from{
 
-        #resultado {
+        opacity:0;
+        transform:translateY(8px);
 
-            margin-top:
-                22px;
+    }
 
-        }
+    to{
 
+        opacity:1;
+        transform:translateY(0);
 
-        .result-card,
-        .message {
+    }
 
-            padding:
-                22px;
+}
 
-            border-radius:
-                20px;
+footer{
 
-            text-align:
-                left;
+    margin-top:25px;
 
-            animation:
-                fadeIn .3s ease;
+    color:rgba(255,255,255,.4);
 
-        }
+    font-size:.7rem;
 
+}
 
-        /* =====================================
-           SELECCIONADO
-        ===================================== */
+@media(max-width:600px){
 
-        .result-card {
+    body{
 
-            background:
+        padding:12px;
 
-                linear-gradient(
-                    135deg,
-                    rgba(16, 185, 129, .18),
-                    rgba(0, 200, 255, .10)
-                );
+    }
 
-            border:
-                1px solid
-                rgba(52, 211, 153, .65);
+    .container{
 
-            box-shadow:
+        padding:23px 17px 28px;
 
-                0 10px 30px
-                rgba(0, 0, 0, .18),
+        border-radius:27px;
 
-                0 0 20px
-                rgba(16, 185, 129, .08);
+    }
 
-        }
+    .logo-box{
 
+        min-height:130px;
 
-        .result-icon {
+    }
 
-            font-size:
-                2.7rem;
+}
 
-            margin-bottom:
-                8px;
-
-            text-align:
-                center;
-
-        }
-
-
-        .selected-badge {
-
-            display:
-                inline-block;
-
-            margin-bottom:
-                12px;
-
-            padding:
-                6px 11px;
-
-            border-radius:
-                20px;
-
-            background:
-                rgba(16, 185, 129, .22);
-
-            border:
-                1px solid
-                rgba(52, 211, 153, .5);
-
-            color:
-                #6ee7b7;
-
-            font-size:
-                .7rem;
-
-            font-weight:
-                900;
-
-            letter-spacing:
-                1px;
-
-        }
-
-
-        .result-card h2,
-        .message h3 {
-
-            font-size:
-                1.25rem;
-
-            margin-bottom:
-                10px;
-
-            color:
-                #ffffff;
-
-        }
-
-
-        .result-card p,
-        .message p {
-
-            font-size:
-                .87rem;
-
-            color:
-                rgba(255, 255, 255, .76);
-
-            margin-bottom:
-                7px;
-
-            line-height:
-                1.5;
-
-        }
-
-
-        /* =====================================
-           DATOS DEL SELECCIONADO
-        ===================================== */
-
-        .datos-seleccionado {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                10px;
-
-            margin-top:
-                18px;
-
-        }
-
-
-        .dato {
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                6px;
-
-            padding:
-                11px 13px;
-
-            border-radius:
-                12px;
-
-            background:
-                rgba(0, 0, 0, .18);
-
-            border:
-                1px solid
-                rgba(255, 255, 255, .10);
-
-        }
-
-
-        .dato span {
-
-            color:
-                rgba(255, 255, 255, .65);
-
-            font-size:
-                .72rem;
-
-            font-weight:
-                800;
-
-            text-transform:
-                uppercase;
-
-            letter-spacing:
-                .5px;
-
-        }
-
-
-        code {
-
-            display:
-                block;
-
-            width:
-                100%;
-
-            background:
-                rgba(0, 0, 0, .28);
-
-            padding:
-                7px 9px;
-
-            border-radius:
-                8px;
-
-            color:
-                #65ddff;
-
-            font-family:
-                monospace;
-
-            font-size:
-                .82rem;
-
-            overflow-wrap:
-                anywhere;
-
-        }
-
-
-        /* =====================================
-           AVISO
-        ===================================== */
-
-        .aviso-datos {
-
-            margin-top:
-                15px;
-
-            padding:
-                12px;
-
-            border-radius:
-                12px;
-
-            background:
-                rgba(245, 158, 11, .10);
-
-            border:
-                1px solid
-                rgba(245, 158, 11, .30);
-
-            color:
-                #fde68a;
-
-            font-size:
-                .75rem;
-
-            line-height:
-                1.4;
-
-            text-align:
-                center;
-
-        }
-
-
-        /* =====================================
-           RECHAZADO
-        ===================================== */
-
-        .message.error {
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    rgba(239, 68, 68, .18),
-                    rgba(255, 80, 130, .08)
-                );
-
-            border:
-                1px solid
-                rgba(239, 68, 68, .65);
-
-        }
-
-
-        /* =====================================
-           PENDIENTE
-        ===================================== */
-
-        .message.pending {
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    rgba(245, 158, 11, .17),
-                    rgba(255, 200, 70, .08)
-                );
-
-            border:
-                1px solid
-                rgba(245, 158, 11, .65);
-
-        }
-
-
-        /* =====================================
-           CARGANDO
-        ===================================== */
-
-        .loading {
-
-            padding:
-                17px;
-
-            border-radius:
-                15px;
-
-            color:
-                rgba(255, 255, 255, .72);
-
-            background:
-                rgba(255, 255, 255, .06);
-
-            border:
-                1px solid
-                rgba(255, 255, 255, .12);
-
-            text-align:
-                center;
-
-            font-size:
-                .85rem;
-
-        }
-
-
-        .spinner {
-
-            width:
-                24px;
-
-            height:
-                24px;
-
-            margin:
-                0 auto 10px;
-
-            border-radius:
-                50%;
-
-            border:
-                3px solid
-                rgba(255,255,255,.2);
-
-            border-top-color:
-                #55dcff;
-
-            animation:
-                spin .8s linear infinite;
-
-        }
-
-
-        @keyframes spin {
-
-            to {
-                transform:
-                    rotate(360deg);
-            }
-
-        }
-
-
-        @keyframes fadeIn {
-
-            from {
-
-                opacity:
-                    0;
-
-                transform:
-                    translateY(8px);
-
-            }
-
-            to {
-
-                opacity:
-                    1;
-
-                transform:
-                    translateY(0);
-
-            }
-
-        }
-
-
-        /* =====================================
-           FOOTER
-        ===================================== */
-
-        footer {
-
-            margin-top:
-                25px;
-
-            color:
-                rgba(255, 255, 255, .4);
-
-            font-size:
-                .7rem;
-
-        }
-
-
-        /* =====================================
-           CELULAR
-        ===================================== */
-
-        @media (max-width: 600px) {
-
-            body {
-
-                padding:
-                    12px;
-
-            }
-
-
-            .container {
-
-                padding:
-                    23px
-                    17px
-                    28px;
-
-                border-radius:
-                    27px;
-
-            }
-
-
-            .logo-box {
-
-                min-height:
-                    130px;
-
-            }
-
-
-            .logo-img {
-
-                max-height:
-                    135px;
-
-            }
-
-
-            .form-card {
-
-                padding:
-                    18px 15px;
-
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
+<main class="container">
 
-    <main class="container">
+
+    <!-- LOGO -->
+
+    <div class="logo-box">
+
+        <img
+            src="logo.png"
+            alt="La Casa de los Famosos Roblox"
+            class="logo-img"
+        >
+
+    </div>
 
 
-        <!-- ==================================
-             LOGO
-        =================================== -->
+    <!-- ENCABEZADO -->
 
-        <div class="logo-container">
+    <h1>
+        Consultar Folio
+    </h1>
 
-            <div class="logo-box">
+    <p class="subtitle">
 
-                <img
-                    src="logo.png"
-                    alt="La Casa de los Famosos Roblox"
-                    class="logo-img"
+        Consulta el estado de tu postulación
+        a La Casa de los Famosos Roblox.
+
+    </p>
+
+    <span class="tag">
+        🔍 CONSULTA DE SOLICITUD
+    </span>
+
+
+    <!-- FORMULARIO -->
+
+    <div class="form-card">
+
+        <form id="formConsulta">
+
+            <div class="form-group">
+
+                <label for="folio">
+
+                    Ingresa tu folio:
+
+                </label>
+
+                <input
+                    type="text"
+                    id="folio"
+                    placeholder="LCDLF-XXXX"
+                    autocomplete="off"
+                    required
                 >
 
             </div>
 
-        </div>
+
+            <button
+                type="submit"
+                id="btnBuscar"
+                class="btn btn-primary"
+            >
+
+                🔍 BUSCAR ESTADO
+
+            </button>
 
 
-        <!-- ==================================
-             ENCABEZADO
-        =================================== -->
+            <a
+                href="index.html"
+                class="btn btn-link"
+            >
 
-        <header class="header">
+                ← Volver al menú
 
-            <h1>
-                Consultar Folio
-            </h1>
+            </a>
 
-            <p>
-                Consulta el estado de tu postulación
-                a La Casa de los Famosos Roblox.
-            </p>
+        </form>
 
-            <span class="tag">
-                🔍 Consulta de solicitud
-            </span>
-
-        </header>
+    </div>
 
 
-        <!-- ==================================
-             FORMULARIO
-        =================================== -->
+    <!-- RESULTADO -->
 
-        <div class="form-card">
-
-            <form id="formConsulta">
+    <div id="resultado"></div>
 
 
-                <div class="form-group">
+    <footer>
 
-                    <label for="folio">
-                        Ingresa tu código de seguimiento:
-                    </label>
+        © 2026 La Casa de los Famosos Roblox
+
+    </footer>
 
 
-                    <input
-                        type="text"
-                        id="folio"
-                        name="folio"
-                        placeholder="Ej. LCDLF-8A92"
-                        autocomplete="off"
-                        required
-                    >
+</main>
+
+
+<script>
+
+/* =====================================================
+   TU APPS SCRIPT
+===================================================== */
+
+const APPS_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
+
+
+/* =====================================================
+   ESCAPAR HTML
+===================================================== */
+
+function escapar(texto){
+
+    if(texto === null || texto === undefined){
+
+        return "";
+
+    }
+
+    return String(texto)
+
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   CONSULTAR APPS SCRIPT
+===================================================== */
+
+function consultarAPI(folio){
+
+    return new Promise((resolve,reject)=>{
+
+        const callbackName =
+            "callback_" +
+            Date.now() +
+            "_" +
+            Math.random()
+                .toString(36)
+                .substring(2);
+
+
+        const script =
+            document.createElement("script");
+
+
+        const url =
+            APPS_SCRIPT_URL +
+            "?action=consultarFolio" +
+            "&folio=" +
+            encodeURIComponent(folio) +
+            "&callback=" +
+            encodeURIComponent(callbackName);
+
+
+        let terminado = false;
+
+
+        const limpiar = () => {
+
+            if(terminado) return;
+
+            terminado = true;
+
+            delete window[callbackName];
+
+            if(script.parentNode){
+
+                script.parentNode.removeChild(script);
+
+            }
+
+        };
+
+
+        window[callbackName] = function(respuesta){
+
+            limpiar();
+
+            if(
+                respuesta &&
+                respuesta.success === true
+            ){
+
+                resolve(respuesta);
+
+            }else{
+
+                reject(
+                    new Error(
+                        respuesta?.message ||
+                        "No se encontró información."
+                    )
+                );
+
+            }
+
+        };
+
+
+        script.onerror = function(){
+
+            limpiar();
+
+            reject(
+                new Error(
+                    "No se pudo conectar con Google Apps Script."
+                )
+            );
+
+        };
+
+
+        script.src = url;
+
+
+        document.body.appendChild(script);
+
+
+        /*
+           Si después de 15 segundos no responde,
+           mostramos error.
+        */
+
+        setTimeout(()=>{
+
+            if(!terminado){
+
+                limpiar();
+
+                reject(
+                    new Error(
+                        "El servidor tardó demasiado en responder."
+                    )
+                );
+
+            }
+
+        },15000);
+
+    });
+
+}
+
+
+/* =====================================================
+   MOSTRAR RESULTADO
+===================================================== */
+
+function mostrarResultado(datos){
+
+    const resultado =
+        document.getElementById("resultado");
+
+
+    const estado =
+        String(datos.estado || "Pendiente")
+            .trim()
+            .toLowerCase();
+
+
+    /* =================================================
+       ACEPTADO
+    ================================================= */
+
+    if(
+        estado === "aceptado" ||
+        estado === "aceptada" ||
+        estado === "seleccionado" ||
+        estado === "seleccionada"
+    ){
+
+        resultado.innerHTML = `
+
+            <div class="result-card">
+
+                <div class="icon">
+                    👑
+                </div>
+
+                <span class="badge">
+                    ✓ ¡SELECCIONADO!
+                </span>
+
+                <h2>
+                    ¡Felicidades, ${escapar(datos.nombre)}!
+                </h2>
+
+                <p>
+
+                    Has sido seleccionado para ingresar a
+                    <strong>
+                        La Casa de los Famosos Roblox
+                    </strong>.
+
+                </p>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🎮 Usuario Roblox
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.roblox)}
+                    </code>
 
                 </div>
 
 
-                <button
-                    type="submit"
-                    class="btn btn-primary"
-                >
+                <div class="dato">
 
-                    🔍 BUSCAR ESTADO
+                    <strong>
+                        📧 Correo
+                    </strong>
 
-                </button>
+                    <code>
+                        ${escapar(datos.correo)}
+                    </code>
 
-
-                <a
-                    href="index.html"
-                    class="btn btn-link"
-                >
-
-                    ← Volver al menú
-
-                </a>
+                </div>
 
 
-            </form>
+                <div class="dato">
+
+                    <strong>
+                        🏢 Correo Institucional
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.correoInstitucional)}
+                    </code>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🔐 Contraseña
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.contraseña)}
+                    </code>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        📱 WhatsApp
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.whatsapp)}
+                    </code>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        💬 Discord
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.discord)}
+                    </code>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🏠 Habitación
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.habitacion)}
+                    </code>
+
+                </div>
+
+
+                <div class="dato">
+
+                    <strong>
+                        🎫 Folio
+                    </strong>
+
+                    <code>
+                        ${escapar(datos.folio)}
+                    </code>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* =================================================
+       RECHAZADO
+    ================================================= */
+
+    if(
+        estado === "rechazado" ||
+        estado === "rechazada" ||
+        estado === "no seleccionado" ||
+        estado === "no seleccionada"
+    ){
+
+        resultado.innerHTML = `
+
+            <div class="message error">
+
+                <div class="icon">
+                    😔
+                </div>
+
+                <h3>
+                    Solicitud no seleccionada
+                </h3>
+
+                <p>
+
+                    Gracias por tu interés,
+                    <strong>
+                        ${escapar(datos.nombre)}
+                    </strong>.
+
+                </p>
+
+                <p>
+
+                    Desafortunadamente no fuiste
+                    seleccionado en esta ocasión.
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* =================================================
+       PENDIENTE
+    ================================================= */
+
+    resultado.innerHTML = `
+
+        <div class="message pending">
+
+            <div class="icon">
+                ⏳
+            </div>
+
+            <h3>
+                Solicitud en revisión
+            </h3>
+
+            <p>
+
+                Hola
+                <strong>
+                    ${escapar(datos.nombre)}
+                </strong>.
+
+            </p>
+
+            <p>
+
+                Tu solicitud con folio
+
+                <code>
+                    ${escapar(datos.folio)}
+                </code>
+
+                continúa en proceso de evaluación.
+
+            </p>
 
         </div>
 
+    `;
 
-        <!-- ==================================
-             RESULTADO
-        =================================== -->
-
-        <div id="resultado"></div>
+}
 
 
-        <footer>
+/* =====================================================
+   FORMULARIO
+===================================================== */
 
-            © 2026 La Casa de los Famosos Roblox
+document
+    .getElementById("formConsulta")
+    .addEventListener("submit",async function(e){
 
-        </footer>
-
-
-    </main>
-
-
-    <script>
+        e.preventDefault();
 
 
-        /* ==========================================
-           URL DE GOOGLE APPS SCRIPT
-        ========================================== */
-
-        const APPS_SCRIPT_URL =
-            "https://script.google.com/macros/s/AKfycbwV1pAq5JOrRczyOou89Gx2O4QnJYHR2GTIpLdx2qb3prVAZRBq-Bok-oqiZLZGjKU0/exec";
+        const folioInput =
+            document.getElementById("folio");
 
 
-        /* ==========================================
-           PROTEGER TEXTO HTML
-        ========================================== */
-
-        function escapar(texto) {
-
-            if (
-                texto === null ||
-                texto === undefined
-            ) {
-
-                return "";
-
-            }
+        const btn =
+            document.getElementById("btnBuscar");
 
 
-            return String(texto)
+        const resultado =
+            document.getElementById("resultado");
 
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
 
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
+        const folio =
+            folioInput.value
+                .trim()
+                .toUpperCase();
 
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
 
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
+        if(!folio){
 
-                .replace(
-                    /'/g,
-                    "&#039;"
+            return;
+
+        }
+
+
+        btn.disabled = true;
+
+
+        resultado.innerHTML = `
+
+            <div class="loading">
+
+                <div class="spinner"></div>
+
+                Consultando Google Sheets...
+
+            </div>
+
+        `;
+
+
+        try{
+
+            const respuesta =
+                await consultarAPI(folio);
+
+
+            if(
+                !respuesta ||
+                !respuesta.datos
+            ){
+
+                throw new Error(
+                    "Google Apps Script no devolvió los datos."
                 );
 
-        }
-
-
-        /* ==========================================
-           LLAMAR A GOOGLE APPS SCRIPT
-        ========================================== */
-
-        function llamarAPI(
-            accion,
-            parametros = {}
-        ) {
-
-
-            return new Promise(
-                (resolve, reject) => {
-
-
-                    const callbackName =
-
-                        "jsonp_cb_" +
-
-                        Math.random()
-                            .toString(36)
-                            .substring(2, 15);
-
-
-                    const urlParams =
-
-                        new URLSearchParams({
-
-                            action:
-                                accion,
-
-                            callback:
-                                callbackName,
-
-                            ...parametros
-
-                        });
-
-
-                    const script =
-                        document.createElement(
-                            "script"
-                        );
-
-
-                    script.src =
-
-                        `${https://script.google.com/macros/s/AKfycbwV1pAq5JOrRczyOou89Gx2O4QnJYHR2GTIpLdx2qb3prVAZRBq-Bok-oqiZLZGjKU0/exec}?${urlParams.toString()}`;
-
-
-                    window[callbackName] =
-
-                        function(respuesta) {
-
-
-                            cleanup();
-
-
-                            if (
-
-                                respuesta &&
-
-                                respuesta.success
-
-                            ) {
-
-                                resolve(
-                                    respuesta
-                                );
-
-                            } else {
-
-                                reject(
-
-                                    new Error(
-
-                                        respuesta?.message ||
-
-                                        "Error al consultar el folio."
-
-                                    )
-
-                                );
-
-                            }
-
-                        };
-
-
-                    script.onerror =
-
-                        function() {
-
-
-                            cleanup();
-
-
-                            reject(
-
-                                new Error(
-
-                                    "Error de conexión con el servidor."
-
-                                )
-
-                            );
-
-                        };
-
-
-                    function cleanup() {
-
-
-                        delete
-                            window[callbackName];
-
-
-                        if (
-                            script.parentNode
-                        ) {
-
-                            script.parentNode
-                                .removeChild(
-                                    script
-                                );
-
-                        }
-
-                    }
-
-
-                    document.body.appendChild(
-                        script
-                    );
-
-
-                }
-            );
-
-        }
-
-
-        /* ==========================================
-           CONSULTA AUTOMÁTICA POR URL
-           
-           Ejemplo:
-           consulta.html?folio=LCDLF-1234
-        ========================================== */
-
-        window.addEventListener(
-            "DOMContentLoaded",
-            function() {
-
-
-                const urlParams =
-
-                    new URLSearchParams(
-                        window.location.search
-                    );
-
-
-                const folioUrl =
-
-                    urlParams.get(
-                        "folio"
-                    );
-
-
-                if (folioUrl) {
-
-
-                    document
-                        .getElementById(
-                            "folio"
-                        )
-                        .value =
-                        folioUrl;
-
-
-                    document
-                        .getElementById(
-                            "formConsulta"
-                        )
-                        .requestSubmit();
-
-                }
-
             }
-        );
 
 
-        /* ==========================================
-           FORMULARIO DE CONSULTA
-        ========================================== */
-
-        document
-            .getElementById(
-                "formConsulta"
-            )
-            .addEventListener(
-                "submit",
-                async function(e) {
-
-
-                    e.preventDefault();
-
-
-                    const folioInput =
-
-                        document.getElementById(
-                            "folio"
-                        );
-
-
-                    const resultado =
-
-                        document.getElementById(
-                            "resultado"
-                        );
-
-
-                    const submitBtn =
-
-                        e.target.querySelector(
-                            'button[type="submit"]'
-                        );
-
-
-                    const folio =
-
-                        folioInput.value
-                            .trim();
-
-
-                    if (!folio) {
-
-                        return;
-
-                    }
-
-
-                    try {
-
-
-                        submitBtn.disabled =
-                            true;
-
-
-                        resultado.innerHTML = `
-
-                            <div class="loading">
-
-                                <div class="spinner"></div>
-
-                                Buscando tu folio
-                                en la base de datos...
-
-                            </div>
-
-                        `;
-
-
-                        const respuesta =
-
-                            await llamarAPI(
-
-                                "consultarFolio",
-
-                                {
-                                    folio:
-                                        folio
-                                }
-
-                            );
-
-
-                        const datos =
-                            respuesta.datos;
-
-
-                        let estadoHtml = "";
-
-
-                        /* =================================
-                           ACEPTADO
-                        ================================= */
-
-                        if (
-                            datos.estado ===
-                            "Aceptado"
-                        ) {
-
-
-                            estadoHtml = `
-
-                                <div class="result-card">
-
-
-                                    <div class="result-icon">
-                                        👑
-                                    </div>
-
-
-                                    <div
-                                        style="
-                                            text-align:center;
-                                        "
-                                    >
-
-                                        <span
-                                            class="selected-badge"
-                                        >
-
-                                            ✓ ¡SELECCIONADO!
-
-                                        </span>
-
-                                    </div>
-
-
-                                    <h2>
-
-                                        ¡Felicidades,
-                                        ${escapar(datos.nombre)}!
-
-                                    </h2>
-
-
-                                    <p>
-
-                                        Has sido seleccionado
-                                        para ingresar a
-
-                                        <strong>
-                                            La Casa de los
-                                            Famosos Roblox
-                                        </strong>.
-
-                                    </p>
-
-
-                                    <div
-                                        class="datos-seleccionado"
-                                    >
-
-
-                                        <!-- ROBLOX -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                🎮 Usuario Roblox
-                                            </span>
-
-                                            <code>
-                                                ${escapar(datos.roblox)}
-                                            </code>
-
-                                        </div>
-
-
-                                        <!-- CORREO -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                📧 Correo
-                                            </span>
-
-                                            <code>
-                                                ${escapar(datos.correo)}
-                                            </code>
-
-                                        </div>
-
-
-                                        <!-- CORREO INSTITUCIONAL -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                🏢 Correo institucional
-                                            </span>
-
-                                            <code>
-                                                ${escapar(
-                                                    datos.correoInstitucional
-                                                )}
-                                            </code>
-
-                                        </div>
-
-
-                                        <!-- CONTRASEÑA -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                🔐 Contraseña de correo
-                                            </span>
-
-                                            <code>
-                                                ${escapar(
-                                                    datos.passwordCorreo
-                                                )}
-                                            </code>
-
-                                        </div>
-
-
-                                        <!-- WHATSAPP -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                📱 WhatsApp
-                                            </span>
-
-                                            <code>
-                                                ${escapar(
-                                                    datos.whatsapp
-                                                )}
-                                            </code>
-
-                                        </div>
-
-
-                                        <!-- DISCORD -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                💬 Discord
-                                            </span>
-
-                                            <code>
-                                                ${escapar(
-                                                    datos.discord
-                                                )}
-                                            </code>
-
-                                        </div>
-
-
-                                        <!-- FOLIO -->
-
-                                        <div class="dato">
-
-                                            <span>
-                                                🎫 Folio
-                                            </span>
-
-                                            <code>
-                                                ${escapar(
-                                                    datos.folio
-                                                )}
-                                            </code>
-
-                                        </div>
-
-
-                                    </div>
-
-
-                                    <div class="aviso-datos">
-
-                                        ⚠️ Guarda estos datos
-                                        en un lugar seguro.
-                                        No compartas tu contraseña
-                                        con otras personas.
-
-                                    </div>
-
-
-                                </div>
-
-                            `;
-
-                        }
-
-
-                        /* =================================
-                           RECHAZADO
-                        ================================= */
-
-                        else if (
-                            datos.estado ===
-                            "Rechazado"
-                        ) {
-
-
-                            estadoHtml = `
-
-                                <div
-                                    class="message error"
-                                >
-
-
-                                    <div
-                                        class="result-icon"
-                                    >
-                                        😔
-                                    </div>
-
-
-                                    <h3>
-
-                                        Solicitud
-                                        No Seleccionada
-
-                                    </h3>
-
-
-                                    <p>
-
-                                        Gracias por tu interés,
-
-                                        <strong>
-                                            ${escapar(
-                                                datos.nombre
-                                            )}
-                                        </strong>.
-
-                                    </p>
-
-
-                                    <p>
-
-                                        Desafortunadamente
-                                        no fuiste seleccionado
-                                        en esta ocasión.
-
-                                    </p>
-
-
-                                </div>
-
-                            `;
-
-                        }
-
-
-                        /* =================================
-                           PENDIENTE
-                        ================================= */
-
-                        else {
-
-
-                            estadoHtml = `
-
-                                <div
-                                    class="message pending"
-                                >
-
-
-                                    <div
-                                        class="result-icon"
-                                    >
-                                        ⏳
-                                    </div>
-
-
-                                    <h3>
-
-                                        Solicitud
-                                        En Revisión
-
-                                    </h3>
-
-
-                                    <p>
-
-                                        Hola
-
-                                        <strong>
-                                            ${escapar(
-                                                datos.nombre
-                                            )}
-                                        </strong>.
-
-                                    </p>
-
-
-                                    <p>
-
-                                        Tu solicitud con folio
-
-                                        <code>
-                                            ${escapar(
-                                                datos.folio
-                                            )}
-                                        </code>
-
-                                        continúa en proceso
-                                        de evaluación por el
-                                        equipo de producción.
-
-                                    </p>
-
-
-                                </div>
-
-                            `;
-
-                        }
-
-
-                        resultado.innerHTML =
-                            estadoHtml;
-
-
-                    }
-
-
-                    catch (error) {
-
-
-                        resultado.innerHTML = `
-
-                            <div
-                                class="message error"
-                            >
-
-
-                                <div
-                                    class="result-icon"
-                                >
-                                    ⚠️
-                                </div>
-
-
-                                <h3>
-
-                                    No se pudo realizar
-                                    la consulta
-
-                                </h3>
-
-
-                                <p>
-
-                                    ${escapar(
-                                        error.message
-                                    )}
-
-                                </p>
-
-
-                            </div>
-
-                        `;
-
-                    }
-
-
-                    finally {
-
-
-                        submitBtn.disabled =
-                            false;
-
-                    }
-
-
-                }
+            mostrarResultado(
+                respuesta.datos
             );
 
 
-    </script>
+        }catch(error){
 
+            resultado.innerHTML = `
+
+                <div class="message error">
+
+                    <div class="icon">
+                        ⚠️
+                    </div>
+
+                    <h3>
+                        No se pudo consultar
+                    </h3>
+
+                    <p>
+                        ${escapar(error.message)}
+                    </p>
+
+                    <p style="margin-top:12px;font-size:.75rem;">
+
+                        Verifica que el folio exista
+                        y que Apps Script esté publicado
+                        como "Cualquier usuario".
+
+                    </p>
+
+                </div>
+
+            `;
+
+        }finally{
+
+            btn.disabled = false;
+
+        }
+
+    });
+
+
+/* =====================================================
+   CONSULTA AUTOMÁTICA
+   consulta.html?folio=LCDLF-XXXX
+===================================================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const folio =
+            params.get("folio");
+
+
+        if(folio){
+
+            document
+                .getElementById("folio")
+                .value =
+                    folio.toUpperCase();
+
+
+            document
+                .getElementById("formConsulta")
+                .requestSubmit();
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
 </html>
