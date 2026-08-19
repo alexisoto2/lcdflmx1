@@ -71,7 +71,7 @@
                 inset 0 1px 2px rgba(255, 255, 255, .35);
         }
 
-        /* ANUNCIO GENERAL SUPREMO */
+        /* ANUNCIO GENERAL */
         .announcement-banner {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 140, 0, 0.25));
             border: 1px solid rgba(255, 215, 0, 0.6);
@@ -183,7 +183,6 @@
             position: relative;
         }
 
-        /* ESTILO RESALTADO PARA LA TARJETA CON ANUNCIO */
         .card.featured-card {
             background: rgba(255, 215, 0, 0.08);
             border: 1px solid rgba(255, 215, 0, 0.45);
@@ -208,11 +207,10 @@
                 0 0 25px rgba(255, 215, 0, 0.3);
         }
 
+        /* ETIQUETAS DE FECHA */
         .card-date-tag {
             display: inline-block;
             align-self: center;
-            background: linear-gradient(135deg, #ffcc00, #ff8800);
-            color: #000;
             font-size: 0.75rem;
             font-weight: 900;
             padding: 4px 10px;
@@ -221,6 +219,21 @@
             letter-spacing: 0.5px;
             margin-bottom: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag-gold {
+            background: linear-gradient(135deg, #ffcc00, #ff8800);
+            color: #000;
+        }
+
+        .tag-blue {
+            background: linear-gradient(135deg, #00d2ff, #0072ff);
+            color: #fff;
+        }
+
+        .tag-purple {
+            background: linear-gradient(135deg, #b5179e, #7209b7);
+            color: #fff;
         }
 
         .card h2 {
@@ -338,91 +351,51 @@
         <!-- MENU -->
         <section class="menu-grid">
 
-            <!-- TARJETA DE REGISTRO CON ANUNCIO DESTACADO -->
+            <!-- 1. POSTULACIÓN -->
             <div class="card featured-card">
-
                 <div>
-                    <span class="card-date-tag">📅 19 al 23 de Agosto</span>
-
-                    <h2>
-                        📝 Postulación
-                    </h2>
-
-                    <p>
-                        Llena el formulario para solicitar tu ingreso a la casa. ¡Registro disponible solo por tiempo limitado!
-                    </p>
+                    <span class="card-date-tag tag-gold">📅 19 al 23 de Agosto</span>
+                    <h2>📝 Postulación</h2>
+                    <p>Llena el formulario para solicitar tu ingreso a la casa. ¡Disponible por tiempo limitado!</p>
                 </div>
-
-                <a
-                    href="registro.html"
-                    class="btn btn-primary"
-                >
+                <a href="registro.html" class="btn btn-primary">
                     Registrarme
                 </a>
-
             </div>
 
+            <!-- 2. CONSULTAR ESTADO -->
             <div class="card">
-
                 <div>
-                    <h2>
-                        🔍 Consultar Estado
-                    </h2>
-
-                    <p>
-                        Ingresa tu folio para saber si fuiste seleccionado.
-                    </p>
+                    <span class="card-date-tag tag-blue">🔍 25 de Agosto</span>
+                    <h2>🔍 Consultar Estado</h2>
+                    <p>Ingresa tu folio a partir del 25 de agosto para saber si fuiste seleccionado.</p>
                 </div>
-
-                <a
-                    href="consulta.html"
-                    class="btn btn-secondary"
-                >
+                <a href="consulta.html" class="btn btn-secondary">
                     Buscar Folio
                 </a>
-
             </div>
 
+            <!-- 3. CONTRATO OFICIAL -->
             <div class="card">
-
                 <div>
-                    <h2>
-                        📜 Contrato Oficial
-                    </h2>
-
-                    <p>
-                        Consulta o descarga el contrato y reglamento del evento.
-                    </p>
+                    <span class="card-date-tag tag-purple">📜 28 y 29 de Agosto</span>
+                    <h2>📜 Contrato Oficial</h2>
+                    <p>Firma y descarga del contrato oficial disponible el 28 y 29 de agosto.</p>
                 </div>
-
-                <a
-                    href="contrato.html"
-                    class="btn btn-warning"
-                >
+                <a href="contrato.html" class="btn btn-warning">
                     Ver Contrato
                 </a>
-
             </div>
 
+            <!-- 4. SOPORTE -->
             <div class="card">
-
                 <div>
-                    <h2>
-                        🎫 Soporte y Ayuda
-                    </h2>
-
-                    <p>
-                        ¿Tienes dudas con tu registro? Abre un ticket de atención.
-                    </p>
+                    <h2>🎫 Soporte y Ayuda</h2>
+                    <p>¿Tienes dudas con tu registro? Abre un ticket de atención.</p>
                 </div>
-
-                <a
-                    href="soporte.html"
-                    class="btn btn-info"
-                >
+                <a href="soporte.html" class="btn btn-info">
                     Generar Ticket
                 </a>
-
             </div>
 
         </section>
