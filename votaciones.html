@@ -216,7 +216,7 @@
 
     <script>
         // Reemplaza con la URL ejecutable de tu Google Apps Script
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID/exec";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzOzhsW8e5xUMD1-zSxl-mgUArKxwgyKhNbuwaYxHBFUToKmwTiC-DWOuKHVnasv21whQ/exec";
 
         function votar(folioInterno, btnElement) {
             const botones = document.querySelectorAll('.btn-votar');
@@ -239,7 +239,7 @@
             };
 
             const script = document.createElement('script');
-            script.src = `${APPS_SCRIPT_URL}?action=votar&folio=${encodeURIComponent(folioInterno)}&callback=${callbackName}`;
+            script.src = `${https://script.google.com/macros/s/AKfycbzOzhsW8e5xUMD1-zSxl-mgUArKxwgyKhNbuwaYxHBFUToKmwTiC-DWOuKHVnasv21whQ/exec}?action=votar&folio=${encodeURIComponent(folioInterno)}&callback=${callbackName}`;
             script.onerror = function() {
                 mostrarModal("⚠️ Error de conexión con el servidor.");
                 botones.forEach(b => b.disabled = false);
