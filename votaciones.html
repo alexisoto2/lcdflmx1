@@ -1,262 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votaciones - La Casa de los Famosos Roblox</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: radial-gradient(circle at center, #2e1065, #0f051d);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 35px 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .logo-container {
-            margin-bottom: 20px;
-        }
-
-        .logo-img {
-            max-width: 280px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 8px 16px rgba(0, 162, 255, 0.4));
-        }
-
-        h1 {
-            font-size: 1.6rem;
-            color: #f59e0b;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-        }
-
-        p.subtitle {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-        }
-
-        .nominees-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #f59e0b;
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #f59e0b;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-        }
-
-        .card h2 {
-            font-size: 1.25rem;
-            color: #ffffff;
-            margin-bottom: 18px;
-        }
-
-        .btn-votar {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, #d97706, #f59e0b);
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 0.95rem;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
-            transition: background 0.2s, transform 0.1s;
-        }
-
-        .btn-votar:hover {
-            background: linear-gradient(135deg, #b45309, #d97706);
-        }
-
-        .btn-votar:active {
-            transform: scale(0.97);
-        }
-
-        .btn-votar:disabled {
-            background: #475569;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-
-        .btn-back {
-            display: inline-block;
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        .btn-back:hover {
-            color: #ffffff;
-        }
-
-        /* Modal Mensaje */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .modal-content {
-            background: #1e1b4b;
-            border: 1px solid #f59e0b;
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .modal-content p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Sistema de Votaciones</title>
 </head>
 <body>
 
-    <main class="container">
-        <!-- Logo Principal -->
-        <div class="logo-container">
-            <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
-        </div>
+  <h2>Votación</h2>
+  
+  <form id="formVotacion">
+    <label for="usuario">Tu Nombre / ID:</label><br>
+    <input type="text" id="usuario" name="usuario" required><br><br>
 
-        <h1>🔥 Votaciones de Salvación 🔥</h1>
-        <p class="subtitle">¡Vota por tu nominado favorito para salvarlo! El habitante con menos votos será el eliminado.</p>
+    <label>Elige una opción:</label><br>
+    <input type="radio" id="opcion1" name="voto" value="Opción A" required>
+    <label for="opcion1">Opción A</label><br>
+    <input type="radio" id="opcion2" name="voto" value="Opción B">
+    <label for="opcion2">Opción B</label><br><br>
 
-        <!-- Tarjetas de Nominados -->
-        <section class="nominees-grid">
-            
-            <!-- Participante 1 -->
-            <div class="card">
-                <img src="foto1.png" alt="Participante 1" class="avatar">
-                <h2> Ximena Herrera </h2>
-                <button class="btn-votar" onclick="votar('LCDLF-8A92', this)">🗳️ Votar para Salvar</button>
-            </div>
+    <button type="submit">Enviar Voto</button>
+  </form>
 
-            <!-- Participante 2 -->
-            <div class="card">
-                <img src="foto2.png" alt="Participante 2" class="avatar">
-                <h2>Usuario Roblox 2</h2>
-                <button class="btn-votar" onclick="votar('LCDLF-3B41', this)">🗳️ Votar para Salvar</button>
-            </div>
+  <p id="mensaje"></p>
 
-            <!-- Participante 3 -->
-            <div class="card">
-                <img src="foto3.png" alt="Participante 3" class="avatar">
-                <h2>Usuario Roblox 3</h2>
-                <button class="btn-votar" onclick="votar('LCDLF-9K12', this)">🗳️ Votar para Salvar</button>
-            </div>
+  <script>
+    // URL integrada de tu Apps Script
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxV_ztBxEkBrto-W26fTGaQJly0FKwYHVNRzfzCHs4JXCq8cIVnAgI5pMQU390wWM_3Tg/exec';
 
-        </section>
+    document.getElementById('formVotacion').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const mensaje = document.getElementById('mensaje');
+      mensaje.innerText = "Enviando voto...";
 
-        <a href="index.html" class="btn-back">← Volver al Menú Principal</a>
-    </main>
+      // Recopilar los datos del formulario
+      const usuario = document.getElementById('usuario').value;
+      const voto = document.querySelector('input[name="voto"]:checked').value;
 
-    <!-- Modal de confirmación -->
-    <div class="modal" id="msgModal">
-        <div class="modal-content">
-            <p id="modalText">¡Tu voto ha sido registrado!</p>
-            <button class="btn-votar" onclick="cerrarModal()">Aceptar</button>
-        </div>
-    </div>
+      const payload = {
+        usuario: usuario,
+        voto: voto
+      };
 
-    <script>
-        // Reemplaza con la URL ejecutable de tu Google Apps Script
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzOzhsW8e5xUMD1-zSxl-mgUArKxwgyKhNbuwaYxHBFUToKmwTiC-DWOuKHVnasv21whQ/exec";
+      // Enviar datos mediante POST
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Evita bloqueos de CORS con Google Apps Script
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        mensaje.innerText = "¡Tu voto ha sido registrado correctamente!";
+        document.getElementById('formVotacion').reset();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        mensaje.innerText = "Hubo un error al registrar el voto.";
+      });
+    });
+  </script>
 
-        function votar(folioInterno, btnElement) {
-            const botones = document.querySelectorAll('.btn-votar');
-            botones.forEach(b => b.disabled = true);
-            btnElement.innerText = "Enviando...";
-
-            const callbackName = 'jsonp_voto_' + Math.round(100000 * Math.random());
-
-            window[callbackName] = function(data) {
-                delete window[callbackName];
-                document.body.removeChild(script);
-
-                if (data.success) {
-                    mostrarModal("✅ ¡Voto registrado con éxito! Salvaste a tu habitante.");
-                } else {
-                    mostrarModal("❌ " + (data.message || "Error al procesar el voto."));
-                    botones.forEach(b => b.disabled = false);
-                    btnElement.innerText = "🗳️ Votar para Salvar";
-                }
-            };
-
-            const script = document.createElement('script');
-            script.src = `${https://script.google.com/macros/s/AKfycbzOzhsW8e5xUMD1-zSxl-mgUArKxwgyKhNbuwaYxHBFUToKmwTiC-DWOuKHVnasv21whQ/exec}?action=votar&folio=${encodeURIComponent(folioInterno)}&callback=${callbackName}`;
-            script.onerror = function() {
-                mostrarModal("⚠️ Error de conexión con el servidor.");
-                botones.forEach(b => b.disabled = false);
-                btnElement.innerText = "🗳️ Votar para Salvar";
-            };
-
-            document.body.appendChild(script);
-        }
-
-        function mostrarModal(msg) {
-            document.getElementById('modalText').innerText = msg;
-            document.getElementById('msgModal').style.display = 'flex';
-        }
-
-        function cerrarModal() {
-            document.getElementById('msgModal').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
