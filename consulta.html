@@ -775,7 +775,7 @@ function consultarAPI(folio){
 
             reject(
                 new Error(
-                    "No se pudo conectar con Google Apps Script."
+                    "No se pudo conectar con la Base de Datos."
                 )
             );
 
@@ -900,7 +900,7 @@ function mostrarResultado(datos){
                     </strong>
 
                     <code>
-                        ${escapar(datos.correoInstitucional)}
+                        ${escapar(datos.correoLCDLF)}
                     </code>
 
                 </div>
