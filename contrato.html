@@ -1,127 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>La Casa de los Famosos Roblox | Documentos</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <!-- Librería para generar PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <meta
+    name="theme-color"
+    content="#e9e4f5"
+  >
+
+  <meta
+    name="description"
+    content="La Casa de los Famosos Roblox - Consulta y descarga tu documento oficial."
+  >
+
+  <title>
+    La Casa de los Famosos Roblox | Documento Oficial
+  </title>
+
+
+  <!-- =====================================================
+       HTML2PDF
+  ====================================================== -->
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+  ></script>
+
+
+  <!-- =====================================================
+       ESTILOS
+  ====================================================== -->
 
   <style>
+
+    /* =====================================================
+       RESET
+    ====================================================== */
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html,
-    body {
+
+    html {
       width: 100%;
       min-height: 100%;
     }
 
+
     body {
+
+      width: 100%;
+
+      min-height: 100vh;
+
+      overflow-x: hidden;
+
       font-family:
         "Segoe UI",
         Roboto,
         Arial,
         sans-serif;
 
-      color: #555a72;
+      color: #5f6378;
 
-      /*
-        FONDO INSPIRADO EN TU LOGO
-        Colores suaves, sin azul oscuro
-      */
+
+      /* =================================================
+         FONDO SUAVE INSPIRADO EN EL LOGO
+      ================================================= */
+
       background:
+
         radial-gradient(
-          circle at 10% 10%,
-          rgba(190, 225, 245, 0.85) 0%,
-          transparent 30%
+          circle at 8% 12%,
+          rgba(194, 221, 238, 0.70) 0%,
+          rgba(194, 221, 238, 0) 30%
         ),
 
         radial-gradient(
-          circle at 90% 15%,
-          rgba(225, 205, 245, 0.85) 0%,
-          transparent 34%
+          circle at 92% 12%,
+          rgba(222, 208, 237, 0.70) 0%,
+          rgba(222, 208, 237, 0) 32%
         ),
 
         radial-gradient(
-          circle at 15% 85%,
-          rgba(205, 235, 240, 0.9) 0%,
-          transparent 34%
+          circle at 12% 88%,
+          rgba(205, 229, 235, 0.75) 0%,
+          rgba(205, 229, 235, 0) 32%
         ),
 
         radial-gradient(
-          circle at 90% 85%,
-          rgba(235, 215, 240, 0.8) 0%,
-          transparent 38%
+          circle at 90% 90%,
+          rgba(228, 213, 236, 0.72) 0%,
+          rgba(228, 213, 236, 0) 34%
         ),
 
         linear-gradient(
           135deg,
           #edf7fa 0%,
-          #f7f2fa 50%,
-          #eef6fb 100%
+          #f7f3fa 48%,
+          #eef6fa 100%
         );
 
       background-attachment: fixed;
 
-      min-height: 100vh;
-
-      overflow-x: hidden;
     }
 
 
-    /* =========================================
-       NUBES SUAVES DEL FONDO
-    ========================================= */
+    /* =====================================================
+       EFECTOS DEL FONDO
+    ====================================================== */
 
-    body::before,
-    body::after {
+    body::before {
+
       content: "";
 
       position: fixed;
 
       z-index: -1;
 
-      border-radius: 50%;
-
-      filter: blur(60px);
-
-      pointer-events: none;
-    }
-
-    body::before {
       width: 420px;
+
       height: 420px;
 
-      top: -160px;
-      left: -140px;
+      top: -170px;
+
+      left: -150px;
+
+      border-radius: 50%;
 
       background:
-        rgba(185, 220, 238, 0.45);
+        rgba(186, 217, 235, 0.28);
+
+      filter:
+        blur(70px);
+
+      pointer-events: none;
+
     }
 
+
     body::after {
+
+      content: "";
+
+      position: fixed;
+
+      z-index: -1;
+
       width: 450px;
+
       height: 450px;
 
       right: -180px;
+
       bottom: -170px;
 
+      border-radius: 50%;
+
       background:
-        rgba(215, 195, 235, 0.45);
+        rgba(218, 202, 235, 0.30);
+
+      filter:
+        blur(75px);
+
+      pointer-events: none;
+
     }
 
 
-    /* =========================================
-       CONTENEDOR
-    ========================================= */
+    /* =====================================================
+       CONTENEDOR GENERAL
+    ====================================================== */
 
     .page {
+
       width: 100%;
 
       min-height: 100vh;
@@ -133,17 +195,17 @@
       align-items: center;
 
       padding:
-        25px
-        18px
-        30px;
+        25px 18px 35px;
+
     }
 
 
-    /* =========================================
-       LOGO
-    ========================================= */
+    /* =====================================================
+       LOGO PRINCIPAL
+    ====================================================== */
 
     .logo-container {
+
       width: 100%;
 
       max-width: 650px;
@@ -154,13 +216,16 @@
 
       align-items: center;
 
-      margin-bottom: 15px;
+      margin-bottom: 16px;
 
       animation:
-        aparecer 0.8s ease;
+        logoEntrada 0.8s ease;
+
     }
 
+
     .logo-container img {
+
       display: block;
 
       width: 100%;
@@ -173,17 +238,19 @@
 
       filter:
         drop-shadow(
-          0 15px 25px
-          rgba(90, 90, 130, 0.18)
+          0 14px 28px
+          rgba(95, 96, 130, 0.15)
         );
+
     }
 
 
-    /* =========================================
-       TARJETA PRINCIPAL
-    ========================================= */
+    /* =====================================================
+       TARJETA
+    ====================================================== */
 
     .card {
+
       width: 100%;
 
       max-width: 780px;
@@ -195,20 +262,21 @@
       background:
         linear-gradient(
           135deg,
-          rgba(255, 255, 255, 0.84),
-          rgba(255, 255, 255, 0.62)
+          rgba(255,255,255,0.84),
+          rgba(255,255,255,0.62)
         );
 
       border:
         1px solid
-        rgba(255, 255, 255, 0.9);
+        rgba(255,255,255,0.92);
 
       box-shadow:
+
         0 25px 70px
-        rgba(100, 100, 140, 0.16),
+        rgba(95,95,130,0.15),
 
         inset 0 1px 0
-        rgba(255, 255, 255, 0.95);
+        rgba(255,255,255,0.95);
 
       backdrop-filter:
         blur(22px);
@@ -217,15 +285,17 @@
         blur(22px);
 
       animation:
-        subir 0.8s ease;
+        tarjetaEntrada 0.8s ease;
+
     }
 
 
-    /* =========================================
+    /* =====================================================
        TITULO
-    ========================================= */
+    ====================================================== */
 
     .title {
+
       text-align: center;
 
       margin-bottom: 10px;
@@ -240,9 +310,9 @@
       background:
         linear-gradient(
           90deg,
-          #7275d8,
-          #9579d7,
-          #6799d7
+          #7f82c7,
+          #9b88c9,
+          #759ac7
         );
 
       -webkit-background-clip: text;
@@ -250,11 +320,17 @@
       background-clip: text;
 
       color: transparent;
+
     }
 
 
+    /* =====================================================
+       SUBTITULO
+    ====================================================== */
+
     .subtitle {
-      max-width: 600px;
+
+      max-width: 620px;
 
       margin:
         0 auto 32px;
@@ -265,20 +341,26 @@
 
       line-height: 1.7;
 
-      color: #70758a;
+      color: #777b8f;
+
     }
 
 
-    /* =========================================
+    /* =====================================================
        FORMULARIO
-    ========================================= */
+    ====================================================== */
 
     .form-group {
+
+      width: 100%;
+
       margin-bottom: 20px;
+
     }
 
 
     .form-label {
+
       display: block;
 
       margin-bottom: 9px;
@@ -287,18 +369,22 @@
 
       font-weight: 700;
 
-      color: #626783;
+      color: #666a80;
+
     }
 
 
     .input-wrapper {
+
       position: relative;
 
       width: 100%;
+
     }
 
 
     .input-icon {
+
       position: absolute;
 
       left: 17px;
@@ -310,13 +396,15 @@
 
       font-size: 20px;
 
-      opacity: 0.6;
+      opacity: 0.58;
 
       pointer-events: none;
+
     }
 
 
     #folioInput {
+
       width: 100%;
 
       height: 60px;
@@ -326,47 +414,55 @@
 
       border:
         1.5px solid
-        rgba(160, 150, 210, 0.35);
+        rgba(158,148,205,0.32);
 
       border-radius: 16px;
 
       outline: none;
 
       background:
-        rgba(255, 255, 255, 0.78);
+        rgba(255,255,255,0.78);
 
       color: #555a72;
 
       font-size: 16px;
 
       transition:
-        0.25s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
     }
 
 
     #folioInput::placeholder {
-      color: #a1a4b3;
+
+      color: #a2a5b3;
+
     }
 
 
     #folioInput:focus {
+
       background:
-        rgba(255, 255, 255, 0.96);
+        rgba(255,255,255,0.96);
 
       border-color:
-        #9b8fe3;
+        #a39ada;
 
       box-shadow:
         0 0 0 4px
-        rgba(155, 143, 227, 0.12);
+        rgba(163,154,218,0.12);
+
     }
 
 
-    /* =========================================
-       BOTÓN
-    ========================================= */
+    /* =====================================================
+       BOTON
+    ====================================================== */
 
     .download-btn {
+
       width: 100%;
 
       min-height: 62px;
@@ -380,71 +476,86 @@
 
       cursor: pointer;
 
-      color: white;
+      color: #ffffff;
 
       font-size: 17px;
 
       font-weight: 700;
 
       background:
+
         linear-gradient(
           90deg,
-          #bfa2e8,
-          #aaa4e8,
-          #94bee8
+          #bfa9df,
+          #aaa7dc,
+          #9bb8db
         );
 
       box-shadow:
         0 12px 25px
-        rgba(145, 130, 205, 0.20);
+        rgba(145,130,190,0.20);
 
       transition:
         transform 0.2s ease,
         box-shadow 0.2s ease,
         opacity 0.2s ease;
+
     }
 
 
     .download-btn:hover {
+
       transform:
         translateY(-2px);
 
       box-shadow:
         0 16px 30px
-        rgba(145, 130, 205, 0.28);
+        rgba(145,130,190,0.27);
+
     }
 
 
     .download-btn:active {
+
       transform:
         translateY(0);
+
     }
 
 
     .download-btn:disabled {
+
       opacity: 0.6;
 
       cursor: wait;
 
       transform: none;
+
     }
 
 
     .download-icon {
+
       display: inline-block;
 
       margin-right: 8px;
 
       font-size: 21px;
+
+      vertical-align: middle;
+
     }
 
 
-    /* =========================================
+    /* =====================================================
        MENSAJES
-    ========================================= */
+    ====================================================== */
 
     .message {
+
       display: none;
+
+      width: 100%;
 
       margin-top: 20px;
 
@@ -453,357 +564,555 @@
 
       border-radius: 15px;
 
-      font-size: 15px;
+      font-size: 14px;
 
       line-height: 1.5;
+
     }
 
 
     #loadingMsg {
-      color: #5579bd;
+
+      color: #5f79a8;
 
       background:
-        rgba(220, 235, 255, 0.58);
+        rgba(220,233,250,0.60);
 
       border:
         1px solid
-        rgba(150, 185, 235, 0.35);
+        rgba(155,184,225,0.34);
+
     }
 
 
     #errorMsg {
-      color: #b75f6b;
+
+      color: #b56b75;
 
       background:
-        rgba(255, 225, 230, 0.55);
+        rgba(255,226,231,0.62);
 
       border:
         1px solid
-        rgba(235, 160, 175, 0.35);
+        rgba(232,170,182,0.35);
+
     }
 
 
-    /* =========================================
+    /* =====================================================
        SEGURIDAD
-    ========================================= */
+    ====================================================== */
 
     .security {
+
       margin-top: 22px;
 
       text-align: center;
 
       font-size: 14px;
 
-      color: #85899b;
+      color: #888b9b;
+
     }
 
 
     .security span {
+
       margin-right: 6px;
+
     }
 
 
-    /* =========================================
-       PDF
-    ========================================= */
+    /* =====================================================
+       CONTRATO PDF
+    ====================================================== */
 
     #contrato-pdf {
+
       display: none;
 
       width: 794px;
 
       min-height: 1123px;
 
-      padding: 55px;
-
-      margin: 0;
+      padding:
+        45px 55px;
 
       background: #ffffff;
 
-      color: #333333;
+      color: #343541;
 
       font-family:
         Arial,
+        Helvetica,
         sans-serif;
+
+      font-size: 12px;
+
+      line-height: 1.55;
+
     }
 
 
-    .pdf-header {
+    /* =====================================================
+       ENCABEZADO DEL CONTRATO
+    ====================================================== */
+
+    .contrato-header {
+
       text-align: center;
 
-      padding-bottom: 25px;
+      padding-bottom: 20px;
 
-      margin-bottom: 30px;
+      margin-bottom: 22px;
 
       border-bottom:
         2px solid
-        #d9d9e8;
+        #dedff0;
+
     }
 
 
-    .pdf-header h1 {
-      margin-bottom: 8px;
+    .contrato-logo {
 
-      font-size: 27px;
+      display: block;
 
-      color: #6671bd;
+      width: 170px;
+
+      max-width: 170px;
+
+      height: auto;
+
+      margin:
+        0 auto 12px;
+
+      object-fit: contain;
+
     }
 
 
-    .pdf-header p {
-      font-size: 14px;
+    .contrato-header h1 {
 
-      color: #777777;
+      margin: 0;
+
+      color: #686db7;
+
+      font-size: 20px;
+
+      line-height: 1.25;
+
     }
 
 
-    .pdf-section {
-      margin-top: 25px;
+    .contrato-header h2 {
+
+      margin:
+        8px 0 2px;
+
+      color: #7b7fae;
+
+      font-size: 15px;
+
     }
 
 
-    .pdf-section h2 {
-      margin-bottom: 15px;
+    .contrato-web {
 
-      padding-bottom: 7px;
+      margin: 0;
+
+      color: #999999;
+
+      font-size: 11px;
+
+    }
+
+
+    /* =====================================================
+       SECCIONES
+    ====================================================== */
+
+    .contrato-section {
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .contrato-section h3 {
+
+      margin:
+        0 0 12px;
+
+      padding-bottom: 6px;
 
       border-bottom:
         1px solid
-        #dddddd;
+        #e1e1eb;
 
-      color: #6d73b8;
+      color: #686db7;
 
-      font-size: 18px;
+      font-size: 14px;
+
     }
 
 
-    .pdf-row {
+    .contrato-section h4 {
+
+      margin:
+        15px 0 6px;
+
+      color: #555b91;
+
+      font-size: 12px;
+
+    }
+
+
+    .contrato-section p {
+
+      margin:
+        0 0 9px;
+
+      text-align: justify;
+
+    }
+
+
+    .contrato-section ol {
+
+      margin:
+        5px 0 10px;
+
+      padding-left: 25px;
+
+    }
+
+
+    .contrato-section li {
+
+      margin-bottom: 8px;
+
+      text-align: justify;
+
+    }
+
+
+    /* =====================================================
+       DATOS
+    ====================================================== */
+
+    .dato-row {
+
       display: flex;
 
       padding:
-        11px 0;
+        7px 10px;
 
       border-bottom:
         1px solid
-        #eeeeee;
+        #eeeeF3;
 
-      font-size: 14px;
+      background:
+        #fafafe;
+
     }
 
 
-    .pdf-label {
-      width: 180px;
+    .dato-row strong {
+
+      width: 175px;
 
       flex-shrink: 0;
 
-      font-weight: bold;
-
       color: #555555;
+
     }
 
 
-    .pdf-value {
+    .dato-row span {
+
       flex: 1;
 
       color: #333333;
 
       word-break: break-word;
+
     }
 
 
-    .pdf-footer {
-      margin-top: 55px;
+    /* =====================================================
+       FECHA
+    ====================================================== */
+
+    .fecha-emision {
+
+      margin-top: 25px;
+
+      padding:
+        12px;
+
+      text-align: right;
+
+      color: #555555;
+
+      border-top:
+        1px solid
+        #dddddd;
+
+    }
+
+
+    /* =====================================================
+       PIE DEL CONTRATO
+    ====================================================== */
+
+    .contrato-footer {
+
+      margin-top: 30px;
+
+      padding-top: 15px;
 
       text-align: center;
 
-      font-size: 12px;
+      border-top:
+        1px solid
+        #e2e2ea;
 
       color: #888888;
+
+      font-size: 10px;
+
     }
 
 
-    /* =========================================
-       ANIMACIONES
-    ========================================= */
+    .contrato-section,
+    .contrato-header,
+    .fecha-emision,
+    .contrato-footer {
 
-    @keyframes aparecer {
+      page-break-inside: avoid;
+
+    }
+
+
+    /* =====================================================
+       ANIMACIONES
+    ====================================================== */
+
+    @keyframes logoEntrada {
 
       from {
+
         opacity: 0;
 
         transform:
           translateY(-15px);
+
       }
 
       to {
+
         opacity: 1;
 
         transform:
           translateY(0);
+
       }
+
     }
 
 
-    @keyframes subir {
+    @keyframes tarjetaEntrada {
 
       from {
+
         opacity: 0;
 
         transform:
           translateY(25px);
+
       }
 
       to {
+
         opacity: 1;
 
         transform:
           translateY(0);
+
       }
+
     }
 
 
-    /* =========================================
+    /* =====================================================
        TABLET
-    ========================================= */
+    ====================================================== */
 
     @media (max-width: 700px) {
 
       .page {
+
         padding:
           18px 14px 25px;
+
       }
 
 
       .logo-container {
+
         max-width: 500px;
 
         margin-bottom: 10px;
+
       }
 
 
       .card {
+
         padding:
           28px 20px;
 
         border-radius: 24px;
+
       }
 
 
       .title {
+
         font-size: 29px;
+
       }
 
 
       .subtitle {
+
         font-size: 14px;
 
         line-height: 1.6;
 
         margin-bottom: 27px;
+
       }
 
 
       .form-label {
+
         font-size: 14px;
+
       }
 
 
       #folioInput {
+
         height: 56px;
 
         font-size: 16px;
 
         border-radius: 14px;
+
       }
 
 
       .download-btn {
+
         min-height: 58px;
 
         font-size: 15px;
 
         padding:
           13px 16px;
+
       }
 
 
       .security {
+
         font-size: 12px;
 
         margin-top: 18px;
+
       }
+
     }
 
 
-    /* =========================================
+    /* =====================================================
        CELULARES PEQUEÑOS
-    ========================================= */
+    ====================================================== */
 
     @media (max-width: 400px) {
 
       .page {
+
         padding:
           12px 10px 20px;
+
       }
 
 
       .logo-container {
+
         max-width: 340px;
+
       }
 
 
       .card {
+
         padding:
           24px 15px;
+
       }
 
 
       .title {
+
         font-size: 25px;
+
       }
 
 
       .subtitle {
+
         font-size: 13px;
+
       }
 
 
       #folioInput {
+
         padding-left: 48px;
+
       }
 
 
       .download-btn {
+
         font-size: 14px;
+
       }
-    }
 
-
-    /* =========================================
-       EVITAR DESBORDE DEL PDF EN PANTALLA
-    ========================================= */
-
-    @media (max-width: 820px) {
-
-      #contrato-pdf {
-        width: 794px;
-
-        max-width: none;
-      }
     }
 
   </style>
+
 </head>
 
 
 <body>
 
+
+  <!-- =====================================================
+       PÁGINA
+  ====================================================== -->
+
   <main class="page">
 
 
-    <!-- =====================================
-         LOGO OFICIAL
-    ====================================== -->
+    <!-- ===================================================
+         LOGO
+    ==================================================== -->
 
     <div class="logo-container">
 
@@ -816,9 +1125,9 @@
     </div>
 
 
-    <!-- =====================================
+    <!-- ===================================================
          TARJETA PRINCIPAL
-    ====================================== -->
+    ==================================================== -->
 
     <section class="card">
 
@@ -829,12 +1138,17 @@
 
 
       <p class="subtitle">
-        Ingresa tu folio para generar y descargar
-        tu documento oficial en formato PDF.
+
+        Ingresa tu folio para consultar tus datos
+        y generar tu Contrato Oficial de Participación
+        en formato PDF.
+
       </p>
 
 
-      <!-- FOLIO -->
+      <!-- ================================================
+           INPUT
+      ================================================= -->
 
       <div class="form-group">
 
@@ -842,7 +1156,7 @@
           class="form-label"
           for="folioInput"
         >
-          Folio
+          Folio de solicitud
         </label>
 
 
@@ -856,7 +1170,7 @@
           <input
             type="text"
             id="folioInput"
-            placeholder="Ejemplo: LCDLF-ABC123"
+            placeholder="Ejemplo: LCDLF-XXXX"
             autocomplete="off"
             autocapitalize="characters"
             spellcheck="false"
@@ -867,7 +1181,9 @@
       </div>
 
 
-      <!-- BOTÓN -->
+      <!-- ================================================
+           BOTÓN
+      ================================================= -->
 
       <button
         type="button"
@@ -884,7 +1200,9 @@
       </button>
 
 
-      <!-- MENSAJE DE CARGA -->
+      <!-- ================================================
+           LOADING
+      ================================================= -->
 
       <div
         id="loadingMsg"
@@ -894,7 +1212,9 @@
       </div>
 
 
-      <!-- MENSAJE DE ERROR -->
+      <!-- ================================================
+           ERROR
+      ================================================= -->
 
       <div
         id="errorMsg"
@@ -902,11 +1222,15 @@
       ></div>
 
 
-      <!-- SEGURIDAD -->
+      <!-- ================================================
+           SEGURIDAD
+      ================================================= -->
 
       <div class="security">
 
-        <span>🔒</span>
+        <span>
+          🔒
+        </span>
 
         Tus datos están seguros con nosotros
 
@@ -916,139 +1240,46 @@
     </section>
 
 
-    <!-- =====================================
-         DOCUMENTO QUE SE CONVERTIRÁ A PDF
-    ====================================== -->
+    <!-- ===================================================
+         CONTRATO QUE SE CONVIERTE A PDF
+    ==================================================== -->
 
     <div id="contrato-pdf">
 
 
-      <div class="pdf-header">
+      <!-- ================================================
+           ENCABEZADO
+      ================================================= -->
 
-        <h1>
-          LA CASA DE LOS FAMOSOS ROBLOX
-        </h1>
-
-        <p>
-          Documento Oficial
-        </p>
-
-      </div>
+      <div class="contrato-header">
 
 
-      <div class="pdf-section">
-
-        <h2>
-          Datos del participante
-        </h2>
-
-
-        <div class="pdf-row">
-
-          <div class="pdf-label">
-            Folio:
-          </div>
-
-          <div
-            class="pdf-value"
-            id="pdf-folio"
-          ></div>
-
-        </div>
-
-
-        <div class="pdf-row">
-
-          <div class="pdf-label">
-            Nombre:
-          </div>
-
-          <div
-            class="pdf-value"
-            id="pdf-nombre"
-          ></div>
-
-        </div>
-
-
-        <div class="pdf-row">
-
-          <div class="pdf-label">
-            Usuario de Roblox:
-          </div>
-
-          <div
-            class="pdf-value"
-            id="pdf-roblox"
-          ></div>
-
-        </div>
-
-
-        <div class="pdf-row">
-
-          <div class="pdf-label">
-            Edad:
-          </div>
-
-          <div
-            class="pdf-value"
-            id="pdf-edad"
-          ></div>
-
-        </div>
-
-
-        <div class="pdf-row">
-
-          <div class="pdf-label">
-            Correo:
-          </div>
-
-          <div
-            class="pdf-value"
-            id="pdf-correo"
-          ></div>
-
-        </div>
-
-
-        <div class="pdf-row">
-
-          <div class="pdf-label">
-            Habitación:
-          </div>
-
-          <div
-            class="pdf-value"
-            id="pdf-habitacion"
-          ></div>
-
-        </div>
-
-
-      </div>
-
-
-      <div class="pdf-section">
-
-        <h2>
-          Constancia
-        </h2>
-
-
-        <p
-          style="
-            font-size:14px;
-            line-height:1.8;
-            color:#555;
-          "
+        <img
+          src="https://lcdlf.mx/logo.png"
+          alt="La Casa de los Famosos Roblox"
+          class="contrato-logo"
+          crossorigin="anonymous"
         >
 
-          Por medio del presente documento se hace
-          constar que los datos correspondientes al
-          participante fueron registrados correctamente
-          en el sistema de La Casa de los Famosos Roblox.
+
+        <h1>
+
+          CONTRATO OFICIAL DE PARTICIPACIÓN
+          Y REGLAMENTO GENERAL
+
+        </h1>
+
+
+        <h2>
+
+          LA CASA DE LOS FAMOSOS ROBLOX
+
+        </h2>
+
+
+        <p class="contrato-web">
+
+          lcdlf.mx
 
         </p>
 
@@ -1056,12 +1287,369 @@
       </div>
 
 
-      <div class="pdf-footer">
+      <!-- ================================================
+           DATOS DEL PARTICIPANTE
+      ================================================= -->
 
-        La Casa de los Famosos Roblox
+      <div class="contrato-section">
+
+
+        <h3>
+
+          DATOS DE REGISTRO DEL PARTICIPANTE
+
+        </h3>
+
+
+        <div class="dato-row">
+
+          <strong>
+            Nombre completo:
+          </strong>
+
+          <span id="pdf-nombre">
+            [Nombre del Participante]
+          </span>
+
+        </div>
+
+
+        <div class="dato-row">
+
+          <strong>
+            Folio de solicitud:
+          </strong>
+
+          <span id="pdf-folio">
+            [LCDLF-XXXX]
+          </span>
+
+        </div>
+
+
+        <div class="dato-row">
+
+          <strong>
+            Edad:
+          </strong>
+
+          <span id="pdf-edad">
+            [Edad]
+          </span>
+
+        </div>
+
+
+        <div class="dato-row">
+
+          <strong>
+            Correo electrónico:
+          </strong>
+
+          <span id="pdf-correo">
+            [Correo del Participante]
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- ================================================
+           DECLARACIONES
+      ================================================= -->
+
+      <div class="contrato-section">
+
+
+        <h3>
+
+          DECLARACIONES Y CONDICIONES GENERALES
+
+        </h3>
+
+
+        <p>
+
+          Conste por el presente documento el
+          <strong>
+            Contrato de Participación y Términos de Servicio
+          </strong>
+          que celebran, por una parte, la administración de
+          <strong>
+            La Casa de los Famosos Roblox
+          </strong>
+          (en adelante,
+          <em>"La Organización"</em>),
+          a través de su sitio web oficial
+          <strong>lcdlf.mx</strong>
+          y el correo institucional
+          <strong>admision@lcdlf.mx</strong>;
+          y por otra parte, la persona identificada en la
+          sección de datos superior (en adelante,
+          <em>"El Participante"</em>).
+          Ambos aceptan sujetarse a las cláusulas y condiciones
+          estipuladas a continuación:
+
+        </p>
+
+
+      </div>
+
+
+      <!-- ================================================
+           CLÁUSULAS
+      ================================================= -->
+
+      <div class="contrato-section">
+
+
+        <h3>
+          CLÁUSULAS
+        </h3>
+
+
+        <!-- PRIMERA -->
+
+        <h4>
+
+          PRIMERA. OBJETO DEL CONTRATO
+
+        </h4>
+
+
+        <p>
+
+          El presente contrato tiene por objeto regular la
+          participación de <em>"El Participante"</em> en la
+          temporada oficial de
+          <strong>
+            La Casa de los Famosos Roblox
+          </strong>,
+          garantizando la convivencia, la transparencia en
+          las dinámicas de juego y la observancia de las
+          reglas dentro del servidor de Roblox y plataformas
+          oficiales asociadas.
+
+        </p>
+
+
+        <!-- SEGUNDA -->
+
+        <h4>
+
+          SEGUNDA. ELEGIBILIDAD Y VERACIDAD DE DATOS
+
+        </h4>
+
+
+        <ol>
+
+
+          <li>
+
+            <em>"El Participante"</em> declara que sus datos
+            personales (Nombre, Edad, Correo y Folio asignado)
+            son verdaderos y coinciden con el registro realizado
+            en el portal <strong>lcdlf.mx</strong>.
+
+          </li>
+
+
+          <li>
+
+            Las comunicaciones oficiales relativas al estado
+            de admisión, instrucciones de acceso y notificaciones
+            administrativas se enviarán únicamente al correo
+            electrónico proporcionado por
+            <em>"El Participante"</em> y desde la cuenta oficial
+            <strong>admision@lcdlf.mx</strong>.
+
+          </li>
+
+
+        </ol>
+
+
+        <!-- TERCERA -->
+
+        <h4>
+
+          TERCERA. CÓDIGO DE CONDUCTA Y REGLAMENTO INTERNO
+
+        </h4>
+
+
+        <ol>
+
+
+          <li>
+
+            <strong>
+              Convivencia y Respeto:
+            </strong>
+
+            Se prohíbe estrictamente el acoso, la discriminación,
+            el lenguaje de odio o cualquier conducta tóxica en
+            los servidores de juego, canales de Discord y grupos
+            vinculados a la producción.
+
+          </li>
+
+
+          <li>
+
+            <strong>
+              Juego Limpio:
+            </strong>
+
+            El uso de <em>exploits</em>, <em>hacks</em>,
+            programas de terceros o cualquier método de alteración
+            del servidor de Roblox resultará en la expulsión
+            inmediata de la competencia.
+
+          </li>
+
+
+          <li>
+
+            <strong>
+              Puntualidad:
+            </strong>
+
+            <em>"El Participante"</em> se compromete a presentarse
+            puntualmente en las galas, pruebas de líder y
+            ceremonias de nominación/eliminación programadas.
+
+          </li>
+
+
+        </ol>
+
+
+        <!-- CUARTA -->
+
+        <h4>
+
+          CUARTA. DERECHOS DE IMAGEN Y DIFUSIÓN
+
+        </h4>
+
+
+        <ol>
+
+
+          <li>
+
+            <em>"El Participante"</em> autoriza a
+            <em>"La Organización"</em> a grabar, transmitir en vivo
+            y publicar el contenido generado dentro de las
+            instancias del juego (avatar de Roblox, nombre de
+            usuario y audio/chat de juego) en sus canales
+            oficiales de difusión.
+
+          </li>
+
+
+          <li>
+
+            <em>"La Organización"</em> aclara que bajo ninguna
+            circunstancia solicitará contraseñas personales de
+            Roblox, únicamente gestionará credenciales e
+            identificadores de la competencia.
+
+          </li>
+
+
+        </ol>
+
+
+        <!-- QUINTA -->
+
+        <h4>
+
+          QUINTA. SANCIONES Y EXPULSIÓN
+
+        </h4>
+
+
+        <p>
+
+          El incumplimiento de cualquiera de los puntos aquí
+          señalados faculta a <em>"La Organización"</em> a aplicar
+          desde amonestaciones públicas o pérdida de beneficios
+          en el juego, hasta la expulsión definitiva del reality
+          show y la anulación del folio de participación.
+
+        </p>
+
+
+      </div>
+
+
+      <!-- ================================================
+           ACEPTACIÓN
+      ================================================= -->
+
+      <div class="contrato-section">
+
+
+        <h3>
+
+          ACEPTACIÓN DEL CONTRATO
+
+        </h3>
+
+
+        <p>
+
+          Al ingresar el folio correspondiente en
+          <strong>lcdlf.mx</strong>
+          y/o confirmar la postulación vía
+          <strong>admision@lcdlf.mx</strong>,
+          <em>"El Participante"</em> manifiesta haber leído,
+          comprendido y aceptado en su totalidad las cláusulas
+          expuestas en este contrato.
+
+        </p>
+
+
+      </div>
+
+
+      <!-- ================================================
+           FECHA
+      ================================================= -->
+
+      <div class="fecha-emision">
+
+        <strong>
+          Fecha de emisión:
+        </strong>
+
+        2026
+
+      </div>
+
+
+      <!-- ================================================
+           PIE
+      ================================================= -->
+
+      <div class="contrato-footer">
+
+        <strong>
+          LA CASA DE LOS FAMOSOS ROBLOX
+        </strong>
+
         <br>
 
-        Documento generado automáticamente.
+        lcdlf.mx
+
+        <br><br>
+
+        Documento oficial generado automáticamente.
 
       </div>
 
@@ -1072,41 +1660,52 @@
   </main>
 
 
-  <!-- =====================================
+  <!-- =====================================================
        JAVASCRIPT
-  ====================================== -->
+  ====================================================== -->
 
   <script>
 
 
-    /* =====================================
-       URL DE GOOGLE APPS SCRIPT
-    ====================================== */
+    /* =====================================================
+       GOOGLE APPS SCRIPT
+    ====================================================== */
 
     const WEB_APP_URL =
       "https://script.google.com/macros/s/AKfycbyjnkLDnieOipoGXuhGfJ0EEghZejlJ1A2SVltMY1GF0Sf5DXMcq-NCxMZtWyifuJ7Z/exec";
 
 
-    /* =====================================
+    /* =====================================================
        ELEMENTOS
-    ====================================== */
+    ====================================================== */
 
     const folioInput =
-      document.getElementById("folioInput");
+      document.getElementById(
+        "folioInput"
+      );
+
 
     const errorMsg =
-      document.getElementById("errorMsg");
+      document.getElementById(
+        "errorMsg"
+      );
+
 
     const loadingMsg =
-      document.getElementById("loadingMsg");
+      document.getElementById(
+        "loadingMsg"
+      );
+
 
     const button =
-      document.getElementById("downloadBtn");
+      document.getElementById(
+        "downloadBtn"
+      );
 
 
-    /* =====================================
-       BOTÓN
-    ====================================== */
+    /* =====================================================
+       CLICK
+    ====================================================== */
 
     button.addEventListener(
       "click",
@@ -1114,15 +1713,17 @@
     );
 
 
-    /* =====================================
-       ENTER PARA BUSCAR
-    ====================================== */
+    /* =====================================================
+       ENTER
+    ====================================================== */
 
     folioInput.addEventListener(
       "keydown",
       function(event) {
 
-        if (event.key === "Enter") {
+        if (
+          event.key === "Enter"
+        ) {
 
           event.preventDefault();
 
@@ -1134,9 +1735,9 @@
     );
 
 
-    /* =====================================
-       MAYÚSCULAS AUTOMÁTICAS
-    ====================================== */
+    /* =====================================================
+       MAYÚSCULAS
+    ====================================================== */
 
     folioInput.addEventListener(
       "input",
@@ -1149,9 +1750,9 @@
     );
 
 
-    /* =====================================
-       BUSCAR Y DESCARGAR
-    ====================================== */
+    /* =====================================================
+       BUSCAR Y GENERAR PDF
+    ====================================================== */
 
     async function buscarYDescargar() {
 
@@ -1171,7 +1772,7 @@
         "none";
 
 
-      /* Validar */
+      /* Validación */
 
       if (!folio) {
 
@@ -1184,10 +1785,11 @@
         folioInput.focus();
 
         return;
+
       }
 
 
-      /* Mostrar carga */
+      /* Cargando */
 
       loadingMsg.textContent =
         "Consultando tu folio...";
@@ -1202,17 +1804,17 @@
       try {
 
 
-        /*
-         * IMPORTANTE:
-         * Aquí está corregido el error
-         * que tenía tu código anterior.
-         */
+        /* =================================================
+           URL CORRECTA
+        ================================================== */
 
         const url =
           `${WEB_APP_URL}?folio=${encodeURIComponent(folio)}`;
 
 
-        /* Petición */
+        /* =================================================
+           PETICIÓN
+        ================================================== */
 
         const response =
           await fetch(
@@ -1229,7 +1831,9 @@
           );
 
 
-        /* Revisar HTTP */
+        /* =================================================
+           HTTP
+        ================================================== */
 
         if (!response.ok) {
 
@@ -1241,15 +1845,17 @@
         }
 
 
-        /* Convertir a JSON */
+        /* =================================================
+           JSON
+        ================================================== */
 
         const result =
           await response.json();
 
 
-        /* =================================
-           RESULTADO EXITOSO
-        ================================= */
+        /* =================================================
+           ÉXITO
+        ================================================== */
 
         if (
           result.status === "success"
@@ -1260,16 +1866,9 @@
             result.datos || {};
 
 
-          /* Folio */
-
-          document.getElementById(
-            "pdf-folio"
-          ).textContent =
-            datos.folio ||
-            folio;
-
-
-          /* Nombre */
+          /* -----------------------------------------------
+             NOMBRE
+          ------------------------------------------------ */
 
           document.getElementById(
             "pdf-nombre"
@@ -1278,16 +1877,20 @@
             "No registrado";
 
 
-          /* Roblox */
+          /* -----------------------------------------------
+             FOLIO
+          ------------------------------------------------ */
 
           document.getElementById(
-            "pdf-roblox"
+            "pdf-folio"
           ).textContent =
-            datos.roblox ||
-            "No registrado";
+            datos.folio ||
+            folio;
 
 
-          /* Edad */
+          /* -----------------------------------------------
+             EDAD
+          ------------------------------------------------ */
 
           document.getElementById(
             "pdf-edad"
@@ -1297,7 +1900,9 @@
               : "N/A";
 
 
-          /* Correo */
+          /* -----------------------------------------------
+             CORREO
+          ------------------------------------------------ */
 
           document.getElementById(
             "pdf-correo"
@@ -1306,16 +1911,9 @@
             "No registrado";
 
 
-          /* Habitación */
-
-          document.getElementById(
-            "pdf-habitacion"
-          ).textContent =
-            datos.habitacion ||
-            "Pendiente";
-
-
-          /* Mostrar PDF */
+          /* -----------------------------------------------
+             MOSTRAR CONTRATO
+          ------------------------------------------------ */
 
           const pdfElement =
             document.getElementById(
@@ -1328,19 +1926,21 @@
 
 
           loadingMsg.textContent =
-            "Generando tu documento PDF...";
+            "Generando tu documento oficial en PDF...";
 
 
-          /*
-           * Configuración del PDF
-           */
+          /* =================================================
+             OPCIONES PDF
+          ================================================== */
 
           const opciones = {
 
             margin: 15,
 
             filename:
-              `Contrato_${datos.folio || folio}.pdf`,
+              `Contrato_${
+                datos.folio || folio
+              }.pdf`,
 
             image: {
 
@@ -1375,21 +1975,20 @@
 
             pagebreak: {
 
-              mode:
-                [
-                  "avoid-all",
-                  "css",
-                  "legacy"
-                ]
+              mode: [
+                "avoid-all",
+                "css",
+                "legacy"
+              ]
 
             }
 
           };
 
 
-          /*
-           * GENERAR PDF
-           */
+          /* =================================================
+             GENERAR PDF
+          ================================================== */
 
           await html2pdf()
             .set(opciones)
@@ -1397,13 +1996,12 @@
             .save();
 
 
-          /*
-           * Ocultar documento
-           */
+          /* =================================================
+             OCULTAR
+          ================================================== */
 
           pdfElement.style.display =
             "none";
-
 
           loadingMsg.style.display =
             "none";
@@ -1412,9 +2010,9 @@
         }
 
 
-        /* =================================
-           FOLIO NO ENCONTRADO
-        ================================= */
+        /* =================================================
+           NO ENCONTRADO
+        ================================================== */
 
         else if (
           result.status === "not_found"
@@ -1432,12 +2030,13 @@
           errorMsg.style.display =
             "block";
 
+
         }
 
 
-        /* =================================
-           OTRO ERROR DEL SERVIDOR
-        ================================= */
+        /* =================================================
+           OTRO ERROR
+        ================================================== */
 
         else {
 
@@ -1454,15 +2053,16 @@
           errorMsg.style.display =
             "block";
 
+
         }
 
 
       }
 
 
-      /* =================================
+      /* =====================================================
          ERROR DE CONEXIÓN
-      ================================= */
+      ====================================================== */
 
       catch (error) {
 
@@ -1484,12 +2084,13 @@
         errorMsg.style.display =
           "block";
 
+
       }
 
 
-      /* =================================
-         REACTIVAR BOTÓN
-      ================================= */
+      /* =====================================================
+         FINALMENTE
+      ====================================================== */
 
       finally {
 
@@ -1500,7 +2101,10 @@
 
     }
 
+
   </script>
 
+
 </body>
+
 </html>
