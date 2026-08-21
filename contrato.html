@@ -1,145 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Descargar Contrato - LCDLF Roblox</title>
-  <!-- Librería html2pdf -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-  <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: #eef2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
-    .card img { max-width: 180px; margin-bottom: 15px; }
-    h2 { color: #2563eb; margin-top: 0; }
-    p { color: #64748b; font-size: 14px; }
-    input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; text-align: center; text-transform: uppercase; outline: none; }
-    button { width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-    button:hover { background-color: #1d4ed8; }
-    .error { color: #ef4444; margin-top: 10px; font-size: 14px; display: none; }
-    .loading { color: #2563eb; margin-top: 10px; font-size: 14px; display: none; }
+async function buscarYDescargar() {
+  const folioInput = document.getElementById('folioInput').value.trim().toUpperCase();
+  const errorMsg = document.getElementById('errorMsg');
+  const loadingMsg = document.getElementById('loadingMsg');
 
-    /* Estilos del Contrato en PDF */
-    #contrato-pdf { display: none; background: white; padding: 40px; border: 1px solid #ccc; font-family: Arial, sans-serif; color: #333; }
-    .pdf-header { text-align: center; border-bottom: 2px solid #2563eb; padding-bottom: 15px; margin-bottom: 20px; }
-    .pdf-header img { width: 160px; }
-    .pdf-title { font-size: 18px; font-weight: bold; color: #1e3a8a; margin-top: 10px; text-transform: uppercase; }
-    .pdf-section { margin-bottom: 15px; }
-    .pdf-section-title { font-size: 14px; font-weight: bold; color: #2563eb; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; margin-bottom: 8px; }
-    .pdf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px; }
-    .pdf-clausula { font-size: 11px; text-align: justify; line-height: 1.4; color: #475569; margin-bottom: 8px; }
-    .pdf-footer { margin-top: 30px; text-align: center; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-  </style>
-</head>
-<body>
+  errorMsg.style.display = 'none';
+  loadingMsg.style.display = 'none';
 
-  <!-- Tarjeta Interactiva -->
-  <div class="card">
-    <h2>Descargar Contrato de Participación</h2>
-    <p>Ingresa tu folio de registro para generar y descargar tu contrato oficial.</p>
-    <input type="text" id="folioInput" placeholder="EJ: LCDLF-XJOH">
-    <button onclick="buscarYDescargar()">DESCARGAR CONTRATO (PDF)</button>
-    <div id="loadingMsg" class="loading">Buscando folio y generando PDF...</div>
-    <div id="errorMsg" class="error">Folio no encontrado. Verifica tus datos.</div>
-  </div>
+  if (!folioInput) {
+    errorMsg.textContent = "Por favor ingresa un folio válido.";
+    errorMsg.style.display = 'block';
+    return;
+  }
 
-  <!-- Plantilla Oculta para la creación del PDF -->
-  <div id="contrato-pdf">
-    <div class="pdf-header">
-      <div class="pdf-title">Comprobante Oficial de Registro y Contrato de Participación</div>
-    </div>
+  loadingMsg.style.display = 'block';
+  loadingMsg.textContent = "Generando tu documento oficial en PDF...";
 
-    <div class="pdf-section">
-      <div class="pdf-section-title">INFORMACIÓN DEL ASPIRANTE</div>
-      <div class="pdf-grid">
-        <div><strong>Folio Único:</strong> <span id="pdf-folio"></span></div>
-        <div><strong>Nombre Completo:</strong> <span id="pdf-nombre"></span></div>
-        <div><strong>Usuario de Roblox:</strong> <span id="pdf-roblox"></span></div>
-        <div><strong>Edad Registrada:</strong> <span id="pdf-edad"></span></div>
-        <div><strong>Correo Electrónico:</strong> <span id="pdf-correo"></span></div>
-        <div><strong>Habitación Asignada:</strong> <span id="pdf-habitacion"></span></div>
-      </div>
-    </div>
+  try {
+    const url = `${WEB_APP_URL}?folio=${encodeURIComponent(folioInput)}`;
+    
+    const response = await fetch(url, {
+      method: "GET",
+      redirect: "follow"
+    });
 
-    <div class="pdf-section">
-      <div class="pdf-section-title">TÉRMINOS, CONDICIONES Y CONTRATO DE COMPETENCIA</div>
-      <div class="pdf-clausula"><strong>1. COMPROMISO Y ASISTENCIA:</strong> El participante debe contar con disponibilidad para asistir a las galas de nominación, pruebas semanales y eventos de expulsión programados.</div>
-      <div class="pdf-clausula"><strong>2. CONDUCTA Y RESPETO:</strong> Queda strictly prohibido el acoso, la discriminación, los insultos fuera del juego o cualquier comportamiento tóxico hacia otros habitantes o la producción.</div>
-      <div class="pdf-clausula"><strong>3. JUEGO LIMPIO:</strong> El uso de exploits, scripts, hacks o aprovechamiento de bugs dentro de la experiencia de Roblox resultará en la descalificación e inactivación inmediata de la cuenta en el reality.</div>
-      <div class="pdf-clausula"><strong>4. DERECHOS DE IMAGEN Y CONTENIDO:</strong> El aspirante autoriza la transmisión, grabación y difusión de su avatar y voz dentro de las plataformas oficiales de La Casa de los Famosos Roblox (Discord, YouTube, TikTok, Twitch, etc.).</div>
-    </div>
+    const result = await response.json();
 
-    <div class="pdf-footer">
-      Documento generado automáticamente por el Sistema de Registros de LCDF Roblox.<br>
-      Conserva este comprobante y tu folio para consultar el estado de tu postulación.
-    </div>
-  </div>
+    if (result.status === "success") {
+      // Descargar el archivo PDF directamente generado desde Google Docs
+      const link = document.createElement('a');
+      link.href = "data:application/pdf;base64," + result.pdfBase64;
+      link.download = result.filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
-  <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyZWfnWTnW3GQDEuytQppcuyu8cryDzja7ingvGsIiskd5VMY_SyWfQHBsbLYf6Q2Q9/exec";
-
-    async function buscarYDescargar() {
-      const folioInput = document.getElementById('folioInput').value.trim().toUpperCase();
-      const errorMsg = document.getElementById('errorMsg');
-      const loadingMsg = document.getElementById('loadingMsg');
-
-      errorMsg.style.display = 'none';
       loadingMsg.style.display = 'none';
 
-      if (!folioInput) {
-        errorMsg.textContent = "Por favor ingresa un folio válido.";
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      loadingMsg.style.display = 'block';
-
-      try {
-        const response = await fetch(`${WEB_APP_URL}?folio=${encodeURIComponent(folioInput)}`);
-        const result = await response.json();
-
-        if (result.status === "success") {
-          const datos = result.datos;
-
-          // Asignar datos al documento
-          document.getElementById('pdf-folio').textContent = datos.folio || folioInput;
-          document.getElementById('pdf-nombre').textContent = datos.nombre || 'No registrado';
-          document.getElementById('pdf-roblox').textContent = datos.roblox || 'No registrado';
-          document.getElementById('pdf-edad').textContent = datos.edad ? datos.edad + ' años' : 'N/A';
-          document.getElementById('pdf-correo').textContent = datos.correo || 'No registrado';
-          document.getElementById('pdf-habitacion').textContent = datos.habitacion || 'Pendiente';
-
-          // Mostrar elemento temporalmente
-          const pdfElement = document.getElementById('contrato-pdf');
-          pdfElement.style.display = 'block';
-
-          // Configurar generación de PDF
-          const opciones = {
-            margin:       15,
-            filename:     `Contrato_${datos.folio}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-          };
-
-          await html2pdf().set(opciones).from(pdfElement).save();
-
-          pdfElement.style.display = 'none';
-          loadingMsg.style.display = 'none';
-
-        } else {
-          loadingMsg.style.display = 'none';
-          errorMsg.textContent = "Folio no encontrado. Verifica tus datos.";
-          errorMsg.style.display = 'block';
-        }
-
-      } catch (error) {
-        console.error("Error consultando la base de datos:", error);
-        loadingMsg.style.display = 'none';
-        errorMsg.textContent = "Error de conexión con la base de datos.";
-        errorMsg.style.display = 'block';
-      }
+    } else if (result.status === "not_found") {
+      loadingMsg.style.display = 'none';
+      errorMsg.textContent = "Folio no encontrado. Verifica tus datos.";
+      errorMsg.style.display = 'block';
+    } else {
+      loadingMsg.style.display = 'none';
+      errorMsg.textContent = "Error: " + (result.message || "No se pudo procesar la solicitud.");
+      errorMsg.style.display = 'block';
     }
-  </script>
-</body>
-</html>
+
+  } catch (error) {
+    console.error("Error al conectar:", error);
+    loadingMsg.style.display = 'none';
+    errorMsg.textContent = "Error de conexión con la base de datos.";
+    errorMsg.style.display = 'block';
+  }
+}
