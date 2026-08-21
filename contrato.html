@@ -20,7 +20,7 @@
       padding: 20px;
     }
 
-    /* TARJETA DE BÚSQUEDA */
+    /* TARJETA DE BÚSQUEDA WEB */
     .search-card {
       max-width: 480px;
       margin: 30px auto;
@@ -91,140 +91,107 @@
     .error-msg { color: #d9534f; }
     .loading-msg { color: #3976d4; }
 
-    /* DOCUMENTO PDF - RÉPLICA EXACTA DE LA IMAGEN DE GOOGLE DOCS */
+    /* DOCUMENTO PDF - RÉPLICA EXACTA DE TU CAPTURA DE PANTALLA */
     #contrato-documento {
-      display: none; /* Se mantiene oculto en pantalla */
-      width: 600px;
+      display: none; /* Se oculta en pantalla, se usa para armar el PDF */
+      width: 650px;
       background: #ffffff;
-      padding: 40px 50px;
+      padding: 50px 60px;
       font-family: Arial, Helvetica, sans-serif;
       color: #000000;
-      font-size: 12px;
+      font-size: 11pt;
       line-height: 1.5;
     }
 
-    .doc-title {
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-
-    .doc-subtitle {
-      font-size: 12px;
+    .doc-main-title {
+      font-size: 13pt;
       font-weight: bold;
       text-transform: uppercase;
       margin-bottom: 25px;
+      color: #000000;
+      line-height: 1.3;
     }
 
-    .section-header {
-      font-size: 12px;
+    .doc-section-title {
+      font-size: 13pt;
       font-weight: bold;
       text-transform: uppercase;
-      margin-top: 20px;
+      margin-top: 25px;
       margin-bottom: 15px;
+      color: #000000;
     }
 
-    .info-list {
-      list-style-type: none;
-      padding-left: 0;
+    .data-list {
+      list-style-type: disc;
+      padding-left: 25px;
       margin-bottom: 25px;
     }
 
-    .info-list li {
-      margin-bottom: 4px;
+    .data-list li {
+      margin-bottom: 6px;
+      font-size: 11pt;
     }
 
-    .clause-text {
-      margin-bottom: 15px;
+    .placeholder-green {
+      color: #2b8a3e;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
     }
 
-    .clause-list {
-      padding-left: 0;
-      list-style-type: none;
-      margin-bottom: 25px;
-    }
-
-    .clause-list li {
-      margin-bottom: 12px;
+    .body-paragraph {
       text-align: justify;
+      margin-bottom: 15px;
+      font-size: 11pt;
     }
 
-    .link-url {
-      color: #0066cc;
+    .doc-link {
+      color: #1a73e8;
       text-decoration: underline;
-      word-break: break-all;
-    }
-
-    .footer-doc {
-      margin-top: 35px;
-      font-size: 11px;
-      line-height: 1.4;
     }
   </style>
 </head>
 <body>
 
-  <!-- PANEL PARA INGRESAR EL FOLIO -->
+  <!-- FORMULARIO DE BÚSQUEDA WEB -->
   <div class="search-card">
-    <h2>Descarga tu Contrato Oficial</h2>
-    <p>Ingresa tu número de folio para descargar tu comprobante de registro y contrato de participación.</p>
+    <h2>Descargar Contrato de Participación</h2>
+    <p>Ingresa tu folio de registro para generar y descargar tu contrato oficial.</p>
 
     <div class="input-group">
       <input type="text" id="folioInput" placeholder="Ej. LCDLF-4AGI" autocomplete="off">
     </div>
 
     <button class="btn-download" onclick="buscarYDescargar()">DESCARGAR CONTRATO (PDF)</button>
-    
+
     <div class="status-msg error-msg" id="errorMsg">Folio no encontrado. Por favor verifica tus datos.</div>
     <div class="status-msg loading-msg" id="loadingMsg">Buscando datos y generando documento...</div>
   </div>
 
-  <!-- PLANTILLA FIEL A TU DOCUMENTO DE GOOGLE DOCS -->
+  <!-- PLANTILLA DEL DOCUMENTO PDF -->
   <div id="contrato-documento">
-    <div class="doc-title">LA CASA DE LOS FAMOSOS ROBLOX</div>
-    <div class="doc-subtitle">COMPROBANTE OFICIAL DE REGISTRO Y CONTRATO DE PARTICIPACIÓN</div>
-
-    <div class="section-header">INFORMACIÓN DEL ASPIRANTE</div>
-    <ul class="info-list">
-      <li>• Folio Único de Registro: <span id="pdf-folio"></span></li>
-      <li>• Usuario de Roblox: <span id="pdf-roblox"></span></li>
-      <li>• Usuario de Discord: <span id="pdf-discord"></span></li>
-      <li>• Edad Registrada: <span id="pdf-edad"></span></li>
-      <li>• País de Residencia: <span id="pdf-pais"></span></li>
-    </ul>
-
-    <div class="section-header">TÉRMINOS, CONDICIONES Y CONTRATO DE COMPETENCIA</div>
-
-    <p class="clause-text">Al realizar este registro, el aspirante acepta y se compromete a cumplir las siguientes cláusulas:</p>
-
-    <ul class="clause-list">
-      <li>1. <strong>COMPROMISO Y ASISTENCIA:</strong> El participante debe contar con disponibilidad para asistir a las galas de nominación, pruebas semanales y eventos de expulsión programados.</li>
-      <li>2. <strong>CONDUCTA Y RESPETO:</strong> Queda estrictamente prohibido el acoso, la discriminación, los insultos fuera del juego o cualquier comportamiento tóxico hacia otros habitantes o la producción.</li>
-      <li>3. <strong>JUEGO LIMPIO:</strong> El uso de exploits, scripts, hacks o aprovechamiento de bugs dentro de la experiencia de Roblox resultará en la descalificación e inactivación inmediata de la cuenta en el reality.</li>
-      <li>4. <strong>DERECHOS DE IMAGEN Y CONTENIDO:</strong> El aspirante autoriza la transmisión, grabación y difusión de su avatar y voz dentro de las plataformas oficiales de La Casa de los Famosos Roblox (Discord, YouTube, TikTok, Twitch, etc.).</li>
-    </ul>
-
-    <div class="section-header">CANALES Y COMUNIDADES OFICIALES</div>
-
-    <p class="clause-text">Es obligatorio unirse a los siguientes canales para dar seguimiento a la solicitud y recibir avisos del casting:</p>
-
-    <ul class="info-list">
-      <li>• Unirse al Grupo Oficial de WhatsApp:<br>
-        <a class="link-url" href="https://chat.whatsapp.com/HoaOd7ZSmvDEyp9uNYBiiJ?s=cl&p=i&mlu=4&amv=2">https://chat.whatsapp.com/HoaOd7ZSmvDEyp9uNYBiiJ?s=cl&p=i&mlu=4&amv=2</a>
-      </li>
-      <li style="margin-top: 6px;">• Unirse al Servidor Oficial de Discord:</li>
-    </ul>
-
-    <div class="footer-doc">
-      Documento generado automáticamente por el Sistema de Registros de LCDF Roblox.<br>
-      Conserva este comprobante y tu folio para consultar el estado de tu postulación.
+    <div class="doc-main-title">
+      CONTRATO OFICIAL DE PARTICIPACIÓN Y REGLAMENTO GENERAL LA CASA DE LOS FAMOSOS ROBLOX (lcdlf.mx)
     </div>
+
+    <div class="doc-section-title">DATOS DE REGISTRO DEL PARTICIPANTE</div>
+
+    <ul class="data-list">
+      <li><strong>Nombre completo:</strong> <span class="placeholder-green" id="pdf-nombre">[Nombre del Participante]</span></li>
+      <li><strong>Folio de solicitud:</strong> <span class="placeholder-green" id="pdf-folio">[LCDLF-XXXX]</span></li>
+      <li><strong>Edad:</strong> <span class="placeholder-green" id="pdf-edad">[Edad]</span></li>
+      <li><strong>Correo electrónico:</strong> <span class="placeholder-green" id="pdf-correo">[Correo del Participante]</span></li>
+    </ul>
+
+    <div class="doc-section-title">DECLARACIONES Y CONDICIONES GENERALES</div>
+
+    <p class="body-paragraph">
+      Conste por el presente documento el <strong>Contrato de Participación y Términos de Servicio</strong> que celebran, por una parte, la administración de <strong>La Casa de los Famosos Roblox</strong> (en adelante, <em>"La Organización"</em>), a través de su sitio web oficial <a class="doc-link" href="https://lcdlf.mx">lcdlf.mx</a> y el correo institucional <a class="doc-link" href="mailto:admision@lcdlf.mx">admision@lcdlf.mx</a>; y por otra parte, la persona identificada en la sección de datos superior (en adelante, <em>"El Participante"</em>). Ambos aceptan sujetarse a las cláusulas y condiciones estipuladas a continuación:
+    </p>
   </div>
 
   <script>
-    // REEMPLAZA ESTA URL CON LA URL CSV DE TU GOOGLE SHEETS
-    const GOOGLE_SHEETS_CSV_URL = 'URL_DE_TU_GOOGLE_SHEETS_CSV';
+    // REEMPLAZA ESTE ENLACE POR TU ENLACE CSV PUBLICADO DESDE GOOGLE SHEETS
+    const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?output=csv';
 
     async function buscarYDescargar() {
       const folioBuscado = document.getElementById('folioInput').value.trim().toUpperCase();
@@ -246,43 +213,42 @@
         const response = await fetch(GOOGLE_SHEETS_CSV_URL);
         const dataText = await response.text();
 
-        // Convertir CSV a filas
+        // Convertir las líneas CSV a filas
         const filas = dataText.split('\n').map(row => row.split(','));
-        
+
         let encontrado = false;
         let datosUsuario = {};
 
         // Recorrer filas omitiendo el encabezado
+        // Columna 1 = FOLIO, Columna 2 = NOMBRE, Columna 4 = EDAD, Columna 5 = CORREO
         for (let i = 1; i < filas.length; i++) {
           const fila = filas[i];
-          if (fila[0] && fila[0].trim().toUpperCase() === folioBuscado) {
+          if (fila[1] && fila[1].trim().toUpperCase() === folioBuscado) {
             encontrado = true;
             datosUsuario = {
-              folio: fila[0].trim(),
-              roblox: fila[1] ? fila[1].trim() : '',
-              discord: fila[2] ? fila[2].trim() : '',
-              edad: fila[3] ? fila[3].trim() : '',
-              pais: fila[4] ? fila[4].trim() : ''
+              folio: fila[1] ? fila[1].trim() : '',
+              nombre: fila[2] ? fila[2].trim() : '',
+              edad: fila[4] ? fila[4].trim() : '',
+              correo: fila[5] ? fila[5].trim() : ''
             };
             break;
           }
         }
 
         if (encontrado) {
-          // Inyectar los datos en el documento
+          // Inyectar valores mapeados
           document.getElementById('pdf-folio').textContent = datosUsuario.folio;
-          document.getElementById('pdf-roblox').textContent = datosUsuario.roblox;
-          document.getElementById('pdf-discord').textContent = datosUsuario.discord;
-          document.getElementById('pdf-edad').textContent = datosUsuario.edad;
-          document.getElementById('pdf-pais').textContent = datosUsuario.pais;
+          document.getElementById('pdf-nombre').textContent = datosUsuario.nombre || '[Nombre del Participante]';
+          document.getElementById('pdf-edad').textContent = datosUsuario.edad ? datosUsuario.edad + ' años' : '[Edad]';
+          document.getElementById('pdf-correo').textContent = datosUsuario.correo || '[Correo del Participante]';
 
           const elemento = document.getElementById('contrato-documento');
           elemento.style.display = 'block';
 
-          // Configuración exacta para PDF
+          // Opciones de exportación PDF (A4)
           const opciones = {
-            margin:       15,
-            filename:     `Contrato_${datosUsuario.folio}_${datosUsuario.roblox}.pdf`,
+            margin:       18,
+            filename:     `Contrato_${datosUsuario.folio}.pdf`,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -301,7 +267,7 @@
       } catch (error) {
         console.error(error);
         loadingMsg.style.display = 'none';
-        errorMsg.textContent = "Error al conectar con la base de datos.";
+        errorMsg.textContent = "Error al obtener la información de Google Sheets.";
         errorMsg.style.display = 'block';
       }
     }
