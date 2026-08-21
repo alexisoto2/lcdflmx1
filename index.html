@@ -19,10 +19,11 @@
             padding: 25px 15px;
 
             background:
-                radial-gradient(circle at 15% 15%, rgba(0, 220, 255, .75), transparent 30%),
-                radial-gradient(circle at 85% 10%, rgba(166, 87, 255, .75), transparent 32%),
-                radial-gradient(circle at 50% 85%, rgba(255, 151, 220, .65), transparent 35%),
-                linear-gradient(135deg, #063c50, #282a87 45%, #7134a5);
+                radial-gradient(circle at 12% 18%, rgba(178, 222, 232, .58), transparent 31%),
+                radial-gradient(circle at 88% 14%, rgba(211, 198, 226, .55), transparent 32%),
+                radial-gradient(circle at 50% 82%, rgba(240, 213, 221, .48), transparent 36%),
+                radial-gradient(circle at 72% 48%, rgba(202, 226, 232, .42), transparent 30%),
+                linear-gradient(135deg, #e8f0f2 0%, #f3eef3 48%, #e9f1f2 100%);
 
             background-attachment: fixed;
             overflow-x: hidden;
@@ -42,7 +43,7 @@
         body::before {
             width: 400px;
             height: 400px;
-            background: rgba(111, 234, 255, .35);
+            background: rgba(177, 218, 228, .24);
             top: -160px;
             left: -120px;
         }
@@ -50,7 +51,7 @@
         body::after {
             width: 500px;
             height: 500px;
-            background: rgba(225, 135, 255, .35);
+            background: rgba(207, 193, 222, .22);
             right: -180px;
             bottom: -200px;
         }
@@ -61,33 +62,33 @@
             margin: auto;
             text-align: center;
             padding: 35px 25px 45px;
-            background: rgba(255, 255, 255, .12);
-            border: 1px solid rgba(255, 255, 255, .28);
+            background: rgba(255, 255, 255, .56);
+            border: 1px solid rgba(255, 255, 255, .78);
             border-radius: 32px;
             backdrop-filter: blur(22px);
             -webkit-backdrop-filter: blur(22px);
             box-shadow:
-                0 25px 70px rgba(0, 0, 0, .35),
-                inset 0 1px 2px rgba(255, 255, 255, .35);
+                0 25px 70px rgba(89, 96, 112, .12),
+                inset 0 1px 2px rgba(255, 255, 255, .75);
         }
 
         /* ANUNCIO GENERAL */
         .announcement-banner {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 140, 0, 0.25));
-            border: 1px solid rgba(255, 215, 0, 0.6);
+            background: rgba(255, 255, 255, .58);
+            border: 1px solid rgba(184, 192, 204, .38);
             border-radius: 16px;
             padding: 12px 18px;
             margin-bottom: 25px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(91, 99, 119, .08);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             font-size: 0.95rem;
             font-weight: 700;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: #6f7484;
+            text-shadow: none;
             animation: pulseBanner 2.5s infinite ease-in-out;
         }
 
@@ -124,8 +125,7 @@
             max-height: 180px;
             object-fit: contain;
             filter:
-                drop-shadow(0 10px 12px rgba(0, 0, 0, .35))
-                drop-shadow(0 0 25px rgba(0, 190, 255, .35));
+                drop-shadow(0 10px 16px rgba(91, 96, 112, .16));
             transition: transform .3s ease;
         }
 
@@ -141,14 +141,12 @@
             font-weight: 1000;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #fff;
-            text-shadow:
-                0 3px 0 #1555c7,
-                0 7px 15px rgba(0,0,0,.45);
+            color: #707588;
+            text-shadow: 0 4px 14px rgba(88, 94, 111, .10);
         }
 
         p.subtitle {
-            color: rgba(255,255,255,.82);
+            color: #7e8290;
             font-size: .95rem;
             margin-bottom: 30px;
         }
@@ -173,31 +171,31 @@
             justify-content: space-between;
             padding: 23px 20px;
             border-radius: 22px;
-            background: rgba(255,255,255,.09);
-            border: 1px solid rgba(255,255,255,.2);
+            background: rgba(255,255,255,.48);
+            border: 1px solid rgba(255,255,255,.72);
             backdrop-filter: blur(15px);
             box-shadow:
-                0 10px 30px rgba(0,0,0,.18),
-                inset 0 1px 1px rgba(255,255,255,.2);
+                0 10px 30px rgba(91, 96, 112, .08),
+                inset 0 1px 1px rgba(255,255,255,.72);
             transition: .3s ease;
             position: relative;
         }
 
         .card.featured-card {
-            background: rgba(255, 215, 0, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.45);
-            box-shadow: 
-                0 10px 30px rgba(0,0,0,.25),
-                0 0 20px rgba(255, 215, 0, 0.15);
+            background: rgba(255,255,255,.56);
+            border: 1px solid rgba(184, 192, 204, .35);
+            box-shadow:
+                0 10px 30px rgba(91, 96, 112, .09),
+                0 0 20px rgba(170, 179, 193, .08);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            background: rgba(255,255,255,.14);
-            border-color: rgba(120,220,255,.65);
+            background: rgba(255,255,255,.68);
+            border-color: rgba(168, 177, 193, .48);
             box-shadow:
-                0 18px 40px rgba(0,0,0,.25),
-                0 0 25px rgba(69,182,255,.12);
+                0 18px 40px rgba(91, 96, 112, .12),
+                0 0 25px rgba(170,179,193,.10);
         }
 
         .card.featured-card:hover {
@@ -222,30 +220,30 @@
         }
 
         .tag-gold {
-            background: linear-gradient(135deg, #ffcc00, #ff8800);
-            color: #000;
+            background: #e7ecef;
+            color: #707685;
         }
 
         .tag-blue {
-            background: linear-gradient(135deg, #00d2ff, #0072ff);
-            color: #fff;
+            background: #e3edf0;
+            color: #6d7780;
         }
 
         .tag-purple {
-            background: linear-gradient(135deg, #b5179e, #7209b7);
-            color: #fff;
+            background: #e8e2ec;
+            color: #777084;
         }
 
         .card h2 {
             font-size: 1.15rem;
             margin-bottom: 8px;
-            color: #fff;
-            text-shadow: 0 2px 7px rgba(0,0,0,.3);
+            color: #6f7484;
+            text-shadow: none;
         }
 
         .card p {
             font-size: .84rem;
-            color: rgba(255,255,255,.68);
+            color: #8a8e9a;
             margin-bottom: 20px;
             line-height: 1.45;
         }
@@ -256,7 +254,7 @@
             width: 100%;
             padding: 12px 18px;
             border-radius: 12px;
-            color: #fff;
+            color: #ffffff;
             font-weight: 800;
             text-decoration: none;
             font-size: .9rem;
@@ -269,29 +267,29 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #2563eb, #4f8cff);
-            box-shadow: 0 6px 18px rgba(37,99,235,.35);
+            background: linear-gradient(135deg, #9db6c1, #aeb3c5);
+            box-shadow: 0 6px 18px rgba(96, 108, 124, .16);
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #078dce, #27c5ed);
-            box-shadow: 0 6px 18px rgba(39,197,237,.3);
+            background: linear-gradient(135deg, #a7c2c8, #aebfc3);
+            box-shadow: 0 6px 18px rgba(96, 119, 128, .14);
         }
 
         .btn-warning {
-            background: linear-gradient(135deg, #7653e8, #a34bff);
-            box-shadow: 0 6px 18px rgba(163,75,255,.3);
+            background: linear-gradient(135deg, #b3aabe, #aaaebe);
+            box-shadow: 0 6px 18px rgba(108, 104, 121, .14);
         }
 
         .btn-info {
-            background: linear-gradient(135deg, #0878bb, #27b9e8);
-            box-shadow: 0 6px 18px rgba(39,185,232,.3);
+            background: linear-gradient(135deg, #9fbac2, #aabfc3);
+            box-shadow: 0 6px 18px rgba(96, 119, 128, .14);
         }
 
         footer {
             margin-top: 30px;
             font-size: .75rem;
-            color: rgba(255,255,255,.5);
+            color: #9a9da6;
         }
 
         /* CELULAR */
@@ -327,7 +325,7 @@
 
         <!-- ANUNCIO SUPERIOR -->
         <div class="announcement-banner">
-            📢 <span>¡Inscripciones abiertas del <strong>19 al 23 de Agosto</strong>!</span>
+            ✨ <span><strong>YA DISPONIBLE</strong> · Descarga tu constancia oficial</span>
         </div>
 
         <!-- LOGO -->
@@ -378,12 +376,12 @@
             <!-- 3. CONTRATO OFICIAL -->
             <div class="card">
                 <div>
-                    <span class="card-date-tag tag-purple">📜 28 y 29 de Agosto</span>
-                    <h2>📜 Contrato Oficial</h2>
-                    <p>Firma y descarga del contrato oficial disponible el 28 y 29 de agosto.</p>
+                    <span class="card-date-tag tag-purple">✨ YA DISPONIBLE</span>
+                    <h2>📄 Constancia Oficial</h2>
+                    <p>Consulta tu folio y descarga tu constancia oficial de participación.</p>
                 </div>
-                <a href="contrato.html" class="btn btn-warning">
-                    Ver Contrato
+                <a href="consulta.html" class="btn btn-warning">
+                    Descargar Constancia
                 </a>
             </div>
 
@@ -401,7 +399,7 @@
         </section>
 
         <footer>
-            © 2026 La Casa de los Famosos Roblox
+            © 2026 La Casa de los Famosos Roblox · Constancias oficiales
         </footer>
 
     </main>
