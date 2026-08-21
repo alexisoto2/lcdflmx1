@@ -1,55 +1,89 @@
-async function buscarYDescargar() {
-  const folioInput = document.getElementById('folioInput').value.trim().toUpperCase();
-  const errorMsg = document.getElementById('errorMsg');
-  const loadingMsg = document.getElementById('loadingMsg');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargar Contrato - LCDLF Roblox</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #eef2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
+    h2 { color: #2563eb; margin-top: 0; }
+    p { color: #64748b; font-size: 14px; }
+    input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 16px; text-align: center; text-transform: uppercase; outline: none; }
+    button { width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+    button:hover { background-color: #1d4ed8; }
+    .error { color: #ef4444; margin-top: 10px; font-size: 14px; display: none; }
+    .loading { color: #2563eb; margin-top: 10px; font-size: 14px; display: none; }
+  </style>
+</head>
+<body>
 
-  errorMsg.style.display = 'none';
-  loadingMsg.style.display = 'none';
+  <div class="card">
+    <h2>Descargar Contrato de Participación</h2>
+    <p>Ingresa tu folio de registro para generar y descargar tu contrato oficial.</p>
+    <input type="text" id="folioInput" placeholder="EJ: LCDLF-XJOH">
+    <button onclick="buscarYDescargar()">DESCARGAR CONTRATO (PDF)</button>
+    <div id="loadingMsg" class="loading">Generando tu documento oficial en PDF...</div>
+    <div id="errorMsg" class="error">Folio no encontrado. Verifica tus datos.</div>
+  </div>
 
-  if (!folioInput) {
-    errorMsg.textContent = "Por favor ingresa un folio válido.";
-    errorMsg.style.display = 'block';
-    return;
-  }
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyZWfnWTnW3GQDEuytQppcuyu8cryDzja7ingvGsIiskd5VMY_SyWfQHBsbLYf6Q2Q9/exec";
 
-  loadingMsg.style.display = 'block';
-  loadingMsg.textContent = "Generando tu documento oficial en PDF...";
+    async function buscarYDescargar() {
+      const folioInput = document.getElementById('folioInput').value.trim().toUpperCase();
+      const errorMsg = document.getElementById('errorMsg');
+      const loadingMsg = document.getElementById('loadingMsg');
 
-  try {
-    const url = `${WEB_APP_URL}?folio=${encodeURIComponent(folioInput)}`;
-    
-    const response = await fetch(url, {
-      method: "GET",
-      redirect: "follow"
-    });
-
-    const result = await response.json();
-
-    if (result.status === "success") {
-      // Descargar el archivo PDF directamente generado desde Google Docs
-      const link = document.createElement('a');
-      link.href = "data:application/pdf;base64," + result.pdfBase64;
-      link.download = result.filename;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+      errorMsg.style.display = 'none';
       loadingMsg.style.display = 'none';
 
-    } else if (result.status === "not_found") {
-      loadingMsg.style.display = 'none';
-      errorMsg.textContent = "Folio no encontrado. Verifica tus datos.";
-      errorMsg.style.display = 'block';
-    } else {
-      loadingMsg.style.display = 'none';
-      errorMsg.textContent = "Error: " + (result.message || "No se pudo procesar la solicitud.");
-      errorMsg.style.display = 'block';
+      if (!folioInput) {
+        errorMsg.textContent = "Por favor ingresa un folio válido.";
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      loadingMsg.style.display = 'block';
+
+      try {
+        const url = `${WEB_APP_URL}?folio=${encodeURIComponent(folioInput)}`;
+        
+        const response = await fetch(url, {
+          method: "GET",
+          redirect: "follow"
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          const link = document.createElement('a');
+          link.href = "data:application/pdf;base64," + result.pdfBase64;
+          link.download = result.filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          loadingMsg.style.display = 'none';
+
+        } else if (result.status === "not_found") {
+          loadingMsg.style.display = 'none';
+          errorMsg.textContent = "Folio no encontrado. Verifica tus datos.";
+          errorMsg.style.display = 'block';
+        } else {
+          loadingMsg.style.display = 'none';
+          errorMsg.textContent = "Error: " + (result.message || "No se pudo procesar la solicitud.");
+          errorMsg.style.display = 'block';
+        }
+
+      } catch (error) {
+        console.error("Error al conectar:", error);
+        loadingMsg.style.display = 'none';
+        errorMsg.textContent = "Error de conexión con la base de datos.";
+        errorMsg.style.display = 'block';
+      }
     }
-
-  } catch (error) {
-    console.error("Error al conectar:", error);
-    loadingMsg.style.display = 'none';
-    errorMsg.textContent = "Error de conexión con la base de datos.";
-    errorMsg.style.display = 'block';
-  }
-}
+  </script>
+</body>
+</html>
