@@ -1,161 +1,1043 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Habitantes</title>
-    <style>
-        @page {
-            size: A4;
-            margin: 20mm 15mm;
-            background-color: #f8fafc;
-        }
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #1e293b;
-            background-color: #f8fafc;
-            line-height: 1.5;
-        }
-        .header {
-            background-color: #1e3a8a;
-            color: #ffffff;
-            padding: 24px 20px;
-            border-radius: 8px;
-            margin-bottom: 24px;
-        }
-        .header h1 {
-            margin: 0 0 8px 0;
-            font-size: 20pt;
-            font-weight: bold;
-        }
-        .header p {
-            margin: 0;
-            font-size: 11pt;
-            opacity: 0.9;
-        }
-        .notice-banner {
-            background-color: #dbeafe;
-            border-left: 4px solid #2563eb;
-            padding: 14px 16px;
-            border-radius: 0 6px 6px 0;
-            margin-bottom: 24px;
-            font-size: 10.5pt;
-        }
-        .notice-banner strong {
-            color: #1e40af;
-        }
-        .section-title {
-            font-size: 14pt;
-            color: #1e3a8a;
-            border-bottom: 2px solid #cbd5e1;
-            padding-bottom: 6px;
-            margin-top: 0;
-            margin-bottom: 16px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #ffffff;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            margin-bottom: 24px;
-        }
-        th, td {
-            padding: 10pt 12pt;
-            text-align: left;
-            font-size: 10pt;
-        }
-        th {
-            background-color: #334155;
-            color: #ffffff;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 9pt;
-            letter-spacing: 0.5px;
-        }
-        tr:nth-child(even) {
-            background-color: #f1f5f9;
-        }
-        tr {
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 8.5pt;
-            font-weight: bold;
-        }
-        .badge-available {
-            background-color: #dcfce7;
-            color: #166534;
-        }
-        .badge-pending {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 9pt;
-            color: #64748b;
-            text-align: center;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 12px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b7c9dc">
+
+<title>Habitantes | La Casa de los Famosos Roblox</title>
+
+<style>
+
+:root{
+    --text:#4f5b6d;
+    --muted:#758093;
+    --glass:rgba(255,255,255,.34);
+    --line:rgba(255,255,255,.58);
+    --shadow:0 24px 70px rgba(78,91,116,.18);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    padding:18px 12px 35px;
+    font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--text);
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 8% 10%,rgba(157,213,226,.86) 0 8%,transparent 30%),
+        radial-gradient(circle at 92% 8%,rgba(184,166,218,.82) 0 7%,transparent 30%),
+        radial-gradient(circle at 6% 92%,rgba(164,197,224,.82) 0 8%,transparent 31%),
+        radial-gradient(circle at 94% 88%,rgba(220,181,209,.78) 0 8%,transparent 32%),
+        radial-gradient(circle at 52% 43%,rgba(246,205,191,.58) 0 8%,transparent 34%),
+        linear-gradient(135deg,#91bfce 0%,#b5bfdc 38%,#cdb8d4 67%,#d8b7ca 100%);
+
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(75px);
+    opacity:.7;
+}
+
+body::before{
+    width:360px;
+    height:360px;
+    left:-170px;
+    top:18%;
+    background:rgba(125,202,220,.55);
+}
+
+body::after{
+    width:430px;
+    height:430px;
+    right:-190px;
+    bottom:8%;
+    background:rgba(193,157,215,.50);
+}
+
+.shell{
+    width:min(1050px,100%);
+    margin:auto;
+}
+
+.portal{
+    position:relative;
+    overflow:hidden;
+    padding:20px;
+    border:1px solid var(--line);
+    border-radius:34px;
+    background:rgba(239,240,247,.29);
+    box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.68);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo-wrap{
+    width:min(420px,100%);
+    height:145px;
+    margin:0 auto 17px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px 18px;
+    border-radius:27px;
+    background:rgba(248,247,250,.22);
+    border:1px solid rgba(255,255,255,.43);
+    box-shadow:
+        0 18px 40px rgba(78,91,116,.12),
+        inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+.logo{
+    width:100%;
+    max-width:380px;
+    max-height:130px;
+    object-fit:contain;
+    filter:drop-shadow(0 12px 15px rgba(67,76,96,.18));
+}
+
+.eyebrow{
+    color:#697589;
+    font-size:.7rem;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+h1{
+    margin-top:6px;
+    color:#536074;
+    font-size:clamp(1.7rem,5vw,2.5rem);
+    font-weight:900;
+}
+
+.subtitle{
+    max-width:650px;
+    margin:10px auto 0;
+    color:#778295;
+    font-size:.9rem;
+    line-height:1.5;
+}
+
+/* =========================
+   CONTADOR
+========================= */
+
+.counter{
+    width:max-content;
+    max-width:100%;
+    margin:0 auto 25px;
+    padding:9px 17px;
+    border-radius:999px;
+    background:rgba(255,255,255,.35);
+    border:1px solid rgba(255,255,255,.55);
+    color:#687285;
+    font-size:.75rem;
+    font-weight:900;
+    letter-spacing:.7px;
+    box-shadow:0 8px 20px rgba(75,85,106,.08);
+}
+
+/* =========================
+   GRID
+========================= */
+
+.habitantes-grid{
+    display:grid;
+
+    /* PC */
+    grid-template-columns:repeat(5,minmax(0,1fr));
+
+    gap:16px;
+}
+
+/* =========================
+   TARJETA
+========================= */
+
+.habitante{
+    position:relative;
+    overflow:hidden;
+
+    min-width:0;
+
+    border-radius:23px;
+
+    border:1px solid rgba(255,255,255,.56);
+
+    background:rgba(245,245,248,.31);
+
+    box-shadow:
+        0 13px 32px rgba(74,85,105,.10),
+        inset 0 1px 0 rgba(255,255,255,.62);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.habitante:hover{
+    transform:translateY(-6px);
+
+    background:rgba(248,247,250,.44);
+
+    box-shadow:
+        0 20px 40px rgba(74,85,105,.17);
+}
+
+/* Número */
+
+.numero{
+    position:absolute;
+
+    top:10px;
+    left:10px;
+
+    z-index:3;
+
+    width:31px;
+    height:31px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.62);
+
+    border:1px solid rgba(255,255,255,.72);
+
+    color:#687285;
+
+    font-size:.72rem;
+    font-weight:900;
+
+    box-shadow:0 5px 12px rgba(70,80,100,.15);
+}
+
+/* =========================
+   FOTO
+========================= */
+
+.photo{
+    width:100%;
+    aspect-ratio:1/1;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(160,196,210,.65),
+            rgba(190,168,205,.65)
+        );
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:transform .35s ease;
+}
+
+.habitante:hover .photo img{
+    transform:scale(1.05);
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    padding:14px 13px 15px;
+    text-align:center;
+}
+
+.info h2{
+    color:#566174;
+    font-size:.94rem;
+    line-height:1.2;
+
+    margin-bottom:5px;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.roblox{
+    color:#7d8798;
+    font-size:.7rem;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+
+    margin-top:9px;
+
+    padding:5px 9px;
+
+    border-radius:999px;
+
+    background:rgba(221,208,226,.62);
+
+    color:#6d6076;
+
+    font-size:.59rem;
+    font-weight:900;
+
+    letter-spacing:.6px;
+    text-transform:uppercase;
+}
+
+.status::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#91bca8;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+
+.back{
+    display:flex;
+    justify-content:center;
+
+    margin:25px auto 0;
+
+    width:100%;
+    max-width:330px;
+
+    padding:13px 16px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:.78rem;
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            135deg,
+            #91bcca,
+            #a797ba
+        );
+
+    box-shadow:
+        0 9px 22px rgba(77,88,108,.17);
+
+    transition:.22s ease;
+}
+
+.back:hover{
+    transform:translateY(-2px);
+    box-shadow:0 13px 26px rgba(77,88,108,.22);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:22px 5px 2px;
+
+    text-align:center;
+
+    color:#7c8492;
+
+    font-size:.68rem;
+
+    line-height:1.6;
+}
+
+footer strong{
+    color:#657084;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:900px){
+
+    .habitantes-grid{
+        grid-template-columns:repeat(4,minmax(0,1fr));
+    }
+
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media(max-width:650px){
+
+    body{
+        padding:9px;
+    }
+
+    .portal{
+        padding:14px;
+        border-radius:27px;
+    }
+
+    .habitantes-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:10px;
+    }
+
+    .habitante{
+        border-radius:18px;
+    }
+
+    .info{
+        padding:10px 7px 11px;
+    }
+
+    .info h2{
+        font-size:.78rem;
+    }
+
+    .roblox{
+        font-size:.58rem;
+    }
+
+    .status{
+        font-size:.5rem;
+        padding:4px 6px;
+    }
+
+    .numero{
+        width:26px;
+        height:26px;
+        top:7px;
+        left:7px;
+        font-size:.62rem;
+    }
+
+    .logo-wrap{
+        height:125px;
+    }
+
+    .logo{
+        max-height:110px;
+    }
+
+}
+
+/* =========================
+   CELULARES PEQUEÑOS
+========================= */
+
+@media(max-width:390px){
+
+    .habitantes-grid{
+        gap:8px;
+    }
+
+    .info h2{
+        font-size:.7rem;
+    }
+
+    .roblox{
+        font-size:.53rem;
+    }
+
+    .status{
+        font-size:.45rem;
+        letter-spacing:.3px;
+    }
+
+    .numero{
+        width:23px;
+        height:23px;
+    }
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="header">
-        <h1>Registro y Control de Habitantes</h1>
-        <p>Padrón Residencial Oficial — Actualización General</p>
+<div class="shell">
+
+<main class="portal">
+
+    <!-- ENCABEZADO -->
+
+    <header class="header">
+
+        <div class="logo-wrap">
+
+            <img
+                src="logo.png"
+                alt="La Casa de los Famosos Roblox"
+                class="logo"
+            >
+
+        </div>
+
+        <div class="eyebrow">
+            Temporada oficial
+        </div>
+
+        <h1>
+            Lista de Habitantes
+        </h1>
+
+        <p class="subtitle">
+            Conoce a los 15 habitantes que forman parte
+            de La Casa de los Famosos Roblox.
+        </p>
+
+    </header>
+
+
+    <!-- CONTADOR -->
+
+    <div class="counter">
+        🏠 15 HABITANTES OFICIALES
     </div>
 
-    <div class="notice-banner">
-        <strong>Aviso Importante:</strong> La opción de consulta y descarga de la <strong>Lista de Habitantes</strong> estará disponible formalmente a partir del <strong>31 de agosto</strong>.
-    </div>
 
-    <h2 class="section-title">Estatus del Servicio y Módulos</h2>
+    <!-- HABITANTES -->
 
-    <table>
-        <thead>
-            <tr>
-                <th>Módulo / Servicio</th>
-                <th>Descripción</th>
-                <th>Fecha Disponible</th>
-                <th>Estatus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Lista de Habitantes</strong></td>
-                <td>Padrón completo y verificado de residentes.</td>
-                <td>31 de agosto</td>
-                <td><span class="badge badge-pending">Próximamente</span></td>
-            </tr>
-            <tr>
-                <td>Registro de Nuevos Ingresos</td>
-                <td>Alta de nuevos residentes y propietarios.</td>
-                <td>Disponible</td>
-                <td><span class="badge badge-available">Activo</span></td>
-            </tr>
-            <tr>
-                <td>Constancia de Residencia</td>
-                <td>Emisión de documentos oficiales de domicilio.</td>
-                <td>Disponible</td>
-                <td><span class="badge badge-available">Activo</span></td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="habitantes-grid">
 
-    <div class="footer">
-        Documento Informativo — Sistema de Gestión Residencial
-    </div>
+
+        <!-- 01 -->
+
+        <article class="habitante">
+
+            <span class="numero">01</span>
+
+            <div class="photo">
+                <img
+                    src="habitante1.jpg"
+                    alt="Habitante 1"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 1</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox1
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 02 -->
+
+        <article class="habitante">
+
+            <span class="numero">02</span>
+
+            <div class="photo">
+                <img
+                    src="habitante2.jpg"
+                    alt="Habitante 2"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 2</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox2
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 03 -->
+
+        <article class="habitante">
+
+            <span class="numero">03</span>
+
+            <div class="photo">
+                <img
+                    src="habitante3.jpg"
+                    alt="Habitante 3"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 3</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox3
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 04 -->
+
+        <article class="habitante">
+
+            <span class="numero">04</span>
+
+            <div class="photo">
+                <img
+                    src="habitante4.jpg"
+                    alt="Habitante 4"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 4</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox4
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 05 -->
+
+        <article class="habitante">
+
+            <span class="numero">05</span>
+
+            <div class="photo">
+                <img
+                    src="habitante5.jpg"
+                    alt="Habitante 5"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 5</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox5
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 06 -->
+
+        <article class="habitante">
+
+            <span class="numero">06</span>
+
+            <div class="photo">
+                <img
+                    src="habitante6.jpg"
+                    alt="Habitante 6"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 6</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox6
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 07 -->
+
+        <article class="habitante">
+
+            <span class="numero">07</span>
+
+            <div class="photo">
+                <img
+                    src="habitante7.jpg"
+                    alt="Habitante 7"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 7</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox7
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 08 -->
+
+        <article class="habitante">
+
+            <span class="numero">08</span>
+
+            <div class="photo">
+                <img
+                    src="habitante8.jpg"
+                    alt="Habitante 8"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 8</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox8
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 09 -->
+
+        <article class="habitante">
+
+            <span class="numero">09</span>
+
+            <div class="photo">
+                <img
+                    src="habitante9.jpg"
+                    alt="Habitante 9"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 9</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox9
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 10 -->
+
+        <article class="habitante">
+
+            <span class="numero">10</span>
+
+            <div class="photo">
+                <img
+                    src="habitante10.jpg"
+                    alt="Habitante 10"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 10</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox10
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 11 -->
+
+        <article class="habitante">
+
+            <span class="numero">11</span>
+
+            <div class="photo">
+                <img
+                    src="habitante11.jpg"
+                    alt="Habitante 11"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 11</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox11
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 12 -->
+
+        <article class="habitante">
+
+            <span class="numero">12</span>
+
+            <div class="photo">
+                <img
+                    src="habitante12.jpg"
+                    alt="Habitante 12"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 12</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox12
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 13 -->
+
+        <article class="habitante">
+
+            <span class="numero">13</span>
+
+            <div class="photo">
+                <img
+                    src="habitante13.jpg"
+                    alt="Habitante 13"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 13</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox13
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 14 -->
+
+        <article class="habitante">
+
+            <span class="numero">14</span>
+
+            <div class="photo">
+                <img
+                    src="habitante14.jpg"
+                    alt="Habitante 14"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 14</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox14
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 15 -->
+
+        <article class="habitante">
+
+            <span class="numero">15</span>
+
+            <div class="photo">
+                <img
+                    src="habitante15.jpg"
+                    alt="Habitante 15"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="info">
+
+                <h2>Habitante 15</h2>
+
+                <div class="roblox">
+                    @UsuarioRoblox15
+                </div>
+
+                <span class="status">
+                    Habitante oficial
+                </span>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- VOLVER -->
+
+    <a href="index.html" class="back">
+        ← Volver al portal
+    </a>
+
+
+    <footer>
+
+        <strong>La Casa de los Famosos Roblox</strong><br>
+
+        Lista oficial de habitantes · Temporada 2026
+
+    </footer>
+
+</main>
+
+</div>
 
 </body>
 </html>
