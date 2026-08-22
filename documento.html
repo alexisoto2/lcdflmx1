@@ -1352,7 +1352,76 @@ footer strong{
 }
 
 </style>
+/* =====================================================
+   BOTÓN REGRESAR
+===================================================== */
 
+.back-btn {
+
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 12px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 20px;
+
+  border-radius: 15px;
+
+  text-decoration: none;
+
+  color: #70748a;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  background:
+    rgba(255,255,255,0.60);
+
+  border:
+    1px solid
+    rgba(158,148,205,0.25);
+
+  box-shadow:
+    0 8px 20px
+    rgba(95,95,130,0.08);
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    color .2s ease;
+
+}
+
+.back-btn:hover {
+
+  transform:
+    translateY(-2px);
+
+  color: #686db7;
+
+  background:
+    rgba(255,255,255,0.90);
+
+  box-shadow:
+    0 12px 25px
+    rgba(95,95,130,0.13);
+
+}
+
+.back-btn:active {
+
+  transform:
+    translateY(0);
+
+}    
 </head>
 
 
@@ -1509,6 +1578,10 @@ footer strong{
     >
         Consultando tu folio...
     </div>
+
+    <a href="index.html" class="back-btn">
+  ← Regresar
+</a>
 
 
     <!-- ERROR -->
