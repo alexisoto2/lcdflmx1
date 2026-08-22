@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Habitantes</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 15mm;
+            background-color: #f8fafc;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #1e293b;
+            background-color: #f8fafc;
+            line-height: 1.5;
+        }
+        .header {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            padding: 24px 20px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .header h1 {
+            margin: 0 0 8px 0;
+            font-size: 20pt;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 0;
+            font-size: 11pt;
+            opacity: 0.9;
+        }
+        .notice-banner {
+            background-color: #dbeafe;
+            border-left: 4px solid #2563eb;
+            padding: 14px 16px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 24px;
+            font-size: 10.5pt;
+        }
+        .notice-banner strong {
+            color: #1e40af;
+        }
+        .section-title {
+            font-size: 14pt;
+            color: #1e3a8a;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 6px;
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+        th, td {
+            padding: 10pt 12pt;
+            text-align: left;
+            font-size: 10pt;
+        }
+        th {
+            background-color: #334155;
+            color: #ffffff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 9pt;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: bold;
+        }
+        .badge-available {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        .badge-pending {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 9pt;
+            color: #64748b;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Registro y Control de Habitantes</h1>
+        <p>Padrón Residencial Oficial — Actualización General</p>
+    </div>
+
+    <div class="notice-banner">
+        <strong>Aviso Importante:</strong> La opción de consulta y descarga de la <strong>Lista de Habitantes</strong> estará disponible formalmente a partir del <strong>31 de agosto</strong>.
+    </div>
+
+    <h2 class="section-title">Estatus del Servicio y Módulos</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Módulo / Servicio</th>
+                <th>Descripción</th>
+                <th>Fecha Disponible</th>
+                <th>Estatus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Lista de Habitantes</strong></td>
+                <td>Padrón completo y verificado de residentes.</td>
+                <td>31 de agosto</td>
+                <td><span class="badge badge-pending">Próximamente</span></td>
+            </tr>
+            <tr>
+                <td>Registro de Nuevos Ingresos</td>
+                <td>Alta de nuevos residentes y propietarios.</td>
+                <td>Disponible</td>
+                <td><span class="badge badge-available">Activo</span></td>
+            </tr>
+            <tr>
+                <td>Constancia de Residencia</td>
+                <td>Emisión de documentos oficiales de domicilio.</td>
+                <td>Disponible</td>
+                <td><span class="badge badge-available">Activo</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Documento Informativo — Sistema de Gestión Residencial
+    </div>
+
+</body>
+</html>
