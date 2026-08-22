@@ -752,12 +752,55 @@ h1{
         border-radius:27px;
     }
 
+    /* =========================
+       CUADRÍCULA EN CELULAR
+       2 COLUMNAS
+    ========================== */
+
     .grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:10px;
     }
 
     .card{
-        min-height:190px;
+        min-height:205px;
+        padding:14px;
+        border-radius:20px;
+    }
+
+    .card-top{
+        gap:5px;
+        margin-bottom:10px;
+    }
+
+    .icon{
+        width:38px;
+        height:38px;
+        border-radius:12px;
+        font-size:17px;
+    }
+
+    .tag{
+        padding:5px 6px;
+        font-size:.50rem;
+        letter-spacing:.3px;
+    }
+
+    .card h3{
+        font-size:.86rem;
+        line-height:1.2;
+    }
+
+    .card p{
+        font-size:.68rem;
+        line-height:1.4;
+    }
+
+    .btn{
+        padding:10px 7px;
+        font-size:.67rem;
+        border-radius:11px;
+        margin-top:12px;
     }
 
     .logo-wrap{
@@ -794,6 +837,59 @@ h1{
 
     .quick-link{
         text-align:center;
+    }
+}
+
+@media(max-width:390px){
+
+    .update{
+        padding:12px;
+    }
+
+    .update-icon{
+        width:38px;
+        height:38px;
+        flex-basis:38px;
+    }
+
+    .intro{
+        font-size:.84rem;
+    }
+
+    /* Mantener 2 columnas */
+    .grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:8px;
+    }
+
+    .card{
+        padding:12px;
+        min-height:195px;
+        border-radius:18px;
+    }
+
+    .icon{
+        width:34px;
+        height:34px;
+        font-size:15px;
+    }
+
+    .tag{
+        font-size:.44rem;
+        padding:4px 5px;
+    }
+
+    .card h3{
+        font-size:.78rem;
+    }
+
+    .card p{
+        font-size:.62rem;
+    }
+
+    .btn{
+        font-size:.60rem;
+        padding:9px 5px;
     }
 }
 
