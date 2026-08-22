@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-<meta name="theme-color" content="#b7c9dc">
+<meta
+    name="theme-color"
+    content="#b7c9dc"
+>
 
 <meta
     name="description"
     content="Consulta y descarga tu documento oficial de La Casa de los Famosos Roblox."
 >
 
-<title>Documento Oficial | La Casa de los Famosos Roblox</title>
+<title>
+    Documento Oficial | La Casa de los Famosos Roblox
+</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 
 <style>
 
@@ -28,18 +38,19 @@
     --text:#4f5b6d;
     --muted:#758093;
 
-    --glass:rgba(255,255,255,.34);
-    --glass-strong:rgba(255,255,255,.52);
+    --primary:#98b9c9;
+    --primary-dark:#687b94;
+
+    --purple:#a890b7;
+    --purple-dark:#77709b;
+
+    --white:rgba(255,255,255,.72);
 
     --line:rgba(255,255,255,.58);
-
-    --primary:#9caec8;
-    --secondary:#a890b7;
 
     --shadow:
         0 24px 70px rgba(78,91,116,.18);
 
-    --radius:30px;
 }
 
 
@@ -73,11 +84,6 @@ body{
     color:var(--text);
 
     overflow-x:hidden;
-
-
-    /* =====================================================
-       MISMO FONDO DEL INDEX.HTML
-    ====================================================== */
 
     background:
 
@@ -124,7 +130,7 @@ body{
 
 
 /* =========================================================
-   LUCES DEL FONDO
+   LUCES
 ========================================================= */
 
 body::before,
@@ -183,7 +189,7 @@ body::after{
 
 
 /* =========================================================
-   TARJETA PRINCIPAL
+   PORTAL
 ========================================================= */
 
 .portal{
@@ -221,38 +227,11 @@ body::after{
 }
 
 
-/* brillo */
-
-.portal::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:280px;
-    height:280px;
-
-    right:-120px;
-    top:-150px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.18);
-
-    filter:blur(5px);
-
-    pointer-events:none;
-}
-
-
 /* =========================================================
-   ACTUALIZACIÓN
+   AVISO
 ========================================================= */
 
 .update{
-
-    position:relative;
 
     display:flex;
 
@@ -385,21 +364,11 @@ body::after{
             0 15px 18px
             rgba(67,76,96,.18)
         );
-
-    transition:
-        transform .3s ease;
-}
-
-.logo:hover{
-
-    transform:
-        translateY(-3px)
-        scale(1.015);
 }
 
 
 /* =========================================================
-   ENCABEZADO
+   HEADER
 ========================================================= */
 
 .header{
@@ -439,7 +408,7 @@ body::after{
     text-transform:uppercase;
 }
 
-h1{
+.header h1{
 
     margin-top:11px;
 
@@ -474,7 +443,7 @@ h1{
 
 
 /* =========================================================
-   TARJETA DE CONSULTA
+   TARJETA CONSULTA
 ========================================================= */
 
 .document-card{
@@ -507,29 +476,9 @@ h1{
         blur(18px);
 }
 
-.document-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:150px;
-    height:150px;
-
-    right:-80px;
-    top:-80px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,255,255,.16);
-
-    pointer-events:none;
-}
-
 
 /* =========================================================
-   CABECERA DE CONSULTA
+   HEADING CONSULTA
 ========================================================= */
 
 .card-heading{
@@ -668,8 +617,7 @@ label{
 
     text-transform:uppercase;
 
-    transition:
-        .22s ease;
+    transition:.22s ease;
 }
 
 #folioInput::placeholder{
@@ -695,7 +643,7 @@ label{
 
 
 /* =========================================================
-   BOTÓN
+   BOTÓN PDF
 ========================================================= */
 
 .download-btn{
@@ -768,6 +716,76 @@ label{
 
 
 /* =========================================================
+   BOTÓN REGRESAR
+========================================================= */
+
+.back-btn{
+
+    width:100%;
+
+    min-height:52px;
+
+    margin-top:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:13px 20px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    color:#687083;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    background:
+        rgba(255,255,255,.60);
+
+    border:
+        1px solid
+        rgba(158,148,205,.25);
+
+    box-shadow:
+        0 8px 20px
+        rgba(95,95,130,.08);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease,
+        color .2s ease;
+}
+
+.back-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    color:#686db7;
+
+    background:
+        rgba(255,255,255,.90);
+
+    box-shadow:
+        0 12px 25px
+        rgba(95,95,130,.13);
+}
+
+.back-btn:active{
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
    MENSAJES
 ========================================================= */
 
@@ -826,14 +844,9 @@ label{
     font-size:.68rem;
 }
 
-.security span{
-
-    margin-right:5px;
-}
-
 
 /* =========================================================
-   INFO INFERIOR
+   INFORMACIÓN
 ========================================================= */
 
 .info-strip{
@@ -902,14 +915,11 @@ footer{
     line-height:1.6;
 }
 
-footer strong{
-
-    color:#657084;
-}
-
 
 /* =========================================================
-   CONTRATO PDF
+   =========================================================
+   DOCUMENTO PDF
+   =========================================================
 ========================================================= */
 
 #contrato-pdf{
@@ -920,9 +930,9 @@ footer strong{
 
     min-height:1123px;
 
-    padding:45px 55px;
+    padding:42px 52px;
 
-    background:#fff;
+    background:#ffffff;
 
     color:#343541;
 
@@ -931,35 +941,64 @@ footer strong{
         Helvetica,
         sans-serif;
 
-    font-size:12px;
+    font-size:11.5px;
 
     line-height:1.55;
 }
 
+
+/* =========================================================
+   CABECERA PDF
+========================================================= */
+
 .contrato-header{
+
+    position:relative;
 
     text-align:center;
 
-    padding-bottom:20px;
+    padding:
+        0 0 22px;
 
-    margin-bottom:22px;
+    margin-bottom:24px;
 
     border-bottom:
-        2px solid
-        #dedff0;
+        3px solid
+        #d8dbea;
+}
+
+.contrato-header::before{
+
+    content:"";
+
+    display:block;
+
+    height:8px;
+
+    margin:
+        -42px -52px 22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9dc9d6,
+            #a8b5d1,
+            #b69cc0
+        );
 }
 
 .contrato-logo{
 
     display:block;
 
-    width:170px;
+    width:155px;
 
-    max-width:170px;
+    max-width:155px;
 
     height:auto;
 
-    margin:0 auto 12px;
+    margin:
+        0 auto 13px;
 
     object-fit:contain;
 }
@@ -968,92 +1007,195 @@ footer strong{
 
     margin:0;
 
-    color:#686db7;
+    color:#596386;
 
-    font-size:20px;
+    font-size:19px;
 
     line-height:1.25;
+
+    letter-spacing:.4px;
 }
 
 .contrato-header h2{
 
-    margin:8px 0 2px;
+    margin:
+        7px 0 3px;
 
-    color:#7b7fae;
+    color:#8b7fa7;
 
-    font-size:15px;
+    font-size:14px;
+
+    letter-spacing:1px;
 }
 
 .contrato-web{
 
     margin:0;
 
-    color:#999;
+    color:#9a9eaa;
 
-    font-size:11px;
+    font-size:10px;
 }
+
+
+/* =========================================================
+   SELLO DOCUMENTO
+========================================================= */
+
+.document-status{
+
+    margin:
+        0 0 22px;
+
+    padding:10px 13px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        #dfe2ed;
+
+    border-radius:8px;
+
+    background:
+        #f7f8fc;
+
+    color:#70799b;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   SECCIONES PDF
+========================================================= */
 
 .contrato-section{
 
     margin-bottom:20px;
+
+    page-break-inside:avoid;
 }
 
 .contrato-section h3{
 
-    margin:0 0 12px;
+    display:flex;
 
-    padding-bottom:6px;
+    align-items:center;
+
+    gap:8px;
+
+    margin:
+        0 0 12px;
+
+    padding:
+        8px 11px;
+
+    border-left:
+        4px solid
+        #9eabc8;
 
     border-bottom:
         1px solid
-        #e1e1eb;
+        #e3e5ed;
 
-    color:#686db7;
+    background:
+        linear-gradient(
+            90deg,
+            #f3f5fa,
+            #ffffff
+        );
 
-    font-size:14px;
+    color:#596386;
+
+    font-size:12.5px;
+
+    letter-spacing:.3px;
 }
 
 .contrato-section h4{
 
-    margin:15px 0 6px;
+    margin:
+        15px 0 6px;
 
-    color:#555b91;
+    color:#646d91;
 
-    font-size:12px;
+    font-size:11.5px;
+
+    line-height:1.35;
 }
 
 .contrato-section p{
 
-    margin:0 0 9px;
+    margin:
+        0 0 9px;
 
     text-align:justify;
 }
 
 .contrato-section ol{
 
-    margin:5px 0 10px;
+    margin:
+        5px 0 10px;
 
-    padding-left:25px;
+    padding-left:23px;
 }
 
 .contrato-section li{
 
-    margin-bottom:8px;
+    margin-bottom:7px;
+
+    padding-left:3px;
 
     text-align:justify;
+}
+
+
+/* =========================================================
+   DATOS PARTICIPANTE
+========================================================= */
+
+.participante-box{
+
+    border:
+        1px solid
+        #dfe2ed;
+
+    border-radius:9px;
+
+    overflow:hidden;
+
+    margin-bottom:5px;
 }
 
 .dato-row{
 
     display:flex;
 
-    padding:7px 10px;
+    min-height:32px;
+
+    padding:
+        7px 10px;
 
     border-bottom:
         1px solid
-        #eeeeF3;
+        #e9eaf0;
 
-    background:#fafafe;
+    background:#fbfbfd;
+}
+
+.dato-row:last-child{
+
+    border-bottom:0;
+}
+
+.dato-row:nth-child(even){
+
+    background:#f5f6fa;
 }
 
 .dato-row strong{
@@ -1062,23 +1204,102 @@ footer strong{
 
     flex-shrink:0;
 
-    color:#555;
+    color:#5c6478;
+
+    font-size:10.5px;
 }
 
 .dato-row span{
 
     flex:1;
 
-    color:#333;
+    color:#30343e;
 
     word-break:break-word;
+
+    font-size:10.5px;
+
+    font-weight:600;
 }
+
+
+/* =========================================================
+   FOLIO DESTACADO
+========================================================= */
+
+.folio-oficial{
+
+    margin-top:14px;
+
+    padding:11px;
+
+    text-align:center;
+
+    border:
+        1px dashed
+        #aeb7d1;
+
+    border-radius:8px;
+
+    background:
+        #f5f6fb;
+
+    color:#626c91;
+
+    font-size:10px;
+}
+
+.folio-oficial strong{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#4e587c;
+
+    font-size:15px;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================================================
+   BLOQUE IMPORTANTE
+========================================================= */
+
+.notice-box{
+
+    margin:
+        13px 0;
+
+    padding:
+        10px 12px;
+
+    border-left:
+        3px solid
+        #b39bc2;
+
+    background:
+        #faf7fb;
+
+    color:#606474;
+
+    font-size:10.5px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   FECHA
+========================================================= */
 
 .fecha-emision{
 
     margin-top:25px;
 
-    padding:12px;
+    padding:
+        12px;
 
     text-align:right;
 
@@ -1086,29 +1307,97 @@ footer strong{
 
     border-top:
         1px solid
-        #ddd;
+        #dcdde5;
+
+    font-size:10.5px;
 }
+
+
+/* =========================================================
+   FIRMAS
+========================================================= */
+
+.firmas{
+
+    display:flex;
+
+    gap:45px;
+
+    margin-top:45px;
+
+    page-break-inside:avoid;
+}
+
+.firma{
+
+    flex:1;
+
+    text-align:center;
+
+    color:#555;
+}
+
+.firma-linea{
+
+    height:1px;
+
+    margin-bottom:7px;
+
+    background:#777;
+}
+
+.firma strong{
+
+    display:block;
+
+    font-size:10px;
+}
+
+.firma span{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#888;
+
+    font-size:9px;
+}
+
+
+/* =========================================================
+   FOOTER PDF
+========================================================= */
 
 .contrato-footer{
 
-    margin-top:30px;
+    margin-top:35px;
 
-    padding-top:15px;
+    padding-top:13px;
 
     text-align:center;
 
     border-top:
         1px solid
-        #e2e2ea;
+        #e1e2e9;
 
     color:#888;
 
-    font-size:10px;
+    font-size:9px;
+
+    line-height:1.5;
 }
 
-.contrato-section,
+
+/* =========================================================
+   CONTROL DE PÁGINAS
+========================================================= */
+
 .contrato-header,
+.document-status,
+.contrato-section,
 .fecha-emision,
+.firmas,
 .contrato-footer{
 
     page-break-inside:avoid;
@@ -1122,13 +1411,17 @@ footer strong{
 @keyframes entrada{
 
     from{
+
         opacity:0;
+
         transform:
             translateY(18px);
     }
 
     to{
+
         opacity:1;
+
         transform:
             translateY(0);
     }
@@ -1186,7 +1479,7 @@ footer strong{
         padding-bottom:19px;
     }
 
-    h1{
+    .header h1{
 
         font-size:1.7rem;
     }
@@ -1207,8 +1500,7 @@ footer strong{
 
     body{
 
-        padding:
-            8px;
+        padding:8px;
     }
 
     .portal{
@@ -1259,7 +1551,7 @@ footer strong{
         max-height:120px;
     }
 
-    h1{
+    .header h1{
 
         font-size:1.48rem;
     }
@@ -1315,6 +1607,13 @@ footer strong{
         font-size:.78rem;
     }
 
+    .back-btn{
+
+        min-height:50px;
+
+        font-size:.78rem;
+    }
+
 }
 
 
@@ -1339,7 +1638,7 @@ footer strong{
         max-height:105px;
     }
 
-    h1{
+    .header h1{
 
         font-size:1.35rem;
     }
@@ -1352,76 +1651,7 @@ footer strong{
 }
 
 </style>
-/* =====================================================
-   BOTÓN REGRESAR
-===================================================== */
 
-.back-btn {
-
-  width: 100%;
-
-  min-height: 52px;
-
-  margin-top: 12px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 13px 20px;
-
-  border-radius: 15px;
-
-  text-decoration: none;
-
-  color: #70748a;
-
-  font-size: 15px;
-
-  font-weight: 700;
-
-  background:
-    rgba(255,255,255,0.60);
-
-  border:
-    1px solid
-    rgba(158,148,205,0.25);
-
-  box-shadow:
-    0 8px 20px
-    rgba(95,95,130,0.08);
-
-  transition:
-    transform .2s ease,
-    background .2s ease,
-    box-shadow .2s ease,
-    color .2s ease;
-
-}
-
-.back-btn:hover {
-
-  transform:
-    translateY(-2px);
-
-  color: #686db7;
-
-  background:
-    rgba(255,255,255,0.90);
-
-  box-shadow:
-    0 12px 25px
-    rgba(95,95,130,0.13);
-
-}
-
-.back-btn:active {
-
-  transform:
-    translateY(0);
-
-}    
 </head>
 
 
@@ -1430,12 +1660,11 @@ footer strong{
 
 <main class="page">
 
-
 <div class="portal">
 
 
 <!-- =====================================================
-     ACTUALIZACIÓN
+     AVISO
 ====================================================== -->
 
 <section class="update">
@@ -1528,8 +1757,6 @@ footer strong{
     </div>
 
 
-    <!-- INPUT -->
-
     <div class="form-group">
 
         <label for="folioInput">
@@ -1556,7 +1783,7 @@ footer strong{
     </div>
 
 
-    <!-- BOTÓN -->
+    <!-- BOTÓN GENERAR -->
 
     <button
         type="button"
@@ -1570,7 +1797,17 @@ footer strong{
     </button>
 
 
-    <!-- LOADING -->
+    <!-- BOTÓN REGRESAR -->
+
+    <a
+        href="index.html"
+        class="back-btn"
+    >
+
+        ← Regresar al inicio
+
+    </a>
+
 
     <div
         id="loadingMsg"
@@ -1579,20 +1816,12 @@ footer strong{
         Consultando tu folio...
     </div>
 
-    <a href="index.html" class="back-btn">
-  ← Regresar
-</a>
-
-
-    <!-- ERROR -->
 
     <div
         id="errorMsg"
         class="message"
     ></div>
 
-
-    <!-- SEGURIDAD -->
 
     <div class="security">
 
@@ -1668,11 +1897,15 @@ footer strong{
 
 
 <!-- =====================================================
+     =====================================================
      CONTRATO PDF
+     =====================================================
 ====================================================== -->
 
 <div id="contrato-pdf">
 
+
+    <!-- CABECERA -->
 
     <div class="contrato-header">
 
@@ -1685,86 +1918,120 @@ footer strong{
 
         <h1>
             CONTRATO OFICIAL DE PARTICIPACIÓN
-            Y REGLAMENTO GENERAL
         </h1>
 
         <h2>
-            LA CASA DE LOS FAMOSOS ROBLOX
+            Y REGLAMENTO GENERAL
         </h2>
 
         <p class="contrato-web">
-            lcdlf.mx
+            LA CASA DE LOS FAMOSOS ROBLOX · lcdlf.mx
         </p>
 
     </div>
 
 
-    <!-- DATOS -->
+    <!-- ESTADO -->
+
+    <div class="document-status">
+
+        DOCUMENTO OFICIAL · GENERADO DIGITALMENTE
+
+    </div>
+
+
+    <!-- =================================================
+         DATOS
+    ================================================== -->
 
     <div class="contrato-section">
 
         <h3>
-            DATOS DE REGISTRO DEL PARTICIPANTE
+            👤 DATOS DEL PARTICIPANTE
         </h3>
 
-        <div class="dato-row">
 
-            <strong>
-                Nombre completo:
-            </strong>
+        <div class="participante-box">
 
-            <span id="pdf-nombre">
-                [Nombre del Participante]
-            </span>
+
+            <div class="dato-row">
+
+                <strong>
+                    Nombre completo:
+                </strong>
+
+                <span id="pdf-nombre">
+                    [Nombre del Participante]
+                </span>
+
+            </div>
+
+
+            <div class="dato-row">
+
+                <strong>
+                    Folio de solicitud:
+                </strong>
+
+                <span id="pdf-folio">
+                    [LCDLF-XXXX]
+                </span>
+
+            </div>
+
+
+            <div class="dato-row">
+
+                <strong>
+                    Edad:
+                </strong>
+
+                <span id="pdf-edad">
+                    [Edad]
+                </span>
+
+            </div>
+
+
+            <div class="dato-row">
+
+                <strong>
+                    Correo electrónico:
+                </strong>
+
+                <span id="pdf-correo">
+                    [Correo del Participante]
+                </span>
+
+            </div>
+
 
         </div>
 
-        <div class="dato-row">
 
-            <strong>
-                Folio de solicitud:
+        <div class="folio-oficial">
+
+            FOLIO OFICIAL DE PARTICIPACIÓN
+
+            <strong id="pdf-folio-destacado">
+                LCDLF-XXXX
             </strong>
-
-            <span id="pdf-folio">
-                [LCDLF-XXXX]
-            </span>
-
-        </div>
-
-        <div class="dato-row">
-
-            <strong>
-                Edad:
-            </strong>
-
-            <span id="pdf-edad">
-                [Edad]
-            </span>
-
-        </div>
-
-        <div class="dato-row">
-
-            <strong>
-                Correo electrónico:
-            </strong>
-
-            <span id="pdf-correo">
-                [Correo del Participante]
-            </span>
 
         </div>
 
     </div>
 
 
-    <!-- DECLARACIONES -->
+    <!-- =================================================
+         DECLARACIONES
+    ================================================== -->
 
     <div class="contrato-section">
 
         <h3>
-            DECLARACIONES Y CONDICIONES GENERALES
+            📋 DECLARACIONES Y CONDICIONES GENERALES
         </h3>
+
 
         <p>
 
@@ -1775,28 +2042,37 @@ footer strong{
             que celebran, por una parte, la administración de
             <strong>
                 La Casa de los Famosos Roblox
-            </strong>
-            (en adelante,
-            <em>"La Organización"</em>),
-            a través de su sitio web oficial
-            <strong>lcdlf.mx</strong>
-            y el correo institucional
-            <strong>admision@lcdlf.mx</strong>;
-            y por otra parte, la persona identificada en la
-            sección de datos superior (en adelante,
-            <em>"El Participante"</em>).
+            </strong>,
+            en adelante
+            <em>"La Organización"</em>,
+            a través de sus canales y plataformas oficiales,
+            y por otra parte la persona identificada en la
+            sección de datos anterior, en adelante
+            <em>"El Participante"</em>.
 
         </p>
+
+
+        <div class="notice-box">
+
+            Este documento establece las condiciones generales
+            de participación, convivencia y funcionamiento
+            aplicables durante la experiencia de
+            La Casa de los Famosos Roblox.
+
+        </div>
 
     </div>
 
 
-    <!-- CLÁUSULAS -->
+    <!-- =================================================
+         CLÁUSULAS
+    ================================================== -->
 
     <div class="contrato-section">
 
         <h3>
-            CLÁUSULAS
+            ⚖️ CLÁUSULAS DEL CONTRATO
         </h3>
 
 
@@ -1812,10 +2088,10 @@ footer strong{
             <strong>
                 La Casa de los Famosos Roblox
             </strong>,
-            garantizando la convivencia, la transparencia en
-            las dinámicas de juego y la observancia de las
-            reglas dentro del servidor de Roblox y plataformas
-            oficiales asociadas.
+            estableciendo las condiciones de convivencia,
+            participación y cumplimiento de las reglas dentro
+            del servidor de Roblox y las plataformas oficiales
+            asociadas al proyecto.
 
         </p>
 
@@ -1828,20 +2104,26 @@ footer strong{
 
             <li>
 
-                <em>"El Participante"</em> declara que sus datos
-                personales (Nombre, Edad, Correo y Folio asignado)
-                son verdaderos y coinciden con el registro realizado
-                en el portal <strong>lcdlf.mx</strong>.
+                <em>"El Participante"</em> declara que los datos
+                proporcionados durante su registro son verdaderos
+                y corresponden a la información utilizada para
+                identificar su solicitud.
 
             </li>
 
             <li>
 
-                Las comunicaciones oficiales relativas al estado
-                de admisión, instrucciones de acceso y notificaciones
-                administrativas se enviarán únicamente al correo
-                electrónico proporcionado por
-                <em>"El Participante"</em>.
+                El folio asignado constituye el identificador
+                utilizado para consultar el estado de la solicitud
+                y acceder a los documentos correspondientes.
+
+            </li>
+
+            <li>
+
+                Las comunicaciones relacionadas con el proceso
+                deberán realizarse mediante los canales oficiales
+                establecidos por la organización.
 
             </li>
 
@@ -1849,7 +2131,7 @@ footer strong{
 
 
         <h4>
-            TERCERA. CÓDIGO DE CONDUCTA Y REGLAMENTO INTERNO
+            TERCERA. CÓDIGO DE CONDUCTA Y REGLAMENTO
         </h4>
 
         <ol>
@@ -1857,23 +2139,24 @@ footer strong{
             <li>
 
                 <strong>
-                    Convivencia y Respeto:
+                    Convivencia y respeto:
                 </strong>
 
-                Se prohíbe estrictamente el acoso, la discriminación,
-                el lenguaje de odio o cualquier conducta tóxica.
+                Se prohíbe el acoso, discriminación, lenguaje de
+                odio, amenazas o cualquier conducta que afecte
+                negativamente la convivencia.
 
             </li>
 
             <li>
 
                 <strong>
-                    Juego Limpio:
+                    Juego limpio:
                 </strong>
 
-                El uso de exploits, hacks, programas de terceros
-                o cualquier método de alteración del servidor
-                resultará en la expulsión de la competencia.
+                Queda prohibido utilizar exploits, hacks,
+                programas de terceros o cualquier método destinado
+                a alterar o perjudicar el funcionamiento del juego.
 
             </li>
 
@@ -1883,8 +2166,9 @@ footer strong{
                     Puntualidad:
                 </strong>
 
-                El participante se compromete a presentarse
-                puntualmente en las actividades programadas.
+                El participante deberá presentarse en las
+                actividades, pruebas, galas y dinámicas que
+                sean previamente comunicadas.
 
             </li>
 
@@ -1899,16 +2183,19 @@ footer strong{
 
             <li>
 
-                El participante autoriza a la organización a
-                grabar, transmitir y publicar contenido generado
-                dentro de las instancias del juego.
+                El participante autoriza la generación y difusión
+                de contenido relacionado con su participación
+                dentro de las actividades oficiales del proyecto,
+                incluyendo avatar, nombre de usuario y contenido
+                generado durante la experiencia.
 
             </li>
 
             <li>
 
                 La Organización no solicitará contraseñas
-                personales de Roblox.
+                personales de Roblox ni información destinada
+                exclusivamente al acceso privado de una cuenta.
 
             </li>
 
@@ -1921,39 +2208,52 @@ footer strong{
 
         <p>
 
-            El incumplimiento de cualquiera de los puntos aquí
-            señalados faculta a la Organización a aplicar las
-            medidas correspondientes, incluida la expulsión
-            definitiva del reality.
+            El incumplimiento de las reglas establecidas podrá
+            dar lugar a medidas disciplinarias, restricciones
+            dentro de las actividades o, cuando corresponda,
+            la expulsión definitiva de la competencia.
 
         </p>
 
     </div>
 
 
-    <!-- ACEPTACIÓN -->
+    <!-- =================================================
+         ACEPTACIÓN
+    ================================================== -->
 
     <div class="contrato-section">
 
         <h3>
-            ACEPTACIÓN DEL CONTRATO
+            ✅ ACEPTACIÓN DEL CONTRATO
         </h3>
+
 
         <p>
 
-            Al ingresar el folio correspondiente en
-            <strong>lcdlf.mx</strong>
-            y/o confirmar la postulación vía los canales
-            oficiales, el participante manifiesta haber leído,
-            comprendido y aceptado las cláusulas expuestas
-            en este contrato.
+            Al continuar con el proceso de participación y
+            utilizar los canales oficiales destinados para tal
+            efecto, <em>"El Participante"</em> manifiesta haber
+            leído y comprendido las condiciones establecidas
+            en el presente documento.
 
         </p>
+
+
+        <div class="notice-box">
+
+            La conservación de este documento es responsabilidad
+            del participante. El PDF se genera automáticamente
+            a partir de los datos registrados en el sistema.
+
+        </div>
 
     </div>
 
 
-    <!-- FECHA -->
+    <!-- =================================================
+         FECHA
+    ================================================== -->
 
     <div class="fecha-emision">
 
@@ -1966,7 +2266,47 @@ footer strong{
     </div>
 
 
-    <!-- FOOTER PDF -->
+    <!-- =================================================
+         FIRMAS
+    ================================================== -->
+
+    <div class="firmas">
+
+        <div class="firma">
+
+            <div class="firma-linea"></div>
+
+            <strong>
+                LA ORGANIZACIÓN
+            </strong>
+
+            <span>
+                La Casa de los Famosos Roblox
+            </span>
+
+        </div>
+
+
+        <div class="firma">
+
+            <div class="firma-linea"></div>
+
+            <strong>
+                EL PARTICIPANTE
+            </strong>
+
+            <span id="firma-nombre">
+                Nombre del participante
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
 
     <div class="contrato-footer">
 
@@ -1978,9 +2318,14 @@ footer strong{
 
         lcdlf.mx
 
-        <br><br>
+        <br>
 
         Documento oficial generado automáticamente.
+
+        <br>
+
+        El folio indicado en este documento corresponde
+        al registro consultado en el sistema oficial.
 
     </div>
 
@@ -2140,6 +2485,10 @@ async function buscarYDescargar(){
             await response.json();
 
 
+        /* =================================================
+           ÉXITO
+        ================================================= */
+
         if(
             result.status === "success"
         ){
@@ -2148,34 +2497,67 @@ async function buscarYDescargar(){
                 result.datos || {};
 
 
+            const nombre =
+                datos.nombre ||
+                "No registrado";
+
+            const folioFinal =
+                datos.folio ||
+                folio;
+
+            const edad =
+                datos.edad
+                    ? datos.edad + " años"
+                    : "N/A";
+
+            const correo =
+                datos.correo ||
+                "No registrado";
+
+
+            /* DATOS */
+
             document.getElementById(
                 "pdf-nombre"
             ).textContent =
-                datos.nombre ||
-                "No registrado";
+                nombre;
 
 
             document.getElementById(
                 "pdf-folio"
             ).textContent =
-                datos.folio ||
-                folio;
+                folioFinal;
 
 
             document.getElementById(
                 "pdf-edad"
             ).textContent =
-                datos.edad
-                    ? datos.edad + " años"
-                    : "N/A";
+                edad;
 
 
             document.getElementById(
                 "pdf-correo"
             ).textContent =
-                datos.correo ||
-                "No registrado";
+                correo;
 
+
+            /* FOLIO DESTACADO */
+
+            document.getElementById(
+                "pdf-folio-destacado"
+            ).textContent =
+                folioFinal;
+
+
+            /* FIRMA */
+
+            document.getElementById(
+                "firma-nombre"
+            ).textContent =
+                nombre;
+
+
+            /* MOSTRAR PDF */
 
             const pdfElement =
                 document.getElementById(
@@ -2191,14 +2573,16 @@ async function buscarYDescargar(){
                 "Generando tu documento oficial en PDF...";
 
 
+            /* =================================================
+               CONFIGURACIÓN PDF
+            ================================================== */
+
             const opciones = {
 
-                margin:15,
+                margin:10,
 
                 filename:
-                    `Contrato_${
-                        datos.folio || folio
-                    }.pdf`,
+                    `Contrato_${folioFinal}.pdf`,
 
                 image:{
                     type:"jpeg",
@@ -2213,7 +2597,9 @@ async function buscarYDescargar(){
 
                     allowTaint:false,
 
-                    logging:false
+                    logging:false,
+
+                    backgroundColor:"#ffffff"
 
                 },
 
@@ -2223,16 +2609,25 @@ async function buscarYDescargar(){
 
                     format:"a4",
 
-                    orientation:"portrait"
+                    orientation:"portrait",
+
+                    compress:true
 
                 },
 
                 pagebreak:{
 
                     mode:[
-                        "avoid-all",
                         "css",
                         "legacy"
+                    ],
+
+                    avoid:[
+                        ".contrato-section",
+                        ".contrato-header",
+                        ".firmas",
+                        ".fecha-emision",
+                        ".contrato-footer"
                     ]
 
                 }
@@ -2240,11 +2635,20 @@ async function buscarYDescargar(){
             };
 
 
+            /* =================================================
+               GENERAR
+            ================================================== */
+
             await html2pdf()
+
                 .set(opciones)
+
                 .from(pdfElement)
+
                 .save();
 
+
+            /* OCULTAR */
 
             pdfElement.style.display =
                 "none";
@@ -2254,6 +2658,10 @@ async function buscarYDescargar(){
 
         }
 
+
+        /* =================================================
+           NO ENCONTRADO
+        ================================================= */
 
         else if(
             result.status === "not_found"
@@ -2270,6 +2678,10 @@ async function buscarYDescargar(){
 
         }
 
+
+        /* =================================================
+           OTRO ERROR
+        ================================================= */
 
         else{
 
@@ -2318,5 +2730,7 @@ async function buscarYDescargar(){
 
 </script>
 
+
 </body>
+
 </html>
