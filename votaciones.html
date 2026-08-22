@@ -1,59 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#aebed4">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<meta
-    name="theme-color"
-    content="#aebed4"
->
-
-<title>
-Votaciones | La Casa de los Famosos Roblox
-</title>
-
+<title>Votaciones | La Casa de los Famosos Roblox</title>
 
 <style>
 
 :root{
-
     --text:#566174;
     --muted:#7c8697;
-
-    --glass:rgba(245,244,248,.40);
-
-    --line:rgba(255,255,255,.60);
-
-    --shadow:
-        0 20px 55px
-        rgba(72,84,106,.15);
-
+    --card:rgba(245,244,248,.38);
+    --line:rgba(255,255,255,.58);
+    --shadow:0 20px 55px rgba(72,84,106,.15);
 }
-
 
 *{
-
     box-sizing:border-box;
-
     margin:0;
-
     padding:0;
-
 }
 
-
 body{
-
     min-height:100vh;
-
-    padding:12px;
+    padding:14px;
 
     font-family:
         "Segoe UI",
@@ -65,7 +37,6 @@ body{
     color:var(--text);
 
     background:
-
         radial-gradient(
             circle at 8% 8%,
             rgba(153,207,220,.82) 0 8%,
@@ -105,196 +76,160 @@ body{
         );
 
     background-attachment:fixed;
-
 }
-
 
 .page{
-
-    width:min(720px,100%);
-
+    width:min(900px,100%);
     margin:auto;
-
 }
 
-
 .container{
+    padding:18px;
 
-    padding:16px;
+    border:1px solid var(--line);
+    border-radius:32px;
 
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:30px;
-
-    background:
-        rgba(240,240,246,.30);
+    background:rgba(240,240,246,.30);
 
     box-shadow:
         var(--shadow),
-        inset 0 1px 0
-        rgba(255,255,255,.70);
+        inset 0 1px 0 rgba(255,255,255,.7);
 
     backdrop-filter:blur(24px);
-
     -webkit-backdrop-filter:blur(24px);
-
 }
 
 
-/* LOGO */
+/* =====================================================
+   LOGO
+===================================================== */
 
 .logo-box{
+    width:min(430px,100%);
+    height:150px;
 
-    width:min(330px,100%);
-
-    height:105px;
-
-    margin:0 auto 10px;
+    margin:0 auto 8px;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-    padding:7px 15px;
+    padding:8px 20px;
 
-    border-radius:22px;
+    border-radius:27px;
 
-    background:
-        rgba(250,249,251,.23);
+    background:rgba(250,249,251,.23);
 
-    border:
-        1px solid
-        rgba(255,255,255,.46);
-
+    border:1px solid rgba(255,255,255,.46);
 }
 
-
 .logo{
-
     width:100%;
-
     height:100%;
 
     object-fit:contain;
 
     filter:
         drop-shadow(
-            0 10px 14px
+            0 12px 15px
             rgba(65,77,98,.18)
         );
-
 }
 
 
-/* ENCABEZADO */
+/* =====================================================
+   ENCABEZADO
+===================================================== */
 
 .header{
-
     text-align:center;
-
-    padding:0 4px 15px;
-
+    padding:2px 5px 22px;
 }
 
-
-.label{
-
+.header .label{
     display:inline-block;
 
-    padding:5px 10px;
+    margin-top:5px;
+    padding:6px 11px;
 
     border-radius:999px;
 
-    background:
-        rgba(221,208,226,.66);
+    background:rgba(221,208,226,.66);
 
     color:#6e6274;
 
-    font-size:.60rem;
-
+    font-size:.66rem;
     font-weight:900;
 
-    letter-spacing:1px;
-
+    letter-spacing:1.2px;
 }
 
-
 h1{
-
-    margin-top:8px;
+    margin-top:10px;
 
     color:#536074;
 
     font-size:
         clamp(
-            1.45rem,
+            1.65rem,
             5vw,
-            2rem
+            2.35rem
         );
 
     line-height:1.05;
-
 }
 
-
 .header p{
+    max-width:590px;
 
-    max-width:520px;
-
-    margin:7px auto 0;
+    margin:9px auto 0;
 
     color:var(--muted);
 
-    font-size:.75rem;
+    font-size:.84rem;
 
-    line-height:1.45;
-
+    line-height:1.55;
 }
 
 
-/* AVISO */
+/* =====================================================
+   ALERTA
+===================================================== */
 
 .alert{
-
     display:flex;
-
     align-items:center;
 
-    gap:10px;
+    gap:12px;
 
-    margin-bottom:15px;
+    margin-bottom:18px;
 
-    padding:11px 13px;
+    padding:15px 17px;
 
     border:
         1px solid
         rgba(255,255,255,.58);
 
-    border-radius:17px;
+    border-radius:20px;
 
     background:
         rgba(247,239,244,.38);
 
+    box-shadow:
+        0 12px 28px
+        rgba(76,87,106,.10);
 }
 
-
 .alert-icon{
+    flex:0 0 43px;
 
-    flex:0 0 35px;
-
-    width:35px;
-
-    height:35px;
+    width:43px;
+    height:43px;
 
     display:grid;
-
     place-items:center;
 
-    border-radius:11px;
+    border-radius:14px;
 
     background:
         linear-gradient(
@@ -303,252 +238,202 @@ h1{
             #9fb9c5
         );
 
-    color:#fff;
+    color:white;
 
-    font-size:16px;
-
+    font-size:20px;
 }
 
-
 .alert strong{
-
     display:block;
 
     color:#5d6576;
 
-    font-size:.72rem;
-
+    font-size:.86rem;
 }
 
-
 .alert span{
-
     display:block;
 
-    margin-top:2px;
+    margin-top:3px;
 
     color:#7d8695;
 
-    font-size:.62rem;
-
+    font-size:.72rem;
 }
 
 
-/* TITULO */
+/* =====================================================
+   TÍTULO VOTACIÓN
+===================================================== */
 
 .vote-title{
-
     display:flex;
 
-    align-items:center;
-
+    align-items:end;
     justify-content:space-between;
 
-    margin:3px 2px 9px;
+    gap:10px;
 
+    margin:4px 2px 13px;
 }
-
 
 .vote-title h2{
-
+    font-size:1.05rem;
     color:#596275;
-
-    font-size:.92rem;
-
 }
-
 
 .vote-title span{
-
     color:#7c8594;
-
-    font-size:.62rem;
-
+    font-size:.7rem;
 }
 
 
-/* PARTICIPANTES */
+/* =====================================================
+   PARTICIPANTES
+===================================================== */
 
 .candidates{
+    display:grid;
 
-    display:flex;
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
 
-    flex-direction:column;
-
-    gap:9px;
-
+    gap:16px;
 }
 
-
-/* TARJETA */
-
 .candidate{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    padding:8px;
+    overflow:hidden;
 
     border:
         1px solid
         rgba(255,255,255,.60);
 
-    border-radius:18px;
+    border-radius:25px;
 
-    background:
-        var(--glass);
+    background:var(--card);
 
     box-shadow:
-        0 10px 25px
-        rgba(72,84,106,.10),
+        0 15px 35px
+        rgba(72,84,106,.11),
 
         inset 0 1px 0
         rgba(255,255,255,.65);
 
-    transition:.2s ease;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
+    transition:.24s ease;
 }
-
 
 .candidate:hover{
+    transform:translateY(-4px);
 
-    transform:translateY(-2px);
-
+    box-shadow:
+        0 20px 42px
+        rgba(72,84,106,.16);
 }
 
 
-/* FOTO PEQUEÑA */
+/* =====================================================
+   FOTO
+===================================================== */
 
 .photo{
-
     position:relative;
 
-    flex:0 0 76px;
-
-    width:76px;
-
-    height:76px;
+    height:255px;
 
     overflow:hidden;
-
-    border-radius:15px;
 
     background:
         linear-gradient(
             135deg,
-            #a4cbd8,
-            #cbb9d7
+            rgba(164,203,216,.72),
+            rgba(203,185,215,.72)
         );
-
 }
 
-
 .photo img{
-
     width:100%;
-
     height:100%;
 
     display:block;
 
     object-fit:cover;
-
 }
 
-
 .number{
-
     position:absolute;
 
-    left:5px;
+    top:12px;
+    left:12px;
 
-    top:5px;
+    min-width:38px;
+    height:38px;
 
-    min-width:23px;
-
-    height:23px;
+    padding:0 10px;
 
     display:grid;
-
     place-items:center;
 
-    padding:0 5px;
-
-    border-radius:8px;
+    border-radius:13px;
 
     background:
-        rgba(248,247,250,.80);
+        rgba(248,247,250,.72);
 
     color:#5e687a;
 
-    font-size:.57rem;
+    font-size:.78rem;
+    font-weight:950;
 
-    font-weight:900;
+    box-shadow:
+        0 6px 16px
+        rgba(63,75,96,.13);
 
+    backdrop-filter:blur(8px);
 }
 
 
-/* INFORMACIÓN */
+/* =====================================================
+   INFORMACIÓN
+===================================================== */
 
 .candidate-info{
-
-    min-width:0;
-
-    flex:1;
-
+    padding:15px;
 }
-
 
 .candidate-name{
-
     color:#566174;
 
-    font-size:.86rem;
-
+    font-size:1rem;
     font-weight:900;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
 }
 
-
 .candidate-user{
-
-    margin-top:2px;
+    margin-top:3px;
 
     color:#87909e;
 
-    font-size:.61rem;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
+    font-size:.7rem;
 }
 
 
-/* BOTON */
+/* =====================================================
+   BOTÓN VOTAR
+===================================================== */
 
 .vote-button{
-
     width:100%;
 
-    margin-top:7px;
+    margin-top:13px;
 
-    padding:8px 10px;
+    padding:12px 14px;
 
     border:0;
-
-    border-radius:10px;
+    border-radius:14px;
 
     cursor:pointer;
 
@@ -563,52 +448,49 @@ h1{
 
     font-family:inherit;
 
-    font-size:.64rem;
-
+    font-size:.78rem;
     font-weight:900;
 
+    box-shadow:
+        0 8px 18px
+        rgba(75,87,107,.14);
+
     transition:.2s ease;
-
 }
-
 
 .vote-button:hover{
+    transform:translateY(-2px);
 
-    transform:translateY(-1px);
-
+    box-shadow:
+        0 11px 23px
+        rgba(75,87,107,.19);
 }
-
 
 .vote-button:disabled{
-
-    opacity:.65;
-
-    cursor:wait;
-
+    cursor:not-allowed;
+    opacity:.85;
 }
 
-
 .vote-button.voted{
-
     background:
         linear-gradient(
             135deg,
             #91b9b4,
             #a3bcae
         );
-
 }
 
 
-/* RESULTADO */
+/* =====================================================
+   RESULTADO
+===================================================== */
 
 .result{
-
     display:none;
 
-    margin-top:13px;
+    margin-top:17px;
 
-    padding:13px;
+    padding:15px;
 
     text-align:center;
 
@@ -616,40 +498,37 @@ h1{
         1px solid
         rgba(255,255,255,.58);
 
-    border-radius:16px;
+    border-radius:18px;
 
     background:
         rgba(236,239,239,.42);
 
     color:#697587;
 
-    font-size:.72rem;
+    font-size:.82rem;
 
     line-height:1.5;
-
 }
-
 
 .result.show{
-
     display:block;
-
 }
 
 
-/* VOLVER */
+/* =====================================================
+   BOTÓN VOLVER
+===================================================== */
 
 .back{
-
     display:block;
 
     width:max-content;
 
-    margin:17px auto 3px;
+    margin:22px auto 3px;
 
-    padding:8px 13px;
+    padding:10px 15px;
 
-    border-radius:11px;
+    border-radius:13px;
 
     text-decoration:none;
 
@@ -662,432 +541,648 @@ h1{
         1px solid
         rgba(255,255,255,.5);
 
-    font-size:.65rem;
-
+    font-size:.73rem;
     font-weight:800;
-
 }
 
 
-/* FOOTER */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .footer{
-
-    padding:15px 5px 2px;
+    padding:20px 5px 3px;
 
     text-align:center;
 
     color:#7b8492;
 
-    font-size:.59rem;
+    font-size:.66rem;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   MODAL PERSONALIZADO
+===================================================== */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:18px;
+
+    background:
+        rgba(63,70,88,.42);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    animation:modalFondo .22s ease;
+}
+
+.modal.hidden{
+    display:none;
+}
+
+.modal-box{
+    width:100%;
+    max-width:410px;
+
+    padding:25px 22px 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.70);
+
+    border-radius:27px;
+
+    background:
+        rgba(239,240,247,.82);
+
+    box-shadow:
+        0 25px 70px
+        rgba(65,73,94,.28),
+
+        inset 0 1px 0
+        rgba(255,255,255,.75);
+
+    backdrop-filter:blur(25px);
+
+    -webkit-backdrop-filter:blur(25px);
+
+    animation:
+        modalEntrada .25s ease;
+}
+
+.modal-icon{
+    width:55px;
+    height:55px;
+
+    margin:0 auto 12px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a8c4d0,
+            #b3a3c0
+        );
+
+    color:white;
+
+    font-size:25px;
+
+    box-shadow:
+        0 9px 20px
+        rgba(75,87,107,.15);
+}
+
+.modal-box h2{
+    text-align:center;
+
+    color:#566174;
+
+    font-size:1.28rem;
+
+    margin-bottom:7px;
+}
+
+.modal-box p{
+    text-align:center;
+
+    color:#7c8697;
+
+    font-size:.78rem;
 
     line-height:1.5;
 
+    margin-bottom:17px;
+}
+
+.modal-label{
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#596477;
+
+    font-size:.74rem;
+
+    font-weight:900;
+}
+
+.modal-input{
+    width:100%;
+
+    padding:13px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.58);
+
+    border-radius:14px;
+
+    outline:none;
+
+    background:
+        rgba(255,255,255,.38);
+
+    color:#536074;
+
+    font-family:inherit;
+
+    font-size:.85rem;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.45);
+
+    transition:.2s ease;
+}
+
+.modal-input::placeholder{
+    color:#939baa;
+}
+
+.modal-input:focus{
+    background:
+        rgba(255,255,255,.50);
+
+    border-color:
+        rgba(145,188,202,.85);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(145,188,202,.13);
+}
+
+.modal-buttons{
+    display:flex;
+
+    gap:9px;
+
+    margin-top:16px;
+}
+
+.modal-btn{
+    flex:1;
+
+    padding:12px 10px;
+
+    border-radius:13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.45);
+
+    font-family:inherit;
+
+    font-size:.75rem;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+}
+
+.modal-cancel{
+    color:#697487;
+
+    background:
+        rgba(255,255,255,.32);
+}
+
+.modal-confirm{
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #9aaec1,
+            #ad9bb8
+        );
+
+    box-shadow:
+        0 7px 17px
+        rgba(75,87,107,.14);
+}
+
+.modal-btn:hover{
+    transform:translateY(-1px);
+}
+
+.modal-error{
+    display:none;
+
+    margin-top:8px;
+
+    color:#a06f7d;
+
+    font-size:.7rem;
+
+    text-align:center;
+}
+
+@keyframes modalFondo{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+@keyframes modalEntrada{
+    from{
+        opacity:0;
+        transform:
+            translateY(12px)
+            scale(.94);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 
-/* CELULAR */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
-@media(max-width:480px){
+@media(max-width:620px){
 
     body{
-
-        padding:7px;
-
+        padding:9px;
     }
-
 
     .container{
-
-        padding:11px;
-
-        border-radius:25px;
-
+        padding:13px;
+        border-radius:27px;
     }
-
 
     .logo-box{
-
-        height:90px;
-
-        border-radius:19px;
-
+        height:125px;
+        border-radius:23px;
     }
 
-
-    .candidate{
-
-        gap:9px;
-
-        padding:7px;
-
+    .candidates{
+        grid-template-columns:1fr;
     }
-
 
     .photo{
-
-        flex-basis:65px;
-
-        width:65px;
-
-        height:65px;
-
-        border-radius:13px;
-
+        height:285px;
     }
 
-
-    .candidate-name{
-
-        font-size:.78rem;
-
+    .vote-title{
+        align-items:flex-start;
+        flex-direction:column;
     }
 
-
-    .candidate-user{
-
-        font-size:.57rem;
-
-    }
-
-
-    .vote-button{
-
-        font-size:.59rem;
-
-        padding:7px;
-
+    .modal-box{
+        padding:23px 17px 18px;
+        border-radius:24px;
     }
 
 }
 
+@media(max-width:390px){
+
+    .photo{
+        height:250px;
+    }
+
+}
 
 </style>
-
 </head>
 
 
 <body>
-
 
 <div class="page">
 
 <main class="container">
 
 
-<header class="header">
+    <!-- =================================================
+         ENCABEZADO
+    ================================================= -->
 
+    <header class="header">
 
-<div class="logo-box">
+        <div class="logo-box">
 
-<img
-    src="logo.png"
-    alt="La Casa de los Famosos Roblox"
-    class="logo"
->
+            <img
+                src="logo.png"
+                alt="La Casa de los Famosos Roblox"
+                class="logo"
+            >
 
-</div>
+        </div>
 
+        <span class="label">
+            VOTACIONES OFICIALES
+        </span>
 
-<span class="label">
-VOTACIONES OFICIALES
-</span>
+        <h1>
+            Elige a tu favorito
+        </h1>
 
+        <p>
+            Cada usuario de Roblox dispone de hasta
+            <strong>5 votos</strong>.
+            Puedes votar por tus participantes favoritos.
+        </p>
 
-<h1>
-Elige a tu favorito
-</h1>
+    </header>
 
 
-<p>
-Cada usuario de Roblox dispone de hasta
-<strong>5 votos</strong>.
-</p>
+    <!-- =================================================
+         ALERTA
+    ================================================= -->
 
+    <section class="alert">
 
-</header>
+        <div class="alert-icon">
+            🗳️
+        </div>
 
+        <div>
 
-<section class="alert">
+            <strong>
+                VOTACIONES ABIERTAS
+            </strong>
 
-<div class="alert-icon">
-🗳️
-</div>
+            <span>
+                Puedes utilizar hasta 5 votos por usuario.
+            </span>
 
-<div>
+        </div>
 
-<strong>
-VOTACIONES ABIERTAS
-</strong>
+    </section>
 
-<span>
-Puedes utilizar hasta 5 votos por usuario.
-</span>
 
-</div>
+    <!-- =================================================
+         PARTICIPANTES
+    ================================================= -->
 
-</section>
+    <div class="vote-title">
 
+        <h2>
+            Participantes
+        </h2>
 
-<div class="vote-title">
+        <span>
+            Temporada 2026
+        </span>
 
-<h2>
-Participantes
-</h2>
+    </div>
 
-<span>
-Temporada 2026
-</span>
 
-</div>
+    <section class="candidates">
 
 
-<section class="candidates">
+        <!-- PARTICIPANTE 01 -->
 
+        <article class="candidate">
 
-<!-- PARTICIPANTE 01 -->
+            <div class="photo">
 
-<article class="candidate">
+                <img
+                    src="foto1.jpg"
+                    alt="Foto del participante 1"
+                >
 
-<div class="photo">
+                <span class="number">
+                    01
+                </span>
 
-<img
-    src="foto1.jpg"
-    alt="Participante 01"
->
+            </div>
 
-<span class="number">
-01
-</span>
+            <div class="candidate-info">
 
-</div>
+                <div class="candidate-name">
+                    Participante 01
+                </div>
 
+                <div class="candidate-user">
+                    @usuario01
+                </div>
 
-<div class="candidate-info">
+                <button
+                    class="vote-button"
+                    onclick="abrirModalVoto(this,'Participante 01')"
+                >
+                    🗳️ VOTAR
+                </button>
 
-<div class="candidate-name">
-Participante 01
-</div>
+            </div>
 
-<div class="candidate-user">
-@usuario01
-</div>
+        </article>
 
 
-<button
-    class="vote-button"
-    onclick="votar(this,'Participante 01')"
->
+        <!-- PARTICIPANTE 02 -->
 
-🗳️ VOTAR
+        <article class="candidate">
 
-</button>
+            <div class="photo">
 
-</div>
+                <img
+                    src="foto2.jpg"
+                    alt="Foto del participante 2"
+                >
 
-</article>
+                <span class="number">
+                    02
+                </span>
 
+            </div>
 
-<!-- PARTICIPANTE 02 -->
+            <div class="candidate-info">
 
-<article class="candidate">
+                <div class="candidate-name">
+                    Participante 02
+                </div>
 
-<div class="photo">
+                <div class="candidate-user">
+                    @usuario02
+                </div>
 
-<img
-    src="foto1.jpg"
-    alt="Participante 02"
->
+                <button
+                    class="vote-button"
+                    onclick="abrirModalVoto(this,'Participante 02')"
+                >
+                    🗳️ VOTAR
+                </button>
 
-<span class="number">
-02
-</span>
+            </div>
 
-</div>
+        </article>
 
 
-<div class="candidate-info">
+        <!-- PARTICIPANTE 03 -->
 
-<div class="candidate-name">
-Participante 02
-</div>
+        <article class="candidate">
 
-<div class="candidate-user">
-@usuario02
-</div>
+            <div class="photo">
 
+                <img
+                    src="foto3.jpg"
+                    alt="Foto del participante 3"
+                >
 
-<button
-    class="vote-button"
-    onclick="votar(this,'Participante 02')"
->
+                <span class="number">
+                    03
+                </span>
 
-🗳️ VOTAR
+            </div>
 
-</button>
+            <div class="candidate-info">
 
-</div>
+                <div class="candidate-name">
+                    Participante 03
+                </div>
 
-</article>
+                <div class="candidate-user">
+                    @usuario03
+                </div>
 
+                <button
+                    class="vote-button"
+                    onclick="abrirModalVoto(this,'Participante 03')"
+                >
+                    🗳️ VOTAR
+                </button>
 
-<!-- PARTICIPANTE 03 -->
+            </div>
 
-<article class="candidate">
+        </article>
 
-<div class="photo">
 
-<img
-    src="foto1.jpg"
-    alt="Participante 03"
->
+        <!-- PARTICIPANTE 04 -->
 
-<span class="number">
-03
-</span>
+        <article class="candidate">
 
-</div>
+            <div class="photo">
 
+                <img
+                    src="foto4.jpg"
+                    alt="Foto del participante 4"
+                >
 
-<div class="candidate-info">
+                <span class="number">
+                    04
+                </span>
 
-<div class="candidate-name">
-Participante 03
-</div>
+            </div>
 
-<div class="candidate-user">
-@usuario03
-</div>
+            <div class="candidate-info">
 
+                <div class="candidate-name">
+                    Participante 04
+                </div>
 
-<button
-    class="vote-button"
-    onclick="votar(this,'Participante 03')"
->
+                <div class="candidate-user">
+                    @usuario04
+                </div>
 
-🗳️ VOTAR
+                <button
+                    class="vote-button"
+                    onclick="abrirModalVoto(this,'Participante 04')"
+                >
+                    🗳️ VOTAR
+                </button>
 
-</button>
+            </div>
 
-</div>
+        </article>
 
-</article>
 
+        <!-- PARTICIPANTE 05 -->
 
-<!-- PARTICIPANTE 04 -->
+        <article class="candidate">
 
-<article class="candidate">
+            <div class="photo">
 
-<div class="photo">
+                <img
+                    src="foto5.jpg"
+                    alt="Foto del participante 5"
+                >
 
-<img
-    src="foto1.jpg"
-    alt="Participante 04"
->
+                <span class="number">
+                    05
+                </span>
 
-<span class="number">
-04
-</span>
+            </div>
 
-</div>
+            <div class="candidate-info">
 
+                <div class="candidate-name">
+                    Participante 05
+                </div>
 
-<div class="candidate-info">
+                <div class="candidate-user">
+                    @usuario05
+                </div>
 
-<div class="candidate-name">
-Participante 04
-</div>
+                <button
+                    class="vote-button"
+                    onclick="abrirModalVoto(this,'Participante 05')"
+                >
+                    🗳️ VOTAR
+                </button>
 
-<div class="candidate-user">
-@usuario04
-</div>
+            </div>
 
+        </article>
 
-<button
-    class="vote-button"
-    onclick="votar(this,'Participante 04')"
->
 
-🗳️ VOTAR
+    </section>
 
-</button>
 
-</div>
+    <!-- RESULTADO -->
 
-</article>
+    <div
+        id="result"
+        class="result"
+    ></div>
 
 
-<!-- PARTICIPANTE 05 -->
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Volver al portal oficial
+    </a>
 
-<article class="candidate">
 
-<div class="photo">
+    <footer class="footer">
 
-<img
-    src="foto1.jpg"
-    alt="Participante 05"
->
+        <strong>
+            La Casa de los Famosos Roblox
+        </strong>
 
-<span class="number">
-05
-</span>
+        <br>
 
-</div>
+        Votaciones oficiales · Temporada 2026
 
-
-<div class="candidate-info">
-
-<div class="candidate-name">
-Participante 05
-</div>
-
-<div class="candidate-user">
-@usuario05
-</div>
-
-
-<button
-    class="vote-button"
-    onclick="votar(this,'Participante 05')"
->
-
-🗳️ VOTAR
-
-</button>
-
-</div>
-
-</article>
-
-
-</section>
-
-
-<div
-    id="result"
-    class="result"
-></div>
-
-
-<a
-    href="index.html"
-    class="back"
->
-← Volver al portal oficial
-</a>
-
-
-<footer class="footer">
-
-<strong>
-La Casa de los Famosos Roblox
-</strong>
-
-<br>
-
-Votaciones oficiales
-
-</footer>
+    </footer>
 
 
 </main>
@@ -1095,298 +1190,457 @@ Votaciones oficiales
 </div>
 
 
+<!-- =====================================================
+     MODAL PARA USUARIO DE ROBLOX
+===================================================== -->
+
+<div
+    id="modalVoto"
+    class="modal hidden"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-icon">
+            🎮
+        </div>
+
+        <h2>
+            Registrar voto
+        </h2>
+
+        <p>
+            Estás votando por
+            <strong id="nombreParticipante">
+                Participante
+            </strong>.
+            <br>
+            Escribe tu usuario de Roblox para continuar.
+        </p>
+
+        <label
+            class="modal-label"
+            for="usuarioRoblox"
+        >
+            Usuario de Roblox
+        </label>
+
+        <input
+            type="text"
+            id="usuarioRoblox"
+            class="modal-input"
+            placeholder="Ej. Alexis123"
+            autocomplete="off"
+            maxlength="30"
+        >
+
+        <div
+            id="modalError"
+            class="modal-error"
+        >
+            Escribe tu usuario de Roblox.
+        </div>
+
+        <div class="modal-buttons">
+
+            <button
+                type="button"
+                class="modal-btn modal-cancel"
+                onclick="cerrarModalVoto()"
+            >
+                CANCELAR
+            </button>
+
+            <button
+                type="button"
+                class="modal-btn modal-confirm"
+                onclick="confirmarVoto()"
+            >
+                ✓ CONTINUAR
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <script>
 
-
-/* ==========================================
-   URL DE TU GOOGLE APPS SCRIPT
-   PEGA AQUÍ LA URL /exec
-========================================== */
+/* =====================================================
+   URL DE GOOGLE APPS SCRIPT
+===================================================== */
 
 const APPS_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwagRKYTnF3gRJR24VYLI1OKOZl5KOwmfFweB-nwYcVuT3hlzdpmNSMQNPHr131e9E2WQ/exec";
 
 
-/* ==========================================
-   VOTAR
-========================================== */
+/*
+   IMPORTANTE:
+   Si tu Apps Script de votaciones tiene OTRA URL,
+   reemplaza la URL anterior por la de votaciones.
+*/
 
-async function votar(button, participante){
+
+let botonSeleccionado = null;
+let participanteSeleccionado = "";
 
 
-    let usuario =
-        prompt(
-            "Escribe tu usuario de Roblox:"
+/* =====================================================
+   ABRIR MODAL
+===================================================== */
+
+function abrirModalVoto(
+    boton,
+    participante
+){
+
+    botonSeleccionado = boton;
+
+    participanteSeleccionado = participante;
+
+    document.getElementById(
+        "nombreParticipante"
+    ).textContent = participante;
+
+    document.getElementById(
+        "usuarioRoblox"
+    ).value = "";
+
+    document.getElementById(
+        "modalError"
+    ).style.display = "none";
+
+    document.getElementById(
+        "modalVoto"
+    ).classList.remove("hidden");
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("usuarioRoblox")
+            .focus();
+
+    },100);
+
+}
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+function cerrarModalVoto(){
+
+    document
+        .getElementById("modalVoto")
+        .classList.add("hidden");
+
+    botonSeleccionado = null;
+
+    participanteSeleccionado = "";
+
+}
+
+
+/* =====================================================
+   ESCAPAR TEXTO
+===================================================== */
+
+function escapar(texto){
+
+    return String(texto || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   API
+===================================================== */
+
+function llamarAPI(
+    accion,
+    parametros={}
+){
+
+    return new Promise(
+        (resolve,reject)=>{
+
+            const callbackName =
+                "jsonp_vote_" +
+                Math.random()
+                .toString(36)
+                .substring(2,12);
+
+            const params =
+                new URLSearchParams({
+
+                    action:accion,
+
+                    callback:callbackName,
+
+                    ...parametros
+
+                });
+
+            const script =
+                document.createElement("script");
+
+            script.src =
+                APPS_SCRIPT_URL +
+                "?" +
+                params.toString();
+
+            window[callbackName] =
+                function(respuesta){
+
+                    cleanup();
+
+                    if(
+                        respuesta &&
+                        respuesta.success
+                    ){
+
+                        resolve(respuesta);
+
+                    }else{
+
+                        reject(
+                            new Error(
+                                respuesta?.message ||
+                                "No se pudo registrar el voto."
+                            )
+                        );
+
+                    }
+
+                };
+
+            script.onerror =
+                function(){
+
+                    cleanup();
+
+                    reject(
+                        new Error(
+                            "No se pudo conectar con el servidor."
+                        )
+                    );
+
+                };
+
+            function cleanup(){
+
+                delete window[callbackName];
+
+                if(script.parentNode){
+
+                    script.parentNode
+                        .removeChild(script);
+
+                }
+
+            }
+
+            document.body.appendChild(script);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CONFIRMAR VOTO
+===================================================== */
+
+async function confirmarVoto(){
+
+    const input =
+        document.getElementById(
+            "usuarioRoblox"
         );
+
+    const error =
+        document.getElementById(
+            "modalError"
+        );
+
+    const usuario =
+        input.value.trim();
 
 
     if(!usuario){
 
-        return;
+        error.textContent =
+            "Escribe tu usuario de Roblox.";
 
+        error.style.display =
+            "block";
+
+        input.focus();
+
+        return;
     }
 
 
-    usuario =
-        usuario.trim();
-
-
-    if(usuario.length < 3){
-
-        mostrarResultado(
-            "Escribe un usuario de Roblox válido.",
-            true
-        );
-
-        return;
-
-    }
-
-
-    const confirmar =
-        confirm(
-            "¿Confirmas tu voto por " +
-            participante +
-            "?"
+    const botonConfirmar =
+        document.querySelector(
+            ".modal-confirm"
         );
 
 
-    if(!confirmar){
+    botonConfirmar.disabled =
+        true;
 
-        return;
-
-    }
-
-
-    const botones =
-        document.querySelectorAll(
-            ".vote-button"
-        );
-
-
-    button.disabled = true;
-
-    button.textContent =
+    botonConfirmar.textContent =
         "⏳ REGISTRANDO...";
 
 
     try{
 
+        /*
+         * IMPORTANTE:
+         * El nombre de la acción debe coincidir
+         * con tu Apps Script.
+         */
 
-        const callbackName =
-            "voto_" +
-            Math.random()
-                .toString(36)
-                .substring(2);
+        const respuesta =
+            await llamarAPI(
+                "registrarVoto",
+                {
 
+                    usuarioRoblox:
+                        usuario,
 
-        const parametros =
-            new URLSearchParams({
-
-                action:"votar",
-
-                roblox:usuario,
-
-                participante:participante,
-
-                callback:callbackName
-
-            });
-
-
-        const script =
-            document.createElement("script");
-
-
-        script.src =
-            APPS_SCRIPT_URL +
-            "?" +
-            parametros.toString();
-
-
-        window[callbackName] =
-            function(respuesta){
-
-
-                delete window[callbackName];
-
-
-                if(
-                    script.parentNode
-                ){
-
-                    script.parentNode
-                        .removeChild(script);
+                    participante:
+                        participanteSeleccionado
 
                 }
+            );
 
 
-                button.disabled = false;
+        cerrarModalVoto();
 
 
-                if(
-                    respuesta &&
-                    respuesta.success
-                ){
+        if(botonSeleccionado){
 
+            botonSeleccionado
+                .classList
+                .add("voted");
 
-                    button.classList.add(
-                        "voted"
-                    );
+            botonSeleccionado
+                .textContent =
+                "✓ VOTO REGISTRADO";
 
+            botonSeleccionado.disabled =
+                true;
 
-                    button.textContent =
-                        "✓ VOTO REGISTRADO";
-
-
-                    mostrarResultado(
-
-                        "Voto registrado por " +
-                        participante +
-                        ". " +
-
-                        "Has utilizado " +
-                        respuesta.votosUsados +
-                        " de 5 votos. " +
-
-                        "Te quedan " +
-                        respuesta.votosRestantes +
-                        ".",
-
-                        false
-
-                    );
-
-
-                }else{
-
-
-                    button.textContent =
-                        "🗳️ VOTAR";
-
-
-                    mostrarResultado(
-
-                        respuesta?.message ||
-                        "No se pudo registrar el voto.",
-
-                        true
-
-                    );
-
-                }
-
-            };
-
-
-        script.onerror =
-            function(){
-
-
-                delete window[callbackName];
-
-
-                if(
-                    script.parentNode
-                ){
-
-                    script.parentNode
-                        .removeChild(script);
-
-                }
-
-
-                button.disabled = false;
-
-                button.textContent =
-                    "🗳️ VOTAR";
-
-
-                mostrarResultado(
-                    "No se pudo conectar con el sistema de votaciones.",
-                    true
-                );
-
-            };
-
-
-        document.body.appendChild(
-            script
-        );
-
-
-    }catch(error){
-
-
-        button.disabled = false;
-
-        button.textContent =
-            "🗳️ VOTAR";
+        }
 
 
         mostrarResultado(
-            error.message,
-            true
+            "✓ Tu voto por " +
+            participanteSeleccionado +
+            " fue registrado correctamente."
         );
+
+
+    }catch(errorAPI){
+
+        error.textContent =
+            errorAPI.message;
+
+        error.style.display =
+            "block";
+
+    }finally{
+
+        botonConfirmar.disabled =
+            false;
+
+        botonConfirmar.textContent =
+            "✓ CONTINUAR";
 
     }
 
 }
 
 
-/* ==========================================
+/* =====================================================
    RESULTADO
-========================================== */
+===================================================== */
 
-function mostrarResultado(
-    texto,
-    error = false
-){
-
+function mostrarResultado(texto){
 
     const result =
         document.getElementById(
             "result"
         );
 
-
     result.textContent =
         texto;
-
 
     result.classList.add(
         "show"
     );
 
-
-    if(error){
-
-        result.style.color =
-            "#9b6878";
-
-    }else{
-
-        result.style.color =
-            "#697587";
-
-    }
-
-
     result.scrollIntoView({
-
         behavior:"smooth",
-
         block:"center"
-
     });
 
 }
 
 
+/* =====================================================
+   ENTER PARA CONFIRMAR
+===================================================== */
+
+document
+    .getElementById("usuarioRoblox")
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key === "Enter"){
+
+                e.preventDefault();
+
+                confirmarVoto();
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   CERRAR AL TOCAR FUERA
+===================================================== */
+
+document
+    .getElementById("modalVoto")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+
+                cerrarModalVoto();
+
+            }
+
+        }
+    );
+
 </script>
 
-
 </body>
-
 </html>
-                  
