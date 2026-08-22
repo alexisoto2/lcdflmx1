@@ -1,1205 +1,1798 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b5bfdc">
 
-    <title>Registro | La Casa de los Famosos Roblox</title>
+<title>Registro | La Casa de los Famosos Roblox</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", Arial, sans-serif;
-        }
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* =====================================================
+   VARIABLES
+===================================================== */
 
-        body {
-            min-height: 100vh;
-            padding: 25px 15px;
+:root{
+    --text:#4f5b6d;
+    --muted:#758093;
 
-            color: #fff;
+    --glass:rgba(255,255,255,.34);
+    --glass-strong:rgba(255,255,255,.50);
 
-            background:
-                radial-gradient(circle at 12% 12%, rgba(0, 220, 255, .75), transparent 30%),
-                radial-gradient(circle at 88% 10%, rgba(172, 91, 255, .75), transparent 33%),
-                radial-gradient(circle at 50% 90%, rgba(255, 153, 220, .65), transparent 38%),
-                linear-gradient(135deg, #063d50, #292b88 48%, #7337a7);
+    --line:rgba(255,255,255,.58);
 
-            background-attachment: fixed;
+    --shadow:
+        0 24px 70px rgba(78,91,116,.18);
 
-            overflow-x: hidden;
-        }
+    --blue:#91bcca;
+    --purple:#ad9fbe;
+}
 
-        /* NUBES / LUCES DEL FONDO */
 
-        body::before,
-        body::after {
-            content: "";
-            position: fixed;
-            z-index: -1;
+/* =====================================================
+   RESET
+===================================================== */
 
-            border-radius: 50%;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-            filter: blur(90px);
+html{
+    scroll-behavior:smooth;
+}
 
-            pointer-events: none;
-        }
+body{
+    min-height:100vh;
 
-        body::before {
-            width: 420px;
-            height: 420px;
+    padding:18px 12px 35px;
 
-            top: -180px;
-            left: -130px;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
 
-            background: rgba(72, 225, 255, .35);
-        }
+    color:var(--text);
 
-        body::after {
-            width: 520px;
-            height: 520px;
+    overflow-x:hidden;
 
-            right: -190px;
-            bottom: -220px;
+    /* MISMO FONDO DEL INDEX */
 
-            background: rgba(230, 137, 255, .35);
-        }
+    background:
+        radial-gradient(
+            circle at 8% 10%,
+            rgba(157,213,226,.86) 0 8%,
+            transparent 30%
+        ),
 
-        /* CONTENEDOR */
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(184,166,218,.82) 0 7%,
+            transparent 30%
+        ),
 
-        .container {
-            width: 100%;
-            max-width: 650px;
+        radial-gradient(
+            circle at 6% 92%,
+            rgba(164,197,224,.82) 0 8%,
+            transparent 31%
+        ),
 
-            margin: 0 auto;
+        radial-gradient(
+            circle at 94% 88%,
+            rgba(220,181,209,.78) 0 8%,
+            transparent 32%
+        ),
 
-            padding: 30px 25px 35px;
+        radial-gradient(
+            circle at 52% 43%,
+            rgba(246,205,191,.58) 0 8%,
+            transparent 34%
+        ),
 
-            background: rgba(255, 255, 255, .11);
+        linear-gradient(
+            135deg,
+            #91bfce 0%,
+            #b5bfdc 38%,
+            #cdb8d4 67%,
+            #d8b7ca 100%
+        );
 
-            border: 1px solid rgba(255, 255, 255, .28);
+    background-attachment:fixed;
+}
 
-            border-radius: 32px;
 
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
+/* =====================================================
+   LUCES DEL FONDO
+===================================================== */
 
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, .35),
-                inset 0 1px 2px rgba(255, 255, 255, .35);
-        }
+body::before,
+body::after{
+    content:"";
 
-        /* LOGO */
+    position:fixed;
 
-        .logo-container {
-            display: flex;
-            justify-content: center;
+    z-index:-1;
 
-            margin-bottom: 15px;
-        }
+    border-radius:50%;
 
-        .logo-box {
-            width: min(390px, 100%);
-            min-height: 155px;
+    pointer-events:none;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    filter:blur(75px);
 
-            padding: 12px;
+    opacity:.7;
+}
 
-            border-radius: 28px;
+body::before{
+    width:360px;
+    height:360px;
 
-            background: rgba(255, 255, 255, .10);
+    left:-170px;
+    top:18%;
 
-            border: 1px solid rgba(255, 255, 255, .25);
+    background:
+        rgba(125,202,220,.55);
+}
 
-            backdrop-filter: blur(15px);
+body::after{
+    width:430px;
+    height:430px;
 
-            box-shadow:
-                0 15px 40px rgba(0, 0, 0, .25),
-                inset 0 1px 2px rgba(255, 255, 255, .3);
-        }
+    right:-190px;
+    bottom:8%;
 
-        .logo-img {
-            width: 100%;
-            max-width: 360px;
-            max-height: 165px;
+    background:
+        rgba(193,157,215,.50);
+}
 
-            object-fit: contain;
 
-            filter:
-                drop-shadow(0 10px 12px rgba(0, 0, 0, .35))
-                drop-shadow(0 0 25px rgba(0, 190, 255, .35));
+/* =====================================================
+   CONTENEDOR
+===================================================== */
 
-            transition: transform .3s ease;
-        }
+.container{
 
-        .logo-img:hover {
-            transform: scale(1.035);
-        }
+    width:min(680px,100%);
 
-        /* ENCABEZADO */
+    margin:auto;
 
-        .header {
-            text-align: center;
+    position:relative;
 
-            margin-bottom: 28px;
-        }
+    overflow:hidden;
 
-        .header h1 {
-            margin-top: 18px;
-            margin-bottom: 8px;
+    padding:22px;
 
-            font-size: clamp(1.6rem, 5vw, 2.35rem);
+    border:
+        1px solid var(--line);
 
-            font-weight: 1000;
+    border-radius:34px;
 
-            text-transform: uppercase;
+    background:
+        rgba(239,240,247,.29);
 
-            letter-spacing: 1.5px;
+    box-shadow:
+        var(--shadow),
+        inset 0 1px 0
+        rgba(255,255,255,.68);
 
-            text-shadow:
-                0 3px 0 #1556c5,
-                0 7px 15px rgba(0, 0, 0, .45);
-        }
+    backdrop-filter:blur(24px);
 
-        .header p {
-            color: rgba(255, 255, 255, .78);
+    -webkit-backdrop-filter:blur(24px);
+}
 
-            font-size: .92rem;
+.container::before{
 
-            line-height: 1.5;
-        }
+    content:"";
 
-        .tag {
-            display: inline-block;
+    position:absolute;
 
-            margin-top: 12px;
+    width:280px;
+    height:280px;
 
-            padding: 6px 14px;
+    right:-120px;
+    top:-170px;
 
-            border-radius: 30px;
+    border-radius:50%;
 
-            background: rgba(255, 255, 255, .13);
+    background:
+        rgba(255,255,255,.18);
 
-            border: 1px solid rgba(255, 255, 255, .25);
+    filter:blur(5px);
 
-            color: #dff8ff;
+    pointer-events:none;
+}
 
-            font-size: .72rem;
 
-            font-weight: 800;
+/* =====================================================
+   BARRA SUPERIOR
+===================================================== */
 
-            letter-spacing: 1px;
+.topbar{
 
-            text-transform: uppercase;
-        }
+    display:flex;
 
-        /* FORMULARIO */
+    align-items:center;
 
-        form {
-            width: 100%;
-        }
+    gap:12px;
 
-        .form-group {
-            margin-bottom: 18px;
-        }
+    padding:13px 15px;
 
-        label {
-            display: block;
+    margin-bottom:18px;
 
-            margin-bottom: 8px;
+    border-radius:20px;
 
-            color: rgba(255, 255, 255, .88);
+    border:
+        1px solid
+        rgba(255,255,255,.55);
 
-            font-size: .84rem;
+    background:
+        rgba(248,244,249,.40);
 
-            font-weight: 700;
-        }
+    box-shadow:
+        0 12px 30px
+        rgba(76,87,108,.10);
+}
 
-        .required {
-            color: #7ddcff;
-        }
+.top-icon{
 
-        input[type="text"],
-        input[type="number"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
+    width:42px;
+    height:42px;
 
-            padding: 14px 15px;
+    flex:0 0 42px;
 
-            border-radius: 14px;
+    display:grid;
 
-            border: 1px solid rgba(255, 255, 255, .22);
+    place-items:center;
 
-            background: rgba(5, 15, 45, .32);
+    border-radius:14px;
 
-            color: #fff;
+    background:
+        linear-gradient(
+            145deg,
+            #a9d3dc,
+            #c6b8d8
+        );
 
-            font-size: .95rem;
+    color:#fff;
 
-            outline: none;
+    font-size:19px;
 
-            transition:
-                border-color .25s ease,
-                background .25s ease,
-                box-shadow .25s ease,
-                transform .2s ease;
-        }
+    box-shadow:
+        0 7px 18px
+        rgba(91,105,126,.15);
+}
 
-        input::placeholder,
-        textarea::placeholder {
-            color: rgba(255, 255, 255, .38);
-        }
+.top-text strong{
 
-        input:focus,
-        textarea:focus {
-            border-color: #54d9ff;
+    display:block;
 
-            background: rgba(5, 15, 45, .45);
+    color:#566276;
 
-            box-shadow:
-                0 0 0 3px rgba(84, 217, 255, .10),
-                0 0 18px rgba(84, 217, 255, .12);
+    font-size:.82rem;
 
-            transform: translateY(-1px);
-        }
+    font-weight:900;
 
-        textarea {
-            min-height: 120px;
+    letter-spacing:.7px;
 
-            resize: vertical;
+    text-transform:uppercase;
+}
 
-            line-height: 1.5;
-        }
+.top-text span{
 
-        /* BOTÓN */
+    display:block;
 
-        .btn {
-            display: block;
+    margin-top:2px;
 
-            width: 100%;
+    color:#7d8798;
 
-            padding: 14px 20px;
+    font-size:.73rem;
 
-            border-radius: 14px;
+    line-height:1.4;
+}
 
-            border: none;
 
-            font-size: .96rem;
+/* =====================================================
+   LOGO
+===================================================== */
 
-            font-weight: 900;
+.logo-container{
 
-            text-decoration: none;
+    display:flex;
 
-            text-align: center;
+    justify-content:center;
 
-            cursor: pointer;
+    margin-bottom:20px;
+}
 
-            transition: .25s ease;
-        }
+.logo-box{
 
-        .btn-primary {
-            margin-top: 10px;
+    width:min(500px,100%);
 
-            color: #fff;
+    min-height:180px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #078fff,
-                    #513cff,
-                    #a53dff
-                );
+    display:flex;
 
-            box-shadow:
-                0 8px 25px rgba(47, 102, 255, .40),
-                inset 0 1px 1px rgba(255, 255, 255, .45);
-        }
+    align-items:center;
 
-        .btn-primary:hover {
-            transform: translateY(-2px) scale(1.01);
+    justify-content:center;
 
-            box-shadow:
-                0 12px 30px rgba(79, 83, 255, .55),
-                0 0 25px rgba(57, 195, 255, .20);
-        }
+    padding:12px 20px;
 
-        .btn-primary:active {
-            transform: scale(.98);
-        }
+    border-radius:30px;
 
-        .btn-primary:disabled {
-            opacity: .65;
+    background:
+        rgba(248,247,250,.22);
 
-            cursor: wait;
+    border:
+        1px solid
+        rgba(255,255,255,.43);
 
-            transform: none;
-        }
+    box-shadow:
+        0 18px 40px
+        rgba(78,91,116,.12),
 
-        .btn-link {
-            margin-top: 10px;
+        inset 0 1px 0
+        rgba(255,255,255,.65);
+}
 
-            color: rgba(255, 255, 255, .65);
+.logo-img{
 
-            background: rgba(255, 255, 255, .06);
+    width:100%;
 
-            border: 1px solid rgba(255, 255, 255, .12);
-        }
+    max-width:470px;
 
-        .btn-link:hover {
-            color: #fff;
+    max-height:210px;
 
-            background: rgba(255, 255, 255, .12);
-        }
+    object-fit:contain;
 
-        /* AVISO */
+    filter:
+        drop-shadow(
+            0 15px 18px
+            rgba(67,76,96,.18)
+        );
 
-        .info-box {
-            margin-bottom: 24px;
+    transition:
+        transform .35s ease;
+}
 
-            padding: 15px 17px;
+.logo-img:hover{
 
-            border-radius: 17px;
+    transform:
+        translateY(-3px)
+        scale(1.015);
+}
 
-            text-align: left;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0, 170, 255, .12),
-                    rgba(159, 74, 255, .13)
-                );
+/* =====================================================
+   ENCABEZADO
+===================================================== */
 
-            border: 1px solid rgba(255, 255, 255, .18);
-        }
+.header{
 
-        .info-box strong {
-            display: block;
+    text-align:center;
 
-            margin-bottom: 4px;
+    padding:5px 0 22px;
+}
 
-            color: #fff;
+.eyebrow{
 
-            font-size: .9rem;
-        }
+    color:#697589;
 
-        .info-box span {
-            color: rgba(255, 255, 255, .68);
+    font-size:.68rem;
 
-            font-size: .78rem;
+    font-weight:900;
 
-            line-height: 1.4;
-        }
+    letter-spacing:2px;
 
-        /* MODAL */
+    text-transform:uppercase;
+}
 
-        .modal {
-            position: fixed;
+.header h1{
 
-            inset: 0;
+    margin-top:7px;
 
-            width: 100%;
-            height: 100%;
+    color:#536074;
 
-            padding: 20px;
+    font-size:
+        clamp(
+            1.55rem,
+            5vw,
+            2.35rem
+        );
 
-            display: flex;
+    line-height:1.08;
 
-            justify-content: center;
-            align-items: center;
+    font-weight:900;
 
-            background: rgba(2, 5, 25, .78);
+    letter-spacing:-.5px;
+}
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+.header p{
 
-            z-index: 1000;
-        }
+    max-width:530px;
 
-        .hidden {
-            display: none !important;
-        }
+    margin:10px auto 0;
 
-        .modal-body {
-            width: 100%;
-            max-width: 430px;
+    color:#778295;
 
-            padding: 30px 22px;
+    font-size:.88rem;
 
-            text-align: center;
+    line-height:1.55;
+}
 
-            border-radius: 25px;
+.tag{
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(35, 48, 125, .95),
-                    rgba(72, 39, 120, .95)
-                );
+    display:inline-flex;
 
-            border: 1px solid rgba(255, 255, 255, .25);
+    align-items:center;
 
-            box-shadow:
-                0 25px 70px rgba(0, 0, 0, .55),
-                inset 0 1px 2px rgba(255, 255, 255, .25);
+    justify-content:center;
 
-            animation: aparecer .25s ease;
-        }
+    margin-top:12px;
 
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: scale(.92) translateY(10px);
-            }
+    padding:7px 12px;
 
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
+    border-radius:999px;
 
-        .result-card {
-            text-align: center;
-        }
+    background:
+        rgba(224,211,228,.64);
 
-        .selected-badge {
-            display: inline-block;
+    color:#6d6076;
 
-            margin-bottom: 12px;
+    font-size:.64rem;
 
-            padding: 6px 12px;
+    font-weight:900;
 
-            border-radius: 20px;
+    letter-spacing:1px;
 
-            background: rgba(16, 185, 129, .18);
+    text-transform:uppercase;
+}
 
-            border: 1px solid rgba(52, 211, 153, .4);
 
-            color: #6ee7b7;
+/* =====================================================
+   INFORMACIÓN
+===================================================== */
 
-            font-size: .7rem;
+.info-box{
 
-            font-weight: 900;
+    display:flex;
 
-            letter-spacing: 1px;
-        }
+    align-items:flex-start;
 
-        .welcome-icon {
-            font-size: 3rem;
+    gap:12px;
 
-            margin-bottom: 10px;
-        }
+    margin-bottom:22px;
 
-        .result-card h2 {
-            margin-bottom: 10px;
+    padding:15px 16px;
 
-            font-size: 1.5rem;
-        }
+    border-radius:20px;
 
-        .result-card p {
-            color: rgba(255, 255, 255, .72);
+    border:
+        1px solid
+        rgba(255,255,255,.58);
 
-            font-size: .87rem;
+    background:
+        rgba(247,240,245,.34);
 
-            line-height: 1.5;
-        }
+    box-shadow:
+        0 12px 28px
+        rgba(75,85,106,.10);
+}
 
-        .folio-box {
-            margin: 18px 0;
+.info-icon{
 
-            padding: 14px;
+    width:39px;
+    height:39px;
 
-            border-radius: 14px;
+    flex:0 0 39px;
 
-            background: rgba(0, 0, 0, .25);
+    display:grid;
 
-            border: 1px dashed #5bdcff;
+    place-items:center;
 
-            color: #62dcff;
+    border-radius:13px;
 
-            font-size: 1.4rem;
+    background:
+        rgba(255,255,255,.38);
 
-            font-weight: 1000;
+    border:
+        1px solid
+        rgba(255,255,255,.48);
 
-            letter-spacing: 2px;
+    font-size:17px;
+}
 
-            word-break: break-word;
+.info-content strong{
 
-            text-shadow: 0 0 12px rgba(98, 220, 255, .3);
-        }
+    display:block;
 
-        .message.error h3 {
-            margin-bottom: 10px;
+    color:#596477;
 
-            color: #ff7c9b;
+    font-size:.84rem;
 
-            font-size: 1.3rem;
-        }
+    font-weight:900;
+}
 
-        .message.error p {
-            margin-bottom: 18px;
+.info-content span{
 
-            color: rgba(255, 255, 255, .72);
+    display:block;
 
-            font-size: .88rem;
+    margin-top:4px;
 
-            line-height: 1.5;
-        }
+    color:#7e8797;
 
-        /* FOOTER */
+    font-size:.74rem;
 
-        footer {
-            margin-top: 25px;
+    line-height:1.45;
+}
 
-            text-align: center;
 
-            color: rgba(255, 255, 255, .42);
+/* =====================================================
+   FORMULARIO
+===================================================== */
 
-            font-size: .72rem;
-        }
+form{
+    width:100%;
+}
 
-        /* CELULAR */
+.form-group{
 
-        @media (max-width: 600px) {
+    margin-bottom:17px;
+}
 
-            body {
-                padding: 12px;
-            }
+label{
 
-            .container {
-                padding: 23px 17px 28px;
+    display:block;
 
-                border-radius: 27px;
-            }
+    margin-bottom:7px;
 
-            .logo-box {
-                min-height: 135px;
-            }
+    color:#596477;
 
-            .logo-img {
-                max-height: 135px;
-            }
+    font-size:.78rem;
 
-            .header h1 {
-                font-size: 1.65rem;
-            }
+    font-weight:900;
+}
 
-            input[type="text"],
-            input[type="number"],
-            input[type="email"],
-            input[type="tel"],
-            textarea {
-                padding: 13px;
-            }
-        }
-    </style>
+.required{
+
+    color:#a989a9;
+
+    font-weight:900;
+}
+
+
+/* INPUTS */
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+textarea{
+
+    width:100%;
+
+    padding:13px 14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.52);
+
+    border-radius:15px;
+
+    outline:none;
+
+    background:
+        rgba(255,255,255,.28);
+
+    color:#536074;
+
+    font-family:inherit;
+
+    font-size:.88rem;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.38),
+
+        0 8px 20px
+        rgba(75,85,106,.06);
+
+    transition:
+        .22s ease;
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#8c95a4;
+}
+
+input:focus,
+textarea:focus{
+
+    background:
+        rgba(255,255,255,.42);
+
+    border-color:
+        rgba(145,188,202,.90);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(145,188,202,.13),
+
+        0 10px 24px
+        rgba(75,85,106,.09);
+
+    transform:
+        translateY(-1px);
+}
+
+textarea{
+
+    min-height:125px;
+
+    resize:vertical;
+
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   BOTONES
+===================================================== */
+
+.btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    width:100%;
+
+    padding:13px 15px;
+
+    border-radius:15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.40);
+
+    font-family:inherit;
+
+    font-size:.78rem;
+
+    font-weight:900;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.22s ease;
+}
+
+.btn-primary{
+
+    margin-top:5px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #91bcca,
+            #9caec8
+        );
+
+    box-shadow:
+        0 9px 22px
+        rgba(76,90,111,.16),
+
+        inset 0 1px 0
+        rgba(255,255,255,.30);
+}
+
+.btn-primary:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 13px 27px
+        rgba(76,90,111,.22);
+}
+
+.btn-primary:active{
+
+    transform:
+        scale(.98);
+}
+
+.btn-primary:disabled{
+
+    opacity:.65;
+
+    cursor:wait;
+
+    transform:none;
+}
+
+.btn-link{
+
+    margin-top:10px;
+
+    color:#687285;
+
+    background:
+        rgba(255,255,255,.23);
+
+    border:
+        1px solid
+        rgba(255,255,255,.42);
+}
+
+.btn-link:hover{
+
+    background:
+        rgba(255,255,255,.36);
+
+    color:#536074;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:18px;
+
+    background:
+        rgba(64,70,91,.42);
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+}
+
+.hidden{
+
+    display:none !important;
+}
+
+.modal-body{
+
+    width:100%;
+
+    max-width:440px;
+
+    padding:28px 22px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.62);
+
+    background:
+        rgba(239,240,247,.80);
+
+    color:#536074;
+
+    box-shadow:
+        0 25px 70px
+        rgba(65,73,94,.25),
+
+        inset 0 1px 0
+        rgba(255,255,255,.70);
+
+    backdrop-filter:blur(25px);
+
+    -webkit-backdrop-filter:blur(25px);
+
+    animation:
+        aparecer .25s ease;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:
+            scale(.92)
+            translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   RESULTADO
+===================================================== */
+
+.result-card{
+
+    text-align:center;
+}
+
+.selected-badge{
+
+    display:inline-flex;
+
+    margin-bottom:12px;
+
+    padding:6px 11px;
+
+    border-radius:999px;
+
+    background:
+        rgba(181,210,196,.48);
+
+    border:
+        1px solid
+        rgba(126,174,148,.38);
+
+    color:#5d816b;
+
+    font-size:.65rem;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+}
+
+.welcome-icon{
+
+    font-size:2.8rem;
+
+    margin-bottom:8px;
+}
+
+.result-card h2{
+
+    margin-bottom:8px;
+
+    color:#536074;
+
+    font-size:1.45rem;
+}
+
+.result-card p{
+
+    color:#7a8494;
+
+    font-size:.82rem;
+
+    line-height:1.5;
+}
+
+.folio-box{
+
+    margin:18px 0;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.28);
+
+    border:
+        1px dashed
+        rgba(145,188,202,.90);
+
+    color:#718e9e;
+
+    font-size:1.35rem;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    word-break:break-word;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,.40);
+}
+
+.message.error h3{
+
+    margin-bottom:10px;
+
+    color:#9b6878;
+
+    font-size:1.25rem;
+}
+
+.message.error p{
+
+    margin-bottom:18px;
+
+    color:#7a8494;
+
+    font-size:.83rem;
+
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    margin-top:21px;
+
+    text-align:center;
+
+    color:#7c8492;
+
+    font-size:.66rem;
+
+    line-height:1.5;
+}
+
+footer strong{
+
+    color:#657084;
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media(max-width:620px){
+
+    body{
+
+        padding:10px;
+    }
+
+    .container{
+
+        padding:14px;
+
+        border-radius:27px;
+    }
+
+    .topbar{
+
+        padding:12px;
+
+        border-radius:18px;
+    }
+
+    .top-icon{
+
+        width:38px;
+        height:38px;
+
+        flex-basis:38px;
+    }
+
+    .top-text strong{
+
+        font-size:.75rem;
+    }
+
+    .top-text span{
+
+        font-size:.67rem;
+    }
+
+    .logo-box{
+
+        min-height:150px;
+
+        padding:8px 13px;
+
+        border-radius:24px;
+    }
+
+    .logo-img{
+
+        max-height:155px;
+    }
+
+    .header{
+
+        padding-bottom:18px;
+    }
+
+    .header h1{
+
+        font-size:1.65rem;
+    }
+
+    .header p{
+
+        font-size:.82rem;
+    }
+
+    .info-box{
+
+        padding:13px;
+
+        border-radius:18px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    textarea{
+
+        padding:12px 13px;
+
+        font-size:.84rem;
+    }
+
+    .btn{
+
+        padding:12px;
+
+        font-size:.75rem;
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES MUY PEQUEÑOS
+===================================================== */
+
+@media(max-width:390px){
+
+    .container{
+
+        padding:12px;
+
+        border-radius:24px;
+    }
+
+    .logo-box{
+
+        min-height:135px;
+    }
+
+    .logo-img{
+
+        max-height:135px;
+    }
+
+    .header h1{
+
+        font-size:1.48rem;
+    }
+
+    .header p{
+
+        font-size:.78rem;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <main class="container">
 
-        <!-- =========================
-             LOGO
-        ========================== -->
+<main class="container">
 
-        <div class="logo-container">
 
-            <div class="logo-box">
+    <!-- =================================================
+         BARRA SUPERIOR
+    ================================================== -->
 
-                <img
-                    src="logo.png"
-                    alt="La Casa de los Famosos Roblox"
-                    class="logo-img"
-                >
+    <div class="topbar">
 
-            </div>
-
+        <div class="top-icon">
+            📝
         </div>
 
-
-        <!-- =========================
-             ENCABEZADO
-        ========================== -->
-
-        <header class="header">
-
-            <h1>
-                Formulario de Postulación
-            </h1>
-
-            <p>
-                Completa tus datos para solicitar tu ingreso
-                a La Casa de los Famosos Roblox.
-            </p>
-
-            <span class="tag">
-                🏠 Temporada 2026
-            </span>
-
-        </header>
-
-
-        <!-- =========================
-             AVISO
-        ========================== -->
-
-        <div class="info-box">
+        <div class="top-text">
 
             <strong>
-                ✨ Completa todos tus datos
+                Registro oficial
             </strong>
 
             <span>
-                Revisa que tu información sea correcta antes
-                de enviar tu solicitud.
+                La Casa de los Famosos Roblox · Temporada 2026
             </span>
 
         </div>
-
-
-        <!-- =========================
-             FORMULARIO
-        ========================== -->
-
-        <form id="formSolicitud">
-
-            <!-- NOMBRE -->
-
-            <div class="form-group">
-
-                <label for="nombre">
-                    Nombre Completo
-                    <span class="required">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    placeholder="Escribe tu nombre completo"
-                    autocomplete="name"
-                    required
-                >
-
-            </div>
-
-
-            <!-- ROBLOX -->
-
-            <div class="form-group">
-
-                <label for="roblox">
-                    Usuario de Roblox
-                    <span class="required">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="roblox"
-                    name="roblox"
-                    placeholder="Ej. RobloxPlayer123"
-                    autocomplete="off"
-                    required
-                >
-
-            </div>
-
-
-            <!-- EDAD -->
-
-            <div class="form-group">
-
-                <label for="edad">
-                    Edad
-                    <span class="required">*</span>
-                </label>
-
-                <input
-                    type="number"
-                    id="edad"
-                    name="edad"
-                    placeholder="Escribe tu edad"
-                    min="1"
-                    max="100"
-                    required
-                >
-
-            </div>
-
-
-            <!-- CORREO -->
-
-            <div class="form-group">
-
-                <label for="correo">
-                    Correo Electrónico
-                    <span class="required">*</span>
-                </label>
-
-                <input
-                    type="email"
-                    id="correo"
-                    name="correo"
-                    placeholder="ejemplo@correo.com"
-                    autocomplete="email"
-                    required
-                >
-
-            </div>
-
-
-            <!-- TELEFONO -->
-
-            <div class="form-group">
-
-                <label for="telefono">
-                    Teléfono
-                    <span class="required">*</span>
-                </label>
-
-                <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    placeholder="Tu número de teléfono"
-                    autocomplete="tel"
-                    required
-                >
-
-            </div>
-
-
-            <!-- MOTIVO -->
-
-            <div class="form-group">
-
-                <label for="motivo">
-                    ¿Por qué deberías entrar?
-                    <span class="required">*</span>
-                </label>
-
-                <textarea
-                    id="motivo"
-                    name="motivo"
-                    rows="5"
-                    placeholder="Cuéntanos por qué quieres formar parte de la casa..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <!-- BOTÓN -->
-
-            <button
-                type="submit"
-                class="btn btn-primary"
-            >
-                🚀 ENVIAR SOLICITUD
-            </button>
-
-
-            <!-- VOLVER -->
-
-            <a
-                href="index.html"
-                class="btn btn-link"
-            >
-                ← Volver al inicio
-            </a>
-
-        </form>
-
-
-        <footer>
-            © 2026 La Casa de los Famosos Roblox
-        </footer>
-
-    </main>
-
-
-    <!-- =========================
-         MODAL
-    ========================== -->
-
-    <div
-        id="modal"
-        class="modal hidden"
-    >
-
-        <div
-            id="modalContenido"
-            class="modal-body"
-        ></div>
 
     </div>
 
 
-    <script>
+    <!-- =================================================
+         LOGO
+    ================================================== -->
 
-        /* ==========================================
-           APPS SCRIPT ORIGINAL DE REGISTRO
-           ========================================== */
+    <div class="logo-container">
 
-        const APPS_SCRIPT_URL =
-            "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
+        <div class="logo-box">
 
+            <img
+                src="logo.png"
+                alt="La Casa de los Famosos Roblox"
+                class="logo-img"
+            >
 
-        /* ==========================================
-           SEGURIDAD PARA MOSTRAR TEXTO
-           ========================================== */
+        </div>
 
-        function escapar(texto) {
-
-            if (!texto) return "";
-
-            return String(texto)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-
-        }
+    </div>
 
 
-        /* ==========================================
-           LLAMAR AL APPS SCRIPT
-           ========================================== */
+    <!-- =================================================
+         ENCABEZADO
+    ================================================== -->
 
-        function llamarAPI(
-            accion,
-            parametros = {}
-        ) {
+    <header class="header">
 
-            return new Promise((resolve, reject) => {
+        <div class="eyebrow">
+            Portal oficial
+        </div>
 
-                const callbackName =
-                    "jsonp_cb_" +
-                    Math.random()
-                        .toString(36)
-                        .substring(2, 15);
+        <h1>
+            Formulario de Postulación
+        </h1>
 
+        <p>
+            Completa tus datos para solicitar tu ingreso
+            a La Casa de los Famosos Roblox.
+        </p>
 
-                const urlParams =
-                    new URLSearchParams({
+        <span class="tag">
+            🏠 Temporada 2026
+        </span>
 
-                        action: accion,
-
-                        callback: callbackName,
-
-                        ...parametros
-
-                    });
+    </header>
 
 
-                const script =
-                    document.createElement("script");
+    <!-- =================================================
+         AVISO
+    ================================================== -->
+
+    <div class="info-box">
+
+        <div class="info-icon">
+            ✨
+        </div>
+
+        <div class="info-content">
+
+            <strong>
+                Completa todos tus datos
+            </strong>
+
+            <span>
+                Revisa que tu información sea correcta antes
+                de enviar tu solicitud. Al finalizar recibirás
+                un folio único.
+            </span>
+
+        </div>
+
+    </div>
 
 
-                script.src =
-                    `${APPS_SCRIPT_URL}?${urlParams.toString()}`;
+    <!-- =================================================
+         FORMULARIO
+    ================================================== -->
+
+    <form id="formSolicitud">
 
 
-                window[callbackName] =
-                    function(respuesta) {
+        <!-- NOMBRE -->
 
-                        cleanup();
+        <div class="form-group">
 
+            <label for="nombre">
 
-                        if (
-                            respuesta &&
-                            respuesta.success
-                        ) {
+                Nombre Completo
 
-                            resolve(respuesta);
+                <span class="required">
+                    *
+                </span>
 
-                        } else {
+            </label>
 
-                            reject(
-                                new Error(
-                                    respuesta?.message ||
-                                    "Error al procesar la solicitud."
-                                )
-                            );
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Escribe tu nombre completo"
+                autocomplete="name"
+                required
+            >
 
-                        }
-
-                    };
-
-
-                script.onerror =
-                    function() {
-
-                        cleanup();
-
-                        reject(
-                            new Error(
-                                "Error de conexión con el servidor."
-                            )
-                        );
-
-                    };
+        </div>
 
 
-                function cleanup() {
+        <!-- ROBLOX -->
 
-                    delete window[callbackName];
+        <div class="form-group">
+
+            <label for="roblox">
+
+                Usuario de Roblox
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="text"
+                id="roblox"
+                name="roblox"
+                placeholder="Ej. RobloxPlayer123"
+                autocomplete="off"
+                required
+            >
+
+        </div>
 
 
-                    if (script.parentNode) {
+        <!-- EDAD -->
 
-                        script.parentNode
-                            .removeChild(script);
+        <div class="form-group">
 
-                    }
+            <label for="edad">
 
-                }
+                Edad
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="number"
+                id="edad"
+                name="edad"
+                placeholder="Escribe tu edad"
+                min="1"
+                max="100"
+                required
+            >
+
+        </div>
 
 
-                document.body.appendChild(script);
+        <!-- CORREO -->
+
+        <div class="form-group">
+
+            <label for="correo">
+
+                Correo Electrónico
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="email"
+                id="correo"
+                name="correo"
+                placeholder="ejemplo@correo.com"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+        <!-- TELÉFONO -->
+
+        <div class="form-group">
+
+            <label for="telefono">
+
+                Teléfono
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="Tu número de teléfono"
+                autocomplete="tel"
+                required
+            >
+
+        </div>
+
+
+        <!-- MOTIVO -->
+
+        <div class="form-group">
+
+            <label for="motivo">
+
+                ¿Por qué deberías entrar?
+
+                <span class="required">
+                    *
+                </span>
+
+            </label>
+
+            <textarea
+                id="motivo"
+                name="motivo"
+                rows="5"
+                placeholder="Cuéntanos por qué quieres formar parte de la casa..."
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- BOTÓN -->
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+        >
+            🚀 ENVIAR SOLICITUD
+        </button>
+
+
+        <!-- VOLVER -->
+
+        <a
+            href="index.html"
+            class="btn btn-link"
+        >
+            ← Volver al inicio
+        </a>
+
+
+    </form>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <strong>
+            La Casa de los Famosos Roblox
+        </strong>
+
+        <br>
+
+        © 2026 · Portal oficial
+
+    </footer>
+
+
+</main>
+
+
+<!-- =====================================================
+     MODAL
+====================================================== -->
+
+<div
+    id="modal"
+    class="modal hidden"
+>
+
+    <div
+        id="modalContenido"
+        class="modal-body"
+    ></div>
+
+</div>
+
+
+<script>
+
+/* ==========================================
+   APPS SCRIPT ORIGINAL DE REGISTRO
+   NO MODIFICADO
+========================================== */
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxpYRNTRTROKznUfepJqJdvVQnLDx2K8TVret7AIUokaE6AEr4_Vxw0gH9AkTeuYe8m/exec";
+
+
+/* ==========================================
+   SEGURIDAD PARA MOSTRAR TEXTO
+========================================== */
+
+function escapar(texto){
+
+    if(!texto) return "";
+
+    return String(texto)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ==========================================
+   LLAMAR AL APPS SCRIPT
+========================================== */
+
+function llamarAPI(
+    accion,
+    parametros = {}
+){
+
+    return new Promise((resolve,reject)=>{
+
+        const callbackName =
+            "jsonp_cb_" +
+            Math.random()
+                .toString(36)
+                .substring(2,15);
+
+
+        const urlParams =
+            new URLSearchParams({
+
+                action:accion,
+
+                callback:callbackName,
+
+                ...parametros
 
             });
 
-        }
+
+        const script =
+            document.createElement("script");
 
 
-        /* ==========================================
-           ABRIR MODAL
-           ========================================== */
-
-        function abrirModal(contenidoHtml) {
-
-            const modal =
-                document.getElementById("modal");
-
-            const modalContenido =
-                document.getElementById("modalContenido");
+        script.src =
+            `${APPS_SCRIPT_URL}?${urlParams.toString()}`;
 
 
-            if (
-                modal &&
-                modalContenido
-            ) {
+        window[callbackName] =
+            function(respuesta){
 
-                modalContenido.innerHTML =
-                    contenidoHtml;
+                cleanup();
 
-                modal.classList.remove("hidden");
+
+                if(
+                    respuesta &&
+                    respuesta.success
+                ){
+
+                    resolve(respuesta);
+
+                }else{
+
+                    reject(
+                        new Error(
+                            respuesta?.message ||
+                            "Error al procesar la solicitud."
+                        )
+                    );
+
+                }
+
+            };
+
+
+        script.onerror =
+            function(){
+
+                cleanup();
+
+                reject(
+                    new Error(
+                        "Error de conexión con el servidor."
+                    )
+                );
+
+            };
+
+
+        function cleanup(){
+
+            delete window[callbackName];
+
+
+            if(script.parentNode){
+
+                script.parentNode
+                    .removeChild(script);
 
             }
 
         }
 
 
-        /* ==========================================
-           CERRAR MODAL
-           ========================================== */
+        document.body.appendChild(script);
 
-        function cerrarModal() {
+    });
 
-            document
-                .getElementById("modal")
-                ?.classList
-                .add("hidden");
+}
+
+
+/* ==========================================
+   ABRIR MODAL
+========================================== */
+
+function abrirModal(contenidoHtml){
+
+    const modal =
+        document.getElementById("modal");
+
+    const modalContenido =
+        document.getElementById("modalContenido");
+
+
+    if(
+        modal &&
+        modalContenido
+    ){
+
+        modalContenido.innerHTML =
+            contenidoHtml;
+
+        modal.classList.remove("hidden");
+
+    }
+
+}
+
+
+/* ==========================================
+   CERRAR MODAL
+========================================== */
+
+function cerrarModal(){
+
+    document
+        .getElementById("modal")
+        ?.classList
+        .add("hidden");
+
+}
+
+
+/* ==========================================
+   FORMULARIO
+========================================== */
+
+document
+    .getElementById("formSolicitud")
+    ?.addEventListener(
+        "submit",
+        async function(e){
+
+            e.preventDefault();
+
+
+            const form = e.target;
+
+
+            const submitBtn =
+                form.querySelector(
+                    'button[type="submit"]'
+                );
+
+
+            const originalBtnText =
+                submitBtn.innerHTML;
+
+
+            const formData =
+                new FormData(form);
+
+
+            const datos = {
+
+                nombre:
+                    formData.get("nombre"),
+
+                roblox:
+                    formData.get("roblox"),
+
+                edad:
+                    formData.get("edad"),
+
+                correo:
+                    formData.get("correo"),
+
+                telefono:
+                    formData.get("telefono"),
+
+                motivo:
+                    formData.get("motivo")
+
+            };
+
+
+            try{
+
+                submitBtn.disabled = true;
+
+                submitBtn.innerHTML =
+                    "⏳ ENVIANDO SOLICITUD...";
+
+
+                const respuesta =
+                    await llamarAPI(
+                        "guardarSolicitud",
+                        datos
+                    );
+
+
+                /* ==========================
+                   REGISTRO EXITOSO
+                ========================== */
+
+                abrirModal(`
+
+                    <div class="result-card">
+
+                        <span class="selected-badge">
+                            ✓ REGISTRO EXITOSO
+                        </span>
+
+                        <div class="welcome-icon">
+                            🎉
+                        </div>
+
+                        <h2>
+                            ¡Solicitud Recibida!
+                        </h2>
+
+                        <p>
+                            Tu solicitud fue enviada correctamente.
+                        </p>
+
+                        <p style="margin-top:8px;">
+                            Guarda tu folio para consultar
+                            posteriormente tu estado.
+                        </p>
+
+                        <div class="folio-box">
+                            ${escapar(respuesta.folio)}
+                        </div>
+
+                        <a
+                            href="consulta.html?folio=${encodeURIComponent(respuesta.folio)}"
+                            class="btn btn-primary"
+                        >
+                            🔍 CONSULTAR MI FOLIO
+                        </a>
+
+                    </div>
+
+                `);
+
+
+                form.reset();
+
+
+            }catch(error){
+
+                /* ==========================
+                   ERROR
+                ========================== */
+
+                abrirModal(`
+
+                    <div class="message error">
+
+                        <div class="welcome-icon">
+                            ⚠️
+                        </div>
+
+                        <h3>
+                            Error al registrar
+                        </h3>
+
+                        <p>
+                            ${escapar(error.message)}
+                        </p>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="cerrarModal()"
+                        >
+                            CERRAR
+                        </button>
+
+                    </div>
+
+                `);
+
+            }finally{
+
+                submitBtn.disabled = false;
+
+                submitBtn.innerHTML =
+                    originalBtnText;
+
+            }
 
         }
+    );
 
 
-        /* ==========================================
-           FORMULARIO
-           ========================================== */
+/* ==========================================
+   CERRAR MODAL AL HACER CLICK FUERA
+========================================== */
 
-        document
-            .getElementById("formSolicitud")
-            ?.addEventListener(
-                "submit",
-                async function(e) {
+document
+    .getElementById("modal")
+    ?.addEventListener(
+        "click",
+        function(e){
 
-                    e.preventDefault();
+            if(
+                e.target === this
+            ){
 
+                cerrarModal();
 
-                    const form = e.target;
+            }
 
+        }
+    );
 
-                    const submitBtn =
-                        form.querySelector(
-                            'button[type="submit"]'
-                        );
-
-
-                    const originalBtnText =
-                        submitBtn.innerHTML;
-
-
-                    const formData =
-                        new FormData(form);
-
-
-                    const datos = {
-
-                        nombre:
-                            formData.get("nombre"),
-
-                        roblox:
-                            formData.get("roblox"),
-
-                        edad:
-                            formData.get("edad"),
-
-                        correo:
-                            formData.get("correo"),
-
-                        telefono:
-                            formData.get("telefono"),
-
-                        motivo:
-                            formData.get("motivo")
-
-                    };
-
-
-                    try {
-
-                        submitBtn.disabled = true;
-
-                        submitBtn.innerHTML =
-                            "⏳ ENVIANDO SOLICITUD...";
-
-
-                        const respuesta =
-                            await llamarAPI(
-                                "guardarSolicitud",
-                                datos
-                            );
-
-
-                        /* ==========================
-                           REGISTRO EXITOSO
-                           ========================== */
-
-                        abrirModal(`
-
-                            <div class="result-card">
-
-                                <span class="selected-badge">
-                                    ✓ REGISTRO EXITOSO
-                                </span>
-
-                                <div class="welcome-icon">
-                                    🎉
-                                </div>
-
-                                <h2>
-                                    ¡Solicitud Recibida!
-                                </h2>
-
-                                <p>
-                                    Tu solicitud fue enviada correctamente.
-                                </p>
-
-                                <p style="margin-top:8px;">
-                                    Guarda tu folio para consultar
-                                    posteriormente tu estado.
-                                </p>
-
-                                <div class="folio-box">
-                                    ${escapar(respuesta.folio)}
-                                </div>
-
-                                <a
-                                    href="consulta.html?folio=${encodeURIComponent(respuesta.folio)}"
-                                    class="btn btn-primary"
-                                >
-                                    🔍 CONSULTAR MI FOLIO
-                                </a>
-
-                            </div>
-
-                        `);
-
-
-                        form.reset();
-
-
-                    } catch(error) {
-
-                        /* ==========================
-                           ERROR
-                           ========================== */
-
-                        abrirModal(`
-
-                            <div class="message error">
-
-                                <div class="welcome-icon">
-                                    ⚠️
-                                </div>
-
-                                <h3>
-                                    Error al registrar
-                                </h3>
-
-                                <p>
-                                    ${escapar(error.message)}
-                                </p>
-
-                                <button
-                                    class="btn btn-primary"
-                                    onclick="cerrarModal()"
-                                >
-                                    CERRAR
-                                </button>
-
-                            </div>
-
-                        `);
-
-                    } finally {
-
-                        submitBtn.disabled = false;
-
-                        submitBtn.innerHTML =
-                            originalBtnText;
-
-                    }
-
-                }
-            );
-
-
-        /* ==========================================
-           CERRAR MODAL AL HACER CLICK FUERA
-           ========================================== */
-
-        document
-            .getElementById("modal")
-            ?.addEventListener(
-                "click",
-                function(e) {
-
-                    if (
-                        e.target === this
-                    ) {
-
-                        cerrarModal();
-
-                    }
-
-                }
-            );
-
-    </script>
+</script>
 
 </body>
 </html>
