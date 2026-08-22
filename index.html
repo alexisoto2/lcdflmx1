@@ -4,674 +4,1162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#b7c9dc">
+
 <title>La Casa de los Famosos Roblox | Portal Oficial</title>
 
 <style>
-    :root{
-        --text:#4f5b6d;
-        --muted:#758093;
-        --glass:rgba(255,255,255,.34);
-        --glass-strong:rgba(255,255,255,.50);
-        --line:rgba(255,255,255,.58);
-        --shadow:0 24px 70px rgba(78,91,116,.18);
-        --radius:28px;
-    }
 
-    *{
-        box-sizing:border-box;
-        margin:0;
-        padding:0;
-    }
+:root{
+    --text:#4f5b6d;
+    --muted:#758093;
+    --glass:rgba(255,255,255,.34);
+    --glass-strong:rgba(255,255,255,.50);
+    --line:rgba(255,255,255,.58);
+    --shadow:0 24px 70px rgba(78,91,116,.18);
+    --radius:28px;
+}
 
-    html{
-        scroll-behavior:smooth;
-    }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    padding:22px 14px 35px;
+    font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--text);
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 8% 10%, rgba(157,213,226,.86) 0 8%, transparent 30%),
+        radial-gradient(circle at 92% 8%, rgba(184,166,218,.82) 0 7%, transparent 30%),
+        radial-gradient(circle at 6% 92%, rgba(164,197,224,.82) 0 8%, transparent 31%),
+        radial-gradient(circle at 94% 88%, rgba(220,181,209,.78) 0 8%, transparent 32%),
+        radial-gradient(circle at 52% 43%, rgba(246,205,191,.58) 0 8%, transparent 34%),
+        linear-gradient(135deg,#91bfce 0%,#b5bfdc 38%,#cdb8d4 67%,#d8b7ca 100%);
+
+    background-attachment:fixed;
+}
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(75px);
+    opacity:.7;
+}
+
+body::before{
+    width:360px;
+    height:360px;
+    left:-170px;
+    top:18%;
+    background:rgba(125,202,220,.55);
+}
+
+body::after{
+    width:430px;
+    height:430px;
+    right:-190px;
+    bottom:8%;
+    background:rgba(193,157,215,.50);
+}
+
+.shell{
+    width:min(760px,100%);
+    margin:auto;
+}
+
+.portal{
+    position:relative;
+    overflow:hidden;
+    padding:22px;
+    border:1px solid var(--line);
+    border-radius:34px;
+    background:rgba(239,240,247,.29);
+    box-shadow:
+        var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,.68);
+
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+}
+
+.portal::before{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    top:-150px;
+    right:-90px;
+    background:rgba(255,255,255,.18);
+    filter:blur(5px);
+}
+
+/* =========================
+   ACTUALIZACIÓN
+========================= */
+
+.update{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:14px 17px;
+    margin-bottom:18px;
+
+    border:1px solid rgba(255,255,255,.55);
+    border-radius:20px;
+
+    background:rgba(248,244,249,.40);
+
+    box-shadow:
+        0 12px 30px rgba(76,87,108,.10);
+}
+
+.update-icon{
+    flex:0 0 42px;
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a9d3dc,
+            #c6b8d8
+        );
+
+    color:white;
+    font-size:20px;
+
+    box-shadow:
+        0 7px 18px rgba(91,105,126,.15);
+}
+
+.update strong{
+    display:block;
+    color:#566276;
+    font-size:.92rem;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+
+.update span{
+    display:block;
+    margin-top:2px;
+    color:#7d8798;
+    font-size:.78rem;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.brand{
+    text-align:center;
+    padding:8px 0 4px;
+}
+
+.logo-wrap{
+    width:min(500px,100%);
+    min-height:190px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    background:rgba(248,247,250,.22);
+
+    border:1px solid rgba(255,255,255,.43);
+
+    box-shadow:
+        0 18px 40px rgba(78,91,116,.12),
+        inset 0 1px 0 rgba(255,255,255,.65);
+}
+
+.logo{
+    width:100%;
+    max-width:470px;
+    max-height:220px;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(
+            0 15px 18px rgba(67,76,96,.18)
+        );
+
+    transition:transform .35s ease;
+}
+
+.logo:hover{
+    transform:
+        translateY(-3px)
+        scale(1.015);
+}
+
+.eyebrow{
+    margin-top:20px;
+
+    color:#697589;
+
+    font-size:.72rem;
+    font-weight:900;
+
+    letter-spacing:2.2px;
+    text-transform:uppercase;
+}
+
+h1{
+    margin-top:7px;
+
+    font-size:
+        clamp(
+            1.65rem,
+            5vw,
+            2.55rem
+        );
+
+    line-height:1.05;
+    letter-spacing:-.5px;
+
+    color:#536074;
+
+    font-weight:900;
+}
+
+.intro{
+    max-width:560px;
+
+    margin:10px auto 25px;
+
+    color:#778295;
+
+    font-size:.92rem;
+    line-height:1.55;
+}
+
+/* =========================
+   VOTACIONES
+========================= */
+
+.urgent-vote{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin:0 0 16px;
+    padding:16px 18px;
+
+    border:1px solid rgba(255,255,255,.62);
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(224,205,220,.48),
+            rgba(177,203,216,.42)
+        );
+
+    box-shadow:
+        0 14px 32px rgba(78,87,107,.13),
+        inset 0 1px 0 rgba(255,255,255,.65);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    overflow:hidden;
+}
+
+.urgent-vote::before{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    right:8%;
+    top:-110px;
+
+    background:rgba(255,255,255,.18);
+}
+
+.urgent-left{
+    position:relative;
+    z-index:1;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.urgent-icon{
+    flex:0 0 45px;
+
+    width:45px;
+    height:45px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.40);
+
+    border:1px solid rgba(255,255,255,.55);
+
+    font-size:21px;
+
+    box-shadow:
+        0 7px 18px rgba(76,87,106,.12);
+}
+
+.urgent-label{
+    display:inline-block;
+
+    color:#766476;
+
+    font-size:.62rem;
+    font-weight:950;
+
+    letter-spacing:1.2px;
+}
+
+.urgent-vote h2{
+    margin-top:3px;
+
+    color:#5c6375;
+
+    font-size:1rem;
+}
+
+.urgent-vote p{
+    margin-top:3px;
+
+    color:#7b8494;
+
+    font-size:.75rem;
+}
+
+.urgent-button{
+    position:relative;
+    z-index:1;
+
+    flex:0 0 auto;
+
+    padding:12px 16px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a890b7,
+            #9aaec1
+        );
+
+    color:#fff;
+
+    font-size:.76rem;
+    font-weight:950;
+
+    box-shadow:
+        0 9px 20px rgba(77,88,108,.16);
+
+    transition:.22s ease;
+}
+
+.urgent-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(77,88,108,.21);
+}
+
+/* =========================
+   AVISO DE CONSTANCIA
+   SE CONSERVA
+========================= */
+
+.available{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:14px;
+
+    margin:0 0 20px;
+    padding:16px 18px;
+
+    border:1px solid rgba(255,255,255,.60);
+    border-radius:22px;
+
+    background:rgba(247,240,245,.34);
+
+    box-shadow:
+        0 12px 28px rgba(75,85,106,.10);
+}
+
+.available-copy{
+    text-align:left;
+}
+
+.available-badge{
+    display:inline-flex;
+    align-items:center;
+
+    gap:6px;
+
+    padding:6px 10px;
+
+    border-radius:999px;
+
+    background:rgba(224,211,228,.64);
+
+    color:#6d6076;
+
+    font-size:.68rem;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.available h2{
+    margin-top:6px;
+
+    color:#596477;
+
+    font-size:1rem;
+}
+
+.available p{
+    margin-top:3px;
+
+    color:#7e8797;
+
+    font-size:.76rem;
+}
+
+.quick-link{
+    flex:0 0 auto;
+
+    text-decoration:none;
+
+    padding:11px 15px;
+
+    border-radius:14px;
+
+    background:#8faebb;
+
+    color:#fff;
+
+    font-size:.76rem;
+    font-weight:900;
+
+    box-shadow:
+        0 8px 20px rgba(81,103,119,.18);
+
+    transition:.22s ease;
+}
+
+.quick-link:hover{
+    transform:translateY(-2px);
+
+    background:#829fab;
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap:15px;
+}
+
+.card{
+    position:relative;
+
+    min-height:205px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    padding:19px;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.56);
+
+    background:rgba(245,245,248,.31);
+
+    box-shadow:
+        0 13px 32px rgba(74,85,105,.10),
+        inset 0 1px 0 rgba(255,255,255,.62);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.card::after{
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    right:-55px;
+    top:-55px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.16);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+
+    background:rgba(248,247,250,.42);
+
+    box-shadow:
+        0 19px 40px rgba(74,85,105,.14);
+}
+
+.card-top{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:13px;
+}
+
+.icon{
+    width:43px;
+    height:43px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.37);
+
+    border:1px solid rgba(255,255,255,.48);
+
+    font-size:19px;
+}
+
+.tag{
+    padding:6px 9px;
+
+    border-radius:999px;
+
+    font-size:.61rem;
+    font-weight:900;
+
+    letter-spacing:.7px;
+
+    color:#687285;
+
+    background:rgba(231,229,237,.56);
+
+    white-space:nowrap;
+}
+
+.tag.available-tag{
+    color:#665a70;
+
+    background:rgba(221,208,226,.68);
+}
+
+.card h3{
+    color:#566174;
+
+    font-size:1rem;
+
+    margin-bottom:7px;
+}
+
+.card p{
+    color:#7c8697;
+
+    font-size:.77rem;
+
+    line-height:1.5;
+}
+
+.btn{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    width:100%;
+
+    margin-top:17px;
+
+    padding:12px 14px;
+
+    border:1px solid rgba(255,255,255,.38);
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:#fff;
+
+    font-size:.78rem;
+    font-weight:900;
+
+    letter-spacing:.15px;
+
+    box-shadow:
+        0 8px 18px rgba(76,90,111,.13);
+
+    transition:.22s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 23px rgba(76,90,111,.18);
+}
+
+.btn-register{
+    background:
+        linear-gradient(
+            135deg,
+            #91bcca,
+            #9caec8
+        );
+}
+
+.btn-status{
+    background:
+        linear-gradient(
+            135deg,
+            #9eabc5,
+            #ad9fbe
+        );
+}
+
+/* NUEVO: LISTA DE HABITANTES */
+
+.btn-habitantes{
+    background:
+        linear-gradient(
+            135deg,
+            #9cabbc,
+            #b39db8
+        );
+}
+
+.btn-support{
+    background:
+        linear-gradient(
+            135deg,
+            #8eafb9,
+            #9aaeb8
+        );
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    padding:21px 5px 3px;
+
+    text-align:center;
+
+    color:#7c8492;
+
+    font-size:.68rem;
+
+    line-height:1.6;
+}
+
+.footer strong{
+    color:#657084;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:620px){
 
     body{
-        min-height:100vh;
-        padding:22px 14px 35px;
-        font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-        color:var(--text);
-        overflow-x:hidden;
-
-        /* Fondo inspirado en el logo: azul cielo + lila + rosa + durazno,
-           sin colores fuertes ni fondo blanco. */
-        background:
-            radial-gradient(circle at 8% 10%, rgba(157,213,226,.86) 0 8%, transparent 30%),
-            radial-gradient(circle at 92% 8%, rgba(184,166,218,.82) 0 7%, transparent 30%),
-            radial-gradient(circle at 6% 92%, rgba(164,197,224,.82) 0 8%, transparent 31%),
-            radial-gradient(circle at 94% 88%, rgba(220,181,209,.78) 0 8%, transparent 32%),
-            radial-gradient(circle at 52% 43%, rgba(246,205,191,.58) 0 8%, transparent 34%),
-            linear-gradient(135deg,#91bfce 0%,#b5bfdc 38%,#cdb8d4 67%,#d8b7ca 100%);
-        background-attachment:fixed;
-    }
-
-    body::before,
-    body::after{
-        content:"";
-        position:fixed;
-        z-index:-1;
-        border-radius:50%;
-        pointer-events:none;
-        filter:blur(75px);
-        opacity:.7;
-    }
-
-    body::before{
-        width:360px;
-        height:360px;
-        left:-170px;
-        top:18%;
-        background:rgba(125,202,220,.55);
-    }
-
-    body::after{
-        width:430px;
-        height:430px;
-        right:-190px;
-        bottom:8%;
-        background:rgba(193,157,215,.50);
-    }
-
-    .shell{
-        width:min(760px,100%);
-        margin:auto;
+        padding:10px;
     }
 
     .portal{
-        position:relative;
-        overflow:hidden;
-        padding:22px;
-        border:1px solid var(--line);
-        border-radius:34px;
-        background:rgba(239,240,247,.29);
-        box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.68);
-        backdrop-filter:blur(24px);
-        -webkit-backdrop-filter:blur(24px);
+        padding:14px;
+        border-radius:27px;
     }
 
-    .portal::before{
-        content:"";
-        position:absolute;
-        width:260px;
-        height:260px;
-        border-radius:50%;
-        top:-150px;
-        right:-90px;
-        background:rgba(255,255,255,.18);
-        filter:blur(5px);
-    }
-
-    /* ACTUALIZACIÓN */
-    .update{
-        position:relative;
-        display:flex;
-        align-items:center;
-        gap:13px;
-        padding:14px 17px;
-        margin-bottom:18px;
-        border:1px solid rgba(255,255,255,.55);
-        border-radius:20px;
-        background:rgba(248,244,249,.40);
-        box-shadow:0 12px 30px rgba(76,87,108,.10);
-    }
-
-    .update-icon{
-        flex:0 0 42px;
-        width:42px;
-        height:42px;
-        display:grid;
-        place-items:center;
-        border-radius:14px;
-        background:linear-gradient(145deg,#a9d3dc,#c6b8d8);
-        color:white;
-        font-size:20px;
-        box-shadow:0 7px 18px rgba(91,105,126,.15);
-    }
-
-    .update strong{
-        display:block;
-        color:#566276;
-        font-size:.92rem;
-        letter-spacing:.8px;
-        text-transform:uppercase;
-    }
-
-    .update span{
-        display:block;
-        margin-top:2px;
-        color:#7d8798;
-        font-size:.78rem;
-    }
-
-    /* LOGO */
-    .brand{
-        text-align:center;
-        padding:8px 0 4px;
-    }
-
-    .logo-wrap{
-        width:min(500px,100%);
-        min-height:190px;
-        margin:auto;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:12px 20px;
-        border-radius:30px;
-        background:rgba(248,247,250,.22);
-        border:1px solid rgba(255,255,255,.43);
-        box-shadow:
-            0 18px 40px rgba(78,91,116,.12),
-            inset 0 1px 0 rgba(255,255,255,.65);
-    }
-
-    .logo{
-        width:100%;
-        max-width:470px;
-        max-height:220px;
-        object-fit:contain;
-        filter:drop-shadow(0 15px 18px rgba(67,76,96,.18));
-        transition:transform .35s ease;
-    }
-
-    .logo:hover{
-        transform:translateY(-3px) scale(1.015);
-    }
-
-    .eyebrow{
-        margin-top:20px;
-        color:#697589;
-        font-size:.72rem;
-        font-weight:900;
-        letter-spacing:2.2px;
-        text-transform:uppercase;
-    }
-
-    h1{
-        margin-top:7px;
-        font-size:clamp(1.65rem,5vw,2.55rem);
-        line-height:1.05;
-        letter-spacing:-.5px;
-        color:#536074;
-        font-weight:900;
-    }
-
-    .intro{
-        max-width:560px;
-        margin:10px auto 25px;
-        color:#778295;
-        font-size:.92rem;
-        line-height:1.55;
-    }
-
-
-    /* VOTACIONES URGENTES */
-    .urgent-vote{
-        position:relative;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:15px;
-        margin:0 0 16px;
-        padding:16px 18px;
-        border:1px solid rgba(255,255,255,.62);
-        border-radius:23px;
-        background:linear-gradient(135deg,rgba(224,205,220,.48),rgba(177,203,216,.42));
-        box-shadow:0 14px 32px rgba(78,87,107,.13),inset 0 1px 0 rgba(255,255,255,.65);
-        backdrop-filter:blur(18px);
-        -webkit-backdrop-filter:blur(18px);
-        overflow:hidden;
-    }
-    .urgent-vote::before{
-        content:"";
-        position:absolute;
-        width:150px;height:150px;border-radius:50%;
-        right:8%;top:-110px;background:rgba(255,255,255,.18);
-    }
-    .urgent-left{
-        position:relative;z-index:1;display:flex;align-items:center;gap:12px;
-    }
-    .urgent-icon{
-        flex:0 0 45px;width:45px;height:45px;display:grid;place-items:center;
-        border-radius:15px;background:rgba(255,255,255,.40);
-        border:1px solid rgba(255,255,255,.55);font-size:21px;
-        box-shadow:0 7px 18px rgba(76,87,106,.12);
-    }
-    .urgent-label{
-        display:inline-block;color:#766476;font-size:.62rem;
-        font-weight:950;letter-spacing:1.2px;
-    }
-    .urgent-vote h2{margin-top:3px;color:#5c6375;font-size:1rem;}
-    .urgent-vote p{margin-top:3px;color:#7b8494;font-size:.75rem;}
-    .urgent-button{
-        position:relative;z-index:1;flex:0 0 auto;padding:12px 16px;
-        border-radius:15px;text-decoration:none;
-        background:linear-gradient(135deg,#a890b7,#9aaec1);
-        color:#fff;font-size:.76rem;font-weight:950;
-        box-shadow:0 9px 20px rgba(77,88,108,.16);transition:.22s ease;
-    }
-    .urgent-button:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(77,88,108,.21);}
-
-    /* AVISO DE CONSTANCIA */
-    .available{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:14px;
-        margin:0 0 20px;
-        padding:16px 18px;
-        border:1px solid rgba(255,255,255,.60);
-        border-radius:22px;
-        background:rgba(247,240,245,.34);
-        box-shadow:0 12px 28px rgba(75,85,106,.10);
-    }
-
-    .available-copy{
-        text-align:left;
-    }
-
-    .available-badge{
-        display:inline-flex;
-        align-items:center;
-        gap:6px;
-        padding:6px 10px;
-        border-radius:999px;
-        background:rgba(224,211,228,.64);
-        color:#6d6076;
-        font-size:.68rem;
-        font-weight:900;
-        letter-spacing:1px;
-        text-transform:uppercase;
-    }
-
-    .available h2{
-        margin-top:6px;
-        color:#596477;
-        font-size:1rem;
-    }
-
-    .available p{
-        margin-top:3px;
-        color:#7e8797;
-        font-size:.76rem;
-    }
-
-    .quick-link{
-        flex:0 0 auto;
-        text-decoration:none;
-        padding:11px 15px;
-        border-radius:14px;
-        background:#8faebb;
-        color:#fff;
-        font-size:.76rem;
-        font-weight:900;
-        box-shadow:0 8px 20px rgba(81,103,119,.18);
-        transition:.22s ease;
-    }
-
-    .quick-link:hover{
-        transform:translateY(-2px);
-        background:#829fab;
-    }
-
-    /* TARJETAS */
     .grid{
-        display:grid;
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:15px;
+        grid-template-columns:1fr;
     }
 
     .card{
-        position:relative;
-        min-height:205px;
-        display:flex;
+        min-height:190px;
+    }
+
+    .logo-wrap{
+        min-height:155px;
+        padding:8px 13px;
+        border-radius:24px;
+    }
+
+    .logo{
+        max-height:155px;
+    }
+
+    h1{
+        font-size:1.75rem;
+    }
+
+    .urgent-vote{
+        align-items:stretch;
         flex-direction:column;
-        justify-content:space-between;
-        padding:19px;
-        overflow:hidden;
-        border-radius:25px;
-        border:1px solid rgba(255,255,255,.56);
-        background:rgba(245,245,248,.31);
-        box-shadow:
-            0 13px 32px rgba(74,85,105,.10),
-            inset 0 1px 0 rgba(255,255,255,.62);
-        backdrop-filter:blur(18px);
-        -webkit-backdrop-filter:blur(18px);
-        transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
     }
 
-    .card::after{
-        content:"";
-        position:absolute;
-        width:120px;
-        height:120px;
-        right:-55px;
-        top:-55px;
-        border-radius:50%;
-        background:rgba(255,255,255,.16);
+    .urgent-left{
+        align-items:flex-start;
     }
 
-    .card:hover{
-        transform:translateY(-5px);
-        background:rgba(248,247,250,.42);
-        box-shadow:0 19px 40px rgba(74,85,105,.14);
-    }
-
-    .card-top{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:8px;
-        margin-bottom:13px;
-    }
-
-    .icon{
-        width:43px;
-        height:43px;
-        display:grid;
-        place-items:center;
-        border-radius:14px;
-        background:rgba(255,255,255,.37);
-        border:1px solid rgba(255,255,255,.48);
-        font-size:19px;
-    }
-
-    .tag{
-        padding:6px 9px;
-        border-radius:999px;
-        font-size:.61rem;
-        font-weight:900;
-        letter-spacing:.7px;
-        color:#687285;
-        background:rgba(231,229,237,.56);
-        white-space:nowrap;
-    }
-
-    .tag.available-tag{
-        color:#665a70;
-        background:rgba(221,208,226,.68);
-    }
-
-    .card h3{
-        color:#566174;
-        font-size:1rem;
-        margin-bottom:7px;
-    }
-
-    .card p{
-        color:#7c8697;
-        font-size:.77rem;
-        line-height:1.5;
-    }
-
-    .btn{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        gap:8px;
-        width:100%;
-        margin-top:17px;
-        padding:12px 14px;
-        border:1px solid rgba(255,255,255,.38);
-        border-radius:14px;
-        text-decoration:none;
-        color:#fff;
-        font-size:.78rem;
-        font-weight:900;
-        letter-spacing:.15px;
-        box-shadow:0 8px 18px rgba(76,90,111,.13);
-        transition:.22s ease;
-    }
-
-    .btn:hover{
-        transform:translateY(-2px);
-        box-shadow:0 12px 23px rgba(76,90,111,.18);
-    }
-
-    .btn-register{
-        background:linear-gradient(135deg,#91bcca,#9caec8);
-    }
-
-    .btn-status{
-        background:linear-gradient(135deg,#9eabc5,#ad9fbe);
-    }
-
-    .btn-constancia{
-        background:linear-gradient(135deg,#a795ba,#b5a1b5);
-    }
-
-    .btn-support{
-        background:linear-gradient(135deg,#8eafb9,#9aaeb8);
-    }
-
-    .footer{
-        padding:21px 5px 3px;
+    .urgent-button{
         text-align:center;
-        color:#7c8492;
-        font-size:.68rem;
-        line-height:1.6;
     }
 
-    .footer strong{
-        color:#657084;
+    .available{
+        align-items:stretch;
+        flex-direction:column;
     }
 
-    @media(max-width:620px){
-        body{
-            padding:10px;
-        }
+    .quick-link{
+        text-align:center;
+    }
+}
 
-        .portal{
-            padding:14px;
-            border-radius:27px;
-        }
+@media(max-width:390px){
 
-        .grid{
-            grid-template-columns:1fr;
-        }
-
-        .card{
-            min-height:190px;
-        }
-
-        .logo-wrap{
-            min-height:155px;
-            padding:8px 13px;
-            border-radius:24px;
-        }
-
-        .logo{
-            max-height:155px;
-        }
-
-        h1{
-            font-size:1.75rem;
-        }
-
-
-        .urgent-vote{
-            align-items:stretch;
-            flex-direction:column;
-        }
-        .urgent-left{align-items:flex-start;}
-        .urgent-button{text-align:center;}
-
-        .available{
-            align-items:stretch;
-            flex-direction:column;
-        }
-
-        .quick-link{
-            text-align:center;
-        }
+    .update{
+        padding:12px;
     }
 
-    @media(max-width:390px){
-        .update{
-            padding:12px;
-        }
-
-        .update-icon{
-            width:38px;
-            height:38px;
-            flex-basis:38px;
-        }
-
-        .intro{
-            font-size:.84rem;
-        }
-
-        .card{
-            padding:17px;
-        }
+    .update-icon{
+        width:38px;
+        height:38px;
+        flex-basis:38px;
     }
+
+    .intro{
+        font-size:.84rem;
+    }
+
+    .card{
+        padding:17px;
+    }
+}
+
 </style>
 </head>
 
 <body>
+
 <div class="shell">
-    <main class="portal">
 
-        <!-- ACTUALIZACIÓN -->
-        <section class="update" aria-label="Actualización del portal">
-            <div class="update-icon">✨</div>
+<main class="portal">
+
+    <!-- =========================
+         ACTUALIZACIÓN
+    ========================== -->
+
+    <section
+        class="update"
+        aria-label="Actualización del portal"
+    >
+
+        <div class="update-icon">
+            ✨
+        </div>
+
+        <div>
+
+            <strong>
+                Actualización disponible
+            </strong>
+
+            <span>
+                Nueva versión del portal oficial de
+                La Casa de los Famosos Roblox
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MARCA
+    ========================== -->
+
+    <header class="brand">
+
+        <div class="logo-wrap">
+
+            <img
+                src="logo.png"
+                alt="La Casa de los Famosos Roblox"
+                class="logo"
+            >
+
+        </div>
+
+        <div class="eyebrow">
+            Portal oficial
+        </div>
+
+        <h1>
+            La Casa de los Famosos Roblox
+        </h1>
+
+        <p class="intro">
+
+            Consulta tus procesos, revisa tu información
+            y accede rápidamente a los servicios oficiales
+            de la temporada.
+
+            Solicitud del 19 al 23 de agosto
+            y consulta el 25 de agosto.
+
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         VOTACIONES
+    ========================== -->
+
+    <section
+        class="urgent-vote"
+        aria-label="Votaciones"
+    >
+
+        <div class="urgent-left">
+
+            <div class="urgent-icon">
+                🗳️
+            </div>
+
             <div>
-                <strong>Actualización disponible</strong>
-                <span>Nueva versión del portal oficial de La Casa de los Famosos Roblox</span>
+
+                <span class="urgent-label">
+                    ⚠️ ANUNCIO URGENTE
+                </span>
+
+                <h2>
+                    Votaciones disponibles
+                </h2>
+
+                <p>
+                    Accede al apartado de votaciones oficiales.
+                </p>
+
             </div>
-        </section>
 
-        <!-- MARCA -->
-        <header class="brand">
-            <div class="logo-wrap">
-                <img
-                    src="logo.png"
-                    alt="La Casa de los Famosos Roblox"
-                    class="logo"
-                >
-            </div>
+        </div>
 
-            <div class="eyebrow">Portal oficial</div>
-            <h1>La Casa de los Famosos Roblox</h1>
+        <a
+            href="votaciones.html"
+            class="urgent-button"
+        >
+            🗳️ Votar ahora
+        </a>
 
-            <p class="intro">
-                Consulta tus procesos, revisa tu información y accede rápidamente
-                a los servicios oficiales de la temporada. Solicitud del 19 al 23 de agosto y consulta el 25 de agosto.
+    </section>
+
+
+    <!-- =========================
+         CONSTANCIA
+         ESTE AVISO SE CONSERVA
+    ========================== -->
+
+    <section class="available">
+
+        <div class="available-copy">
+
+            <span class="available-badge">
+                ✓ Ya disponible
+            </span>
+
+            <h2>
+                Constancia oficial · YA DISPONIBLE
+            </h2>
+
+            <p>
+                Busca tu folio y descarga tu constancia de participación.
             </p>
-        </header>
 
-        <!-- VOTACIONES URGENTES -->
-        <section class="urgent-vote" aria-label="Votaciones">
-            <div class="urgent-left">
-                <div class="urgent-icon">🗳️</div>
-                <div>
-                    <span class="urgent-label">⚠️ ANUNCIO URGENTE</span>
-                    <h2>Votaciones disponibles</h2>
-                    <p>Accede al apartado de votaciones oficiales.</p>
+        </div>
+
+        <a
+            href="consulta.html"
+            class="quick-link"
+        >
+            Descargar
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         OPCIONES
+    ========================== -->
+
+    <section class="grid">
+
+
+        <!-- REGISTRO -->
+
+        <article class="card">
+
+            <div>
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        📝
+                    </div>
+
+                    <span class="tag">
+                        19 — 23 AGOSTO
+                    </span>
+
                 </div>
-            </div>
-            <a href="votaciones.html" class="urgent-button">🗳️ Votar ahora</a>
-        </section>
 
-        <!-- CONSTANCIA -->
-        <section class="available">
-            <div class="available-copy">
-                <span class="available-badge">✓ Ya disponible</span>
-                <h2>Constancia oficial · YA DISPONIBLE</h2>
-                <p>Busca tu folio y descarga tu constancia de participación.</p>
+                <h3>
+                    Solicitud de participación
+                </h3>
+
+                <p>
+                    Realiza tu solicitud oficial del
+                    <strong>19 al 23 de agosto</strong>.
+                </p>
+
             </div>
 
-            <a href="consulta.html" class="quick-link">
-                Descargar
+            <a
+                href="registro.html"
+                class="btn btn-register"
+            >
+                ✦ Registrarme
             </a>
-        </section>
 
-        <!-- OPCIONES -->
-        <section class="grid">
+        </article>
 
-            <article class="card">
-                <div>
-                    <div class="card-top">
-                        <div class="icon">📝</div>
-                        <span class="tag">19 — 23 AGOSTO</span>
+
+        <!-- CONSULTA -->
+
+        <article class="card">
+
+            <div>
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        🔎
                     </div>
 
-                    <h3>Solicitud de participación</h3>
-                    <p>
-                        Realiza tu solicitud oficial del <strong>19 al 23 de agosto</strong>.
-                    </p>
+                    <span class="tag">
+                        25 AGOSTO
+                    </span>
+
                 </div>
 
-                <a href="registro.html" class="btn btn-register">
-                    ✦ Registrarme
-                </a>
-            </article>
+                <h3>
+                    Consulta de resultados
+                </h3>
 
-            <article class="card">
-                <div>
-                    <div class="card-top">
-                        <div class="icon">🔎</div>
-                        <span class="tag">25 AGOSTO</span>
+                <p>
+                    Consulta el estado de tu solicitud
+                    a partir del
+                    <strong>25 de agosto</strong>
+                    con tu folio.
+                </p>
+
+            </div>
+
+            <a
+                href="consulta.html"
+                class="btn btn-status"
+            >
+                🔍 Buscar folio
+            </a>
+
+        </article>
+
+
+        <!-- LISTA DE HABITANTES -->
+
+        <article class="card">
+
+            <div>
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        🏠
                     </div>
 
-                    <h3>Consulta de resultados</h3>
-                    <p>
-                        Consulta el estado de tu solicitud a partir del <strong>25 de agosto</strong> con tu folio.
-                    </p>
+                    <span class="tag available-tag">
+                        OFICIAL
+                    </span>
+
                 </div>
 
-                <a href="consulta.html" class="btn btn-status">
-                    🔍 Buscar folio
-                </a>
-            </article>
+                <h3>
+                    Lista de habitantes
+                </h3>
 
-            <article class="card">
-                <div>
-                    <div class="card-top">
-                        <div class="icon">📄</div>
-                        <span class="tag available-tag">YA DISPONIBLE</span>
+                <p>
+                    Consulta la lista oficial de los
+                    habitantes de La Casa de los Famosos Roblox.
+                </p>
+
+            </div>
+
+            <a
+                href="habitantes.html"
+                class="btn btn-habitantes"
+            >
+                👥 Ver habitantes
+            </a>
+
+        </article>
+
+
+        <!-- SOPORTE -->
+
+        <article class="card">
+
+            <div>
+
+                <div class="card-top">
+
+                    <div class="icon">
+                        🎫
                     </div>
 
-                    <h3>Descargar constancia</h3>
-                    <p>
-                        Consulta tu folio y genera tu constancia oficial
-                        directamente desde el portal.
-                    </p>
+                    <span class="tag">
+                        ATENCIÓN
+                    </span>
+
                 </div>
 
-                <a href="consulta.html" class="btn btn-constancia">
-                    ↓ Descargar constancia
-                </a>
-            </article>
+                <h3>
+                    Soporte y ayuda
+                </h3>
 
-            <article class="card">
-                <div>
-                    <div class="card-top">
-                        <div class="icon">🎫</div>
-                        <span class="tag">ATENCIÓN</span>
-                    </div>
+                <p>
+                    Si tienes dudas o problemas con tu registro,
+                    solicita atención mediante nuestro sistema
+                    de soporte.
+                </p>
 
-                    <h3>Soporte y ayuda</h3>
-                    <p>
-                        Si tienes dudas o problemas con tu registro,
-                        solicita atención mediante nuestro sistema de soporte.
-                    </p>
-                </div>
+            </div>
 
-                <a href="soporte.html" class="btn btn-support">
-                    💬 Generar ticket
-                </a>
-            </article>
+            <a
+                href="soporte.html"
+                class="btn btn-support"
+            >
+                💬 Generar ticket
+            </a>
 
-        </section>
+        </article>
 
-        <footer class="footer">
-            <strong>La Casa de los Famosos Roblox</strong><br>
-            Portal oficial · Solicitudes 19–23 de agosto · Consulta 25 de agosto
-        </footer>
 
-    </main>
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <strong>
+            La Casa de los Famosos Roblox
+        </strong>
+
+        <br>
+
+        Portal oficial · Solicitudes 19–23 de agosto
+        · Consulta 25 de agosto
+
+    </footer>
+
+
+</main>
+
 </div>
+
 </body>
 </html>
