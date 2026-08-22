@@ -1,582 +1,477 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#aebed4">
+<title>Votaciones | La Casa de los Famosos Roblox</title>
 
-  <title>Votaciones | La Casa de los Famosos Roblox</title>
+<style>
+:root{
+    --text:#566174;
+    --muted:#7c8697;
+    --card:rgba(245,244,248,.38);
+    --line:rgba(255,255,255,.58);
+    --shadow:0 20px 55px rgba(72,84,106,.15);
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    padding:14px;
+    font-family:"Segoe UI",system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 8% 8%,rgba(153,207,220,.82) 0 8%,transparent 31%),
+        radial-gradient(circle at 92% 8%,rgba(185,169,218,.80) 0 8%,transparent 31%),
+        radial-gradient(circle at 8% 92%,rgba(166,201,226,.78) 0 8%,transparent 32%),
+        radial-gradient(circle at 92% 90%,rgba(221,184,210,.76) 0 8%,transparent 32%),
+        radial-gradient(circle at 50% 45%,rgba(246,209,194,.52),transparent 35%),
+        linear-gradient(135deg,#96c2d0,#b9bfd9 42%,#d0b9d2 70%,#d8bacb);
+    background-attachment:fixed;
+}
+
+.page{
+    width:min(900px,100%);
+    margin:auto;
+}
+
+.container{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:32px;
+    background:rgba(240,240,246,.30);
+    box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.7);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+}
+
+/* LOGO */
+.logo-box{
+    width:min(430px,100%);
+    height:150px;
+    margin:0 auto 8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:8px 20px;
+    border-radius:27px;
+    background:rgba(250,249,251,.23);
+    border:1px solid rgba(255,255,255,.46);
+}
+
+.logo{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    filter:drop-shadow(0 12px 15px rgba(65,77,98,.18));
+}
+
+.header{
+    text-align:center;
+    padding:2px 5px 22px;
+}
+
+.header .label{
+    display:inline-block;
+    margin-top:5px;
+    padding:6px 11px;
+    border-radius:999px;
+    background:rgba(221,208,226,.66);
+    color:#6e6274;
+    font-size:.66rem;
+    font-weight:900;
+    letter-spacing:1.2px;
+}
+
+h1{
+    margin-top:10px;
+    color:#536074;
+    font-size:clamp(1.65rem,5vw,2.35rem);
+    line-height:1.05;
+}
+
+.header p{
+    max-width:590px;
+    margin:9px auto 0;
+    color:var(--muted);
+    font-size:.84rem;
+    line-height:1.55;
+}
+
+/* ALERTA */
+.alert{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+    padding:15px 17px;
+    border:1px solid rgba(255,255,255,.58);
+    border-radius:20px;
+    background:rgba(247,239,244,.38);
+    box-shadow:0 12px 28px rgba(76,87,106,.10);
+}
+
+.alert-icon{
+    flex:0 0 43px;
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    border-radius:14px;
+    background:linear-gradient(145deg,#b99fc1,#9fb9c5);
+    color:white;
+    font-size:20px;
+}
+
+.alert strong{
+    display:block;
+    color:#5d6576;
+    font-size:.86rem;
+}
+
+.alert span{
+    display:block;
+    margin-top:3px;
+    color:#7d8695;
+    font-size:.72rem;
+}
+
+/* VOTACIÓN */
+.vote-title{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:10px;
+    margin:4px 2px 13px;
+}
+
+.vote-title h2{
+    font-size:1.05rem;
+    color:#596275;
+}
+
+.vote-title span{
+    color:#7c8594;
+    font-size:.7rem;
+}
+
+.candidates{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+}
+
+.candidate{
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.60);
+    border-radius:25px;
+    background:var(--card);
+    box-shadow:0 15px 35px rgba(72,84,106,.11),inset 0 1px 0 rgba(255,255,255,.65);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    transition:.24s ease;
+}
+
+.candidate:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 42px rgba(72,84,106,.16);
+}
+
+.photo{
+    position:relative;
+    height:255px;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,rgba(164,203,216,.72),rgba(203,185,215,.72));
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+.number{
+    position:absolute;
+    top:12px;
+    left:12px;
+    min-width:38px;
+    height:38px;
+    padding:0 10px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:rgba(248,247,250,.72);
+    color:#5e687a;
+    font-size:.78rem;
+    font-weight:950;
+    box-shadow:0 6px 16px rgba(63,75,96,.13);
+    backdrop-filter:blur(8px);
+}
+
+.candidate-info{
+    padding:15px;
+}
+
+.candidate-name{
+    color:#566174;
+    font-size:1rem;
+    font-weight:900;
+}
+
+.candidate-user{
+    margin-top:3px;
+    color:#87909e;
+    font-size:.7rem;
+}
+
+.vote-button{
+    width:100%;
+    margin-top:13px;
+    padding:12px 14px;
+    border:0;
+    border-radius:14px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(135deg,#9aaec1,#ad9bb8);
+    font-family:inherit;
+    font-size:.78rem;
+    font-weight:900;
+    box-shadow:0 8px 18px rgba(75,87,107,.14);
+    transition:.2s ease;
+}
+
+.vote-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 11px 23px rgba(75,87,107,.19);
+}
+
+.vote-button.voted{
+    background:linear-gradient(135deg,#91b9b4,#a3bcae);
+}
+
+/* RESULTADO */
+.result{
+    display:none;
+    margin-top:17px;
+    padding:15px;
+    text-align:center;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.58);
+    background:rgba(236,239,239,.42);
+    color:#697587;
+    font-size:.82rem;
+    line-height:1.5;
+}
+
+.result.show{display:block}
+
+.back{
+    display:block;
+    width:max-content;
+    margin:22px auto 3px;
+    padding:10px 15px;
+    border-radius:13px;
+    text-decoration:none;
+    color:#697487;
+    background:rgba(245,244,248,.40);
+    border:1px solid rgba(255,255,255,.5);
+    font-size:.73rem;
+    font-weight:800;
+}
+
+.footer{
+    padding:20px 5px 3px;
+    text-align:center;
+    color:#7b8492;
+    font-size:.66rem;
+    line-height:1.6;
+}
+
+@media(max-width:620px){
+    body{padding:9px}
+
+    .container{
+        padding:13px;
+        border-radius:27px;
     }
 
-    body {
-      min-height: 100vh;
-      font-family: "Segoe UI", Arial, sans-serif;
-      color: #fff;
-
-      background:
-        radial-gradient(circle at 15% 15%, #5ee7ff 0%, transparent 32%),
-        radial-gradient(circle at 85% 15%, #b58cff 0%, transparent 35%),
-        radial-gradient(circle at 50% 90%, #ffb5dc 0%, transparent 38%),
-        linear-gradient(135deg, #075b72, #3d4bb5 45%, #7d3fc7);
-
-      background-attachment: fixed;
-      overflow-x: hidden;
+    .logo-box{
+        height:125px;
+        border-radius:23px;
     }
 
-    /* Nubes decorativas */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      width: 450px;
-      height: 450px;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: .35;
-      z-index: -1;
+    .candidates{
+        grid-template-columns:1fr;
     }
 
-    body::before {
-      background: #72eaff;
-      top: -180px;
-      left: -120px;
+    .photo{
+        height:285px;
     }
 
-    body::after {
-      background: #f7a9ff;
-      right: -150px;
-      bottom: -180px;
+    .vote-title{
+        align-items:flex-start;
+        flex-direction:column;
     }
-
-    .contenedor {
-      width: min(1100px, 92%);
-      margin: auto;
-      padding: 30px 0 60px;
-    }
-
-    /* LOGO */
-    .logo-area {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .logo-box {
-      width: 230px;
-      height: 160px;
-      margin: auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 15px;
-
-      background: rgba(255,255,255,.16);
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 30px;
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      box-shadow:
-        0 15px 45px rgba(0,0,0,.22),
-        inset 0 1px 1px rgba(255,255,255,.35);
-    }
-
-    .logo-box img {
-      max-width: 100%;
-      max-height: 130px;
-      object-fit: contain;
-    }
-
-    .logo-placeholder {
-      color: rgba(255,255,255,.8);
-      font-size: 14px;
-      text-align: center;
-    }
-
-    /* ENCABEZADO */
-
-    .titulo {
-      text-align: center;
-      margin: 15px 0 8px;
-
-      font-size: clamp(35px, 7vw, 65px);
-      font-weight: 1000;
-      letter-spacing: -2px;
-
-      text-shadow:
-        0 4px 0 #073b9c,
-        0 8px 18px rgba(0,0,0,.35);
-    }
-
-    .subtitulo {
-      text-align: center;
-      font-size: 17px;
-      color: rgba(255,255,255,.9);
-      margin-bottom: 35px;
-    }
-
-    /* AVISO */
-
-    .aviso {
-      max-width: 750px;
-      margin: 0 auto 35px;
-
-      padding: 18px 22px;
-
-      text-align: center;
-
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 20px;
-
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-
-      box-shadow: 0 10px 35px rgba(0,0,0,.15);
-    }
-
-    .aviso strong {
-      color: #fff;
-    }
-
-    /* PARTICIPANTES */
-
-    .participantes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 24px;
-    }
-
-    .participante {
-      overflow: hidden;
-
-      background: rgba(255,255,255,.17);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 28px;
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,.22),
-        inset 0 1px 1px rgba(255,255,255,.3);
-
-      transition: .3s ease;
-    }
-
-    .participante:hover {
-      transform: translateY(-8px) scale(1.015);
-      box-shadow: 0 25px 55px rgba(0,0,0,.3);
-    }
-
-    .foto {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .info {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .nombre {
-      font-size: 23px;
-      font-weight: 900;
-      margin-bottom: 15px;
-
-      text-shadow: 0 3px 8px rgba(0,0,0,.3);
-    }
-
-    .boton-votar {
-      width: 100%;
-      border: none;
-      padding: 14px 20px;
-
-      border-radius: 50px;
-
-      color: white;
-      font-size: 17px;
-      font-weight: 900;
-
-      cursor: pointer;
-
-      background: linear-gradient(
-        135deg,
-        #168cff,
-        #5b3cff,
-        #a438ff
-      );
-
-      box-shadow:
-        0 7px 20px rgba(36,92,255,.4),
-        inset 0 1px rgba(255,255,255,.4);
-
-      transition: .25s;
-    }
-
-    .boton-votar:hover {
-      transform: scale(1.04);
-      filter: brightness(1.12);
-    }
-
-    .boton-votar:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* MENSAJE */
-
-    #mensaje {
-      position: fixed;
-      left: 50%;
-      bottom: 25px;
-
-      transform: translateX(-50%) translateY(100px);
-
-      width: min(90%, 450px);
-
-      padding: 16px 20px;
-
-      text-align: center;
-      font-weight: 800;
-
-      background: rgba(20,20,60,.85);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 18px;
-
-      backdrop-filter: blur(15px);
-
-      box-shadow: 0 15px 40px rgba(0,0,0,.3);
-
-      transition: .35s;
-
-      z-index: 100;
-    }
-
-    #mensaje.mostrar {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      color: rgba(255,255,255,.7);
-      font-size: 13px;
-    }
-
-    /* CELULAR */
-
-    @media (max-width: 600px) {
-
-      .contenedor {
-        padding-top: 20px;
-      }
-
-      .logo-box {
-        width: 190px;
-        height: 135px;
-      }
-
-      .titulo {
-        font-size: 42px;
-      }
-
-      .subtitulo {
-        font-size: 15px;
-      }
-
-      .participantes {
-        grid-template-columns: 1fr;
-      }
-
-      .foto {
-        height: 300px;
-      }
-    }
-  </style>
+}
+
+@media(max-width:390px){
+    .photo{height:250px}
+}
+</style>
 </head>
 
 <body>
+<div class="page">
+<main class="container">
 
-  <main class="contenedor">
-
-    <!-- LOGO -->
-    <section class="logo-area">
-
-      <div class="logo-box">
-
-        <!--
-          CAMBIA logo.png POR EL NOMBRE DE TU LOGO
-          QUE TENGAS EN GITHUB.
-        -->
-
-        <img
-          src="logo.png"
-          alt="La Casa de los Famosos Roblox"
-          onerror="this.style.display='none'; document.getElementById('logoTexto').style.display='block';"
-        >
-
-        <div id="logoTexto" class="logo-placeholder" style="display:none;">
-          Coloca aquí tu logo
+    <header class="header">
+        <div class="logo-box">
+            <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo">
         </div>
 
-      </div>
+        <span class="label">VOTACIONES OFICIALES</span>
+        <h1>Elige a tu favorito</h1>
+        <p>
+            Selecciona el perfil por el que deseas votar.
+            Revisa la foto y el nombre antes de confirmar tu voto.
+        </p>
+    </header>
 
+    <section class="alert">
+        <div class="alert-icon">🗳️</div>
+        <div>
+            <strong>⚠️ ANUNCIO URGENTE · VOTACIONES ABIERTAS</strong>
+            <span>Tu voto cuenta. Selecciona un solo participante.</span>
+        </div>
     </section>
 
-
-    <!-- TITULO -->
-
-    <h1 class="titulo">
-      VOTACIONES
-    </h1>
-
-    <p class="subtitulo">
-      La Casa de los Famosos Roblox
-    </p>
-
-
-    <!-- AVISO -->
-
-    <div class="aviso">
-
-      🗳️ <strong>¡Es momento de votar!</strong>
-
-      <br>
-
-      Selecciona al habitante por quien quieres votar.
-
+    <div class="vote-title">
+        <h2>Participantes</h2>
+        <span>Temporada 2026</span>
     </div>
 
+    <!--
+      PARA AGREGAR PARTICIPANTES:
+      1. Duplica una tarjeta .candidate.
+      2. Cambia la foto: foto5.jpg
+      3. Cambia el número, nombre y usuario.
+    -->
 
-    <!-- PARTICIPANTES -->
+    <section class="candidates">
 
-    <section class="participantes">
+        <article class="candidate">
+            <div class="photo">
+                <img src="foto1.jpg" alt="Foto del participante 1">
+                <span class="number">01</span>
+            </div>
+            <div class="candidate-info">
+                <div class="candidate-name">Participante 01</div>
+                <div class="candidate-user">@usuario01</div>
+                <button class="vote-button" onclick="votar(this,'Participante 01')">
+                    🗳️ Votar
+                </button>
+            </div>
+        </article>
 
+        <article class="candidate">
+            <div class="photo">
+                <img src="foto2.jpg" alt="Foto del participante 2">
+                <span class="number">02</span>
+            </div>
+            <div class="candidate-info">
+                <div class="candidate-name">Participante 02</div>
+                <div class="candidate-user">@usuario02</div>
+                <button class="vote-button" onclick="votar(this,'Participante 02')">
+                    🗳️ Votar
+                </button>
+            </div>
+        </article>
 
-      <!-- PARTICIPANTE 1 -->
+        <article class="candidate">
+            <div class="photo">
+                <img src="foto3.jpg" alt="Foto del participante 3">
+                <span class="number">03</span>
+            </div>
+            <div class="candidate-info">
+                <div class="candidate-name">Participante 03</div>
+                <div class="candidate-user">@usuario03</div>
+                <button class="vote-button" onclick="votar(this,'Participante 03')">
+                    🗳️ Votar
+                </button>
+            </div>
+        </article>
 
-      <article class="participante">
-
-        <img
-          class="foto"
-          src="participante1.jpg"
-          alt="Participante 1"
-        >
-
-        <div class="info">
-
-          <div class="nombre">
-            Participante 1
-          </div>
-
-          <button
-            class="boton-votar"
-            onclick="enviarVoto('Participante 1', this)"
-          >
-            🗳️ VOTAR
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- PARTICIPANTE 2 -->
-
-      <article class="participante">
-
-        <img
-          class="foto"
-          src="participante2.jpg"
-          alt="Participante 2"
-        >
-
-        <div class="info">
-
-          <div class="nombre">
-            Participante 2
-          </div>
-
-          <button
-            class="boton-votar"
-            onclick="enviarVoto('Participante 2', this)"
-          >
-            🗳️ VOTAR
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- PARTICIPANTE 3 -->
-
-      <article class="participante">
-
-        <img
-          class="foto"
-          src="participante3.jpg"
-          alt="Participante 3"
-        >
-
-        <div class="info">
-
-          <div class="nombre">
-            Participante 3
-          </div>
-
-          <button
-            class="boton-votar"
-            onclick="enviarVoto('Participante 3', this)"
-          >
-            🗳️ VOTAR
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- COPIA ESTA TARJETA PARA MÁS PARTICIPANTES -->
-
+        <article class="candidate">
+            <div class="photo">
+                <img src="foto4.jpg" alt="Foto del participante 4">
+                <span class="number">04</span>
+            </div>
+            <div class="candidate-info">
+                <div class="candidate-name">Participante 04</div>
+                <div class="candidate-user">@usuario04</div>
+                <button class="vote-button" onclick="votar(this,'Participante 04')">
+                    🗳️ Votar
+                </button>
+            </div>
+        </article>
 
     </section>
 
+    <div id="result" class="result"></div>
 
-    <footer>
-      © 2026 La Casa de los Famosos Roblox
+    <a href="index.html" class="back">← Volver al portal oficial</a>
+
+    <footer class="footer">
+        <strong>La Casa de los Famosos Roblox</strong><br>
+        Votaciones oficiales · Temporada 2026
     </footer>
 
-  </main>
+</main>
+</div>
 
+<script>
+function votar(button, participante){
+    const botones = document.querySelectorAll('.vote-button');
 
-  <!-- MENSAJE -->
-
-  <div id="mensaje"></div>
-
-
-  <script>
-
-    /*
-      ============================================
-      GOOGLE APPS SCRIPT
-      ============================================
-    */
-
-    const APPS_SCRIPT_URL =
-      "https://script.google.com/macros/s/AKfycbzewT05r954ylI7xAohfrs0EB2ikc41q9fRWC8S-TDtRkvkFTFF0O0sbQIcav6CCR_isQ/exec";
-
-
-    /*
-      ============================================
-      ENVIAR VOTO
-      ============================================
-    */
-
-    async function enviarVoto(participante, boton) {
-
-      if (!participante) {
-        mostrarMensaje("❌ Participante no válido.");
-        return;
-      }
-
-      boton.disabled = true;
-      boton.textContent = "⏳ ENVIANDO...";
-
-
-      try {
-
-        const respuesta = await fetch(APPS_SCRIPT_URL, {
-
-          method: "POST",
-
-          body: JSON.stringify({
-            participante: participante
-          })
-
-        });
-
-
-        const resultado = await respuesta.json();
-
-
-        if (resultado.ok) {
-
-          boton.textContent = "✅ VOTO REGISTRADO";
-
-          mostrarMensaje(
-            "🎉 ¡Tu voto por " +
-            participante +
-            " fue registrado correctamente!"
-          );
-
-        } else {
-
-          boton.disabled = false;
-          boton.textContent = "🗳️ VOTAR";
-
-          mostrarMensaje(
-            "❌ " + resultado.mensaje
-          );
-
-        }
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        boton.disabled = false;
-        boton.textContent = "🗳️ VOTAR";
-
-        mostrarMensaje(
-          "❌ No se pudo conectar con el sistema de votaciones."
+    if(localStorage.getItem('lcdlf_voto')){
+        mostrarResultado(
+            'Ya registraste tu voto en este dispositivo. Solo se permite un voto.'
         );
-
-      }
-
+        return;
     }
 
+    const confirmar = confirm(
+        '¿Confirmas tu voto por ' + participante + '?\\n\\nEsta selección quedará registrada en este dispositivo.'
+    );
 
-    /*
-      ============================================
-      MENSAJE
-      ============================================
-    */
+    if(!confirmar) return;
 
-    function mostrarMensaje(texto) {
+    localStorage.setItem('lcdlf_voto', participante);
 
-      const mensaje =
-        document.getElementById("mensaje");
+    botones.forEach(btn => {
+        btn.disabled = true;
+        btn.classList.remove('voted');
+    });
 
-      mensaje.textContent = texto;
+    button.classList.add('voted');
+    button.textContent = '✓ Voto seleccionado';
 
-      mensaje.classList.add("mostrar");
+    mostrarResultado(
+        'Tu voto por ' + participante + ' fue seleccionado correctamente.'
+    );
+}
 
-
-      setTimeout(() => {
-
-        mensaje.classList.remove("mostrar");
-
-      }, 4000);
-
-    }
-
-  </script>
+function mostrarResultado(texto){
+    const result = document.getElementById('result');
+    result.textContent = texto;
+    result.classList.add('show');
+    result.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
 
 </body>
 </html>
-```
-
