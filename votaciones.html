@@ -1273,14 +1273,7 @@ h1{
 ===================================================== */
 
 const APPS_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwagRKYTnF3gRJR24VYLI1OKOZl5KOwmfFweB-nwYcVuT3hlzdpmNSMQNPHr131e9E2WQ/exec";
-
-
-/*
-   IMPORTANTE:
-   Si tu Apps Script de votaciones tiene OTRA URL,
-   reemplaza la URL anterior por la de votaciones.
-*/
+"https://script.google.com/macros/s/AKfycbzBH0PMBV3vm5BBrdOe3xsGOfK3bZPP6p7rSi-2nVBS-uSw5QiJXhShERKWaJ-hOEwHyw/exec";
 
 
 let botonSeleccionado = null;
@@ -1345,23 +1338,7 @@ function cerrarModalVoto(){
 
 
 /* =====================================================
-   ESCAPAR TEXTO
-===================================================== */
-
-function escapar(texto){
-
-    return String(texto || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================================
-   API
+   API JSONP
 ===================================================== */
 
 function llamarAPI(
@@ -1505,12 +1482,6 @@ async function confirmarVoto(){
 
     try{
 
-        /*
-         * IMPORTANTE:
-         * El nombre de la acción debe coincidir
-         * con tu Apps Script.
-         */
-
         const respuesta =
             await llamarAPI(
                 "registrarVoto",
@@ -1537,7 +1508,7 @@ async function confirmarVoto(){
 
             botonSeleccionado
                 .textContent =
-                "✓ VOTO REGISTRADO";
+                "✓ VOTO SUMADO";
 
             botonSeleccionado.disabled =
                 true;
@@ -1548,7 +1519,7 @@ async function confirmarVoto(){
         mostrarResultado(
             "✓ Tu voto por " +
             participanteSeleccionado +
-            " fue registrado correctamente."
+            " fue sumado exitosamente a la tabla."
         );
 
 
