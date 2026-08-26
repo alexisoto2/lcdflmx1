@@ -58,8 +58,6 @@ body{
 
     overflow-x:hidden;
 
-    /* MISMO FONDO DEL INDEX.HTML */
-
     background:
         radial-gradient(
             circle at 8% 10%,
@@ -105,7 +103,6 @@ body{
 
 /* =====================================================
    LUCES DEL FONDO
-   MISMO ESTILO DEL INDEX
 ===================================================== */
 
 body::before,
@@ -687,7 +684,7 @@ input:focus{
 
     z-index:1;
 
-    margin-top:17px;
+    margin-top:20px;
 }
 
 .loading,
@@ -695,12 +692,32 @@ input:focus{
 .message{
     width:100%;
 
-    padding:21px;
+    padding:25px;
 
-    border-radius:23px;
+    border-radius:26px;
 
     animation:
-        entrada .3s ease;
+        resultadoEntrada .45s ease;
+}
+
+
+@keyframes resultadoEntrada{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(15px)
+            scale(.98);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
 }
 
 
@@ -747,6 +764,7 @@ input:focus{
 }
 
 @keyframes giro{
+
     to{
         transform:rotate(360deg);
     }
@@ -758,82 +776,216 @@ input:focus{
 ===================================================== */
 
 .result-card{
+    position:relative;
+
+    overflow:hidden;
+
+    text-align:center;
+
     background:
         linear-gradient(
-            135deg,
-            rgba(218,231,220,.42),
-            rgba(245,245,248,.30)
+            145deg,
+            rgba(224,241,228,.62),
+            rgba(246,246,249,.38),
+            rgba(216,232,222,.46)
         );
 
     border:
-        1px solid rgba(255,255,255,.60);
+        1px solid rgba(255,255,255,.72);
 
     box-shadow:
-        0 14px 32px
-        rgba(74,85,105,.11),
+        0 20px 50px
+        rgba(76,96,82,.16),
+
         inset 0 1px 0
-        rgba(255,255,255,.60);
+        rgba(255,255,255,.75);
 }
+
+.result-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    top:-140px;
+    right:-90px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.28);
+
+    filter:blur(10px);
+
+    pointer-events:none;
+}
+
+.result-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    bottom:-120px;
+    left:-70px;
+
+    border-radius:50%;
+
+    background:
+        rgba(174,211,187,.20);
+
+    filter:blur(20px);
+
+    pointer-events:none;
+}
+
+.result-card > *{
+    position:relative;
+
+    z-index:1;
+}
+
+
+/* =====================================================
+   ICONO ACEPTADO
+===================================================== */
 
 .result-card .icon{
-    text-align:center;
+    width:76px;
+    height:76px;
 
-    font-size:2.6rem;
+    margin:
+        0 auto 14px;
 
-    margin-bottom:9px;
+    display:grid;
+
+    place-items:center;
+
+    border-radius:24px;
+
+    font-size:38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.70),
+            rgba(220,236,224,.65)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.72);
+
+    box-shadow:
+        0 12px 30px
+        rgba(82,105,88,.13),
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
+
+    animation:
+        corona .8s ease;
 }
 
+@keyframes corona{
+
+    0%{
+        transform:scale(.7);
+
+        opacity:0;
+    }
+
+    70%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+
+        opacity:1;
+    }
+}
+
+
+/* =====================================================
+   INSIGNIA ACEPTADO
+===================================================== */
+
 .badge{
-    display:block;
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
 
     width:max-content;
 
-    margin:0 auto 13px;
+    margin:
+        0 auto 14px;
 
-    padding:7px 13px;
+    padding:8px 15px;
 
     border-radius:999px;
 
     background:
-        rgba(214,231,219,.75);
+        rgba(204,228,211,.82);
 
     border:
-        1px solid rgba(255,255,255,.55);
+        1px solid rgba(255,255,255,.70);
 
-    color:#617c6a;
+    color:#557463;
 
-    font-size:.66rem;
+    font-size:.67rem;
 
-    font-weight:900;
+    font-weight:950;
 
-    letter-spacing:.8px;
+    letter-spacing:1.2px;
+
+    box-shadow:
+        0 7px 18px
+        rgba(76,96,82,.10);
 }
 
-.result-card h2,
-.message h3{
-    margin-bottom:10px;
 
-    color:#596477;
+/* =====================================================
+   TITULO ACEPTADO
+===================================================== */
 
-    font-size:1.2rem;
+.result-card h2{
+    margin-bottom:9px;
 
-    line-height:1.3;
+    color:#506659;
+
+    font-size:1.45rem;
+
+    line-height:1.2;
+
+    font-weight:950;
 }
 
-.result-card p,
-.message p{
-    margin-bottom:10px;
 
-    color:#778294;
+/* =====================================================
+   DESCRIPCION ACEPTADO
+===================================================== */
 
-    font-size:.84rem;
+.result-card > p{
+    max-width:480px;
 
-    line-height:1.55;
+    margin:
+        0 auto 17px;
+
+    color:#718075;
+
+    font-size:.86rem;
+
+    line-height:1.6;
 }
 
-.result-card strong,
-.message strong{
-    color:#596477;
+.result-card strong{
+    color:#52665a;
 }
 
 
@@ -842,23 +994,40 @@ input:focus{
 ===================================================== */
 
 .dato{
-    margin-top:9px;
+    position:relative;
 
-    padding:12px 13px;
+    margin-top:10px;
 
-    border-radius:14px;
+    padding:13px 15px;
+
+    text-align:left;
+
+    border-radius:16px;
 
     background:
-        rgba(255,255,255,.23);
+        rgba(255,255,255,.30);
 
     border:
-        1px solid rgba(255,255,255,.36);
+        1px solid rgba(255,255,255,.52);
 
     box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,.45);
+        rgba(255,255,255,.55),
 
-    overflow:hidden;
+        0 5px 15px
+        rgba(76,96,82,.05);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.dato:hover{
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(255,255,255,.40);
 }
 
 .dato strong{
@@ -866,22 +1035,26 @@ input:focus{
 
     margin-bottom:5px;
 
-    color:#687386;
+    color:#68776d;
 
-    font-size:.73rem;
+    font-size:.69rem;
+
+    letter-spacing:.3px;
 }
 
-code{
+.dato code{
     display:block;
 
-    color:#667589;
+    color:#52665a;
 
     font-family:
         "SFMono-Regular",
         Consolas,
         monospace;
 
-    font-size:.8rem;
+    font-size:.78rem;
+
+    font-weight:700;
 
     line-height:1.45;
 
@@ -890,7 +1063,7 @@ code{
 
 
 /* =====================================================
-   MENSAJES
+   MENSAJE GENERAL
 ===================================================== */
 
 .message{
@@ -907,20 +1080,28 @@ code{
         rgba(75,85,106,.09);
 }
 
-.message.pending{
-    background:
-        rgba(235,225,202,.38);
+.message h3{
+    margin-bottom:10px;
 
-    border:
-        1px solid rgba(255,255,255,.55);
+    color:#596477;
+
+    font-size:1.2rem;
+
+    line-height:1.3;
 }
 
-.message.error{
-    background:
-        rgba(235,213,217,.40);
+.message p{
+    margin-bottom:10px;
 
-    border:
-        1px solid rgba(255,255,255,.55);
+    color:#778294;
+
+    font-size:.84rem;
+
+    line-height:1.55;
+}
+
+.message strong{
+    color:#596477;
 }
 
 .message .icon{
@@ -929,10 +1110,184 @@ code{
     font-size:2.5rem;
 }
 
-.message code{
-    display:inline;
 
-    color:#6b7282;
+/* =====================================================
+   NO ACEPTADO
+===================================================== */
+
+.message.error{
+    position:relative;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(244,225,229,.58),
+            rgba(247,244,247,.37),
+            rgba(237,215,221,.43)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.68);
+
+    box-shadow:
+        0 20px 50px
+        rgba(112,82,91,.13),
+
+        inset 0 1px 0
+        rgba(255,255,255,.72);
+}
+
+.message.error::before{
+    content:"";
+
+    position:absolute;
+
+    width:230px;
+    height:230px;
+
+    top:-145px;
+    left:-80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.25);
+
+    filter:blur(12px);
+
+    pointer-events:none;
+}
+
+.message.error > *{
+    position:relative;
+
+    z-index:1;
+}
+
+.message.error .icon{
+    width:74px;
+    height:74px;
+
+    margin:
+        0 auto 15px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:23px;
+
+    font-size:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.68),
+            rgba(239,215,221,.65)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.72);
+
+    box-shadow:
+        0 12px 28px
+        rgba(112,82,91,.10);
+}
+
+.message.error h3{
+    margin-bottom:10px;
+
+    color:#765e66;
+
+    font-size:1.35rem;
+
+    font-weight:950;
+}
+
+.message.error p{
+    max-width:470px;
+
+    margin:
+        0 auto 10px;
+
+    color:#827179;
+
+    font-size:.85rem;
+
+    line-height:1.6;
+}
+
+.message.error strong{
+    color:#725c64;
+}
+
+
+/* =====================================================
+   PENDIENTE
+===================================================== */
+
+.message.pending{
+    position:relative;
+
+    overflow:hidden;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(241,231,207,.55),
+            rgba(248,246,241,.34),
+            rgba(232,220,195,.43)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.68);
+
+    box-shadow:
+        0 20px 50px
+        rgba(111,99,70,.12),
+
+        inset 0 1px 0
+        rgba(255,255,255,.72);
+}
+
+.message.pending .icon{
+    width:74px;
+    height:74px;
+
+    margin:
+        0 auto 15px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:23px;
+
+    font-size:35px;
+
+    background:
+        rgba(255,255,255,.50);
+
+    border:
+        1px solid rgba(255,255,255,.65);
+
+    box-shadow:
+        0 12px 28px
+        rgba(111,99,70,.08);
+}
+
+.message.pending h3{
+    color:#706751;
+
+    font-size:1.3rem;
+
+    font-weight:950;
 }
 
 
@@ -1053,14 +1408,29 @@ footer strong{
     .loading,
     .result-card,
     .message{
-        padding:18px 15px;
+        padding:21px 15px;
 
-        border-radius:20px;
+        border-radius:23px;
     }
 
-    .result-card h2,
-    .message h3{
-        font-size:1.05rem;
+    .result-card .icon,
+    .message.error .icon,
+    .message.pending .icon{
+        width:67px;
+        height:67px;
+
+        border-radius:21px;
+
+        font-size:31px;
+    }
+
+    .result-card h2{
+        font-size:1.25rem;
+    }
+
+    .message.error h3,
+    .message.pending h3{
+        font-size:1.15rem;
     }
 
     .result-card p,
@@ -1069,11 +1439,11 @@ footer strong{
     }
 
     .dato{
-        padding:10px;
+        padding:12px;
     }
 
-    code{
-        font-size:.75rem;
+    .dato code{
+        font-size:.73rem;
     }
 }
 
@@ -1126,9 +1496,6 @@ footer strong{
 
     <header class="header">
 
-
-        <!-- LOGO -->
-
         <div class="logo-wrap">
 
             <img
@@ -1139,27 +1506,22 @@ footer strong{
 
         </div>
 
-
         <div class="eyebrow">
             Portal oficial
         </div>
 
-
         <h1>
             Consultar Folio
         </h1>
-
 
         <p class="subtitle">
             Consulta de forma rápida el estado de tu
             postulación a La Casa de los Famosos Roblox.
         </p>
 
-
         <span class="tag">
             🔎 Consulta de solicitud
         </span>
-
 
     </header>
 
@@ -1169,7 +1531,6 @@ footer strong{
     ================================================== -->
 
     <section class="search-card">
-
 
         <div class="search-heading">
 
@@ -1194,13 +1555,11 @@ footer strong{
 
         <form id="formConsulta">
 
-
             <div class="form-group">
 
                 <label for="folio">
                     Folio de registro
                 </label>
-
 
                 <div class="input-wrap">
 
@@ -1238,7 +1597,6 @@ footer strong{
             >
                 ← Volver al inicio
             </a>
-
 
         </form>
 
@@ -1278,7 +1636,6 @@ footer strong{
 
 /* =====================================================
    TU APPS SCRIPT
-   NO CAMBIAR
 ===================================================== */
 
 const APPS_SCRIPT_URL =
@@ -1451,15 +1808,22 @@ function mostrarResultado(datos){
                 </span>
 
                 <h2>
-                    ¡Felicidades, ${escapar(datos.nombre)}!
+                    ¡Bienvenido a La Casa,
+                    ${escapar(datos.nombre)}!
                 </h2>
 
                 <p>
-                    Has sido seleccionado para ingresar a
+                    Tu postulación ha sido
+                    <strong>
+                        aceptada oficialmente
+                    </strong>.
+                    Has sido seleccionado para formar parte
+                    de
                     <strong>
                         La Casa de los Famosos Roblox
                     </strong>.
                 </p>
+
 
                 <div class="dato">
 
@@ -1473,6 +1837,7 @@ function mostrarResultado(datos){
 
                 </div>
 
+
                 <div class="dato">
 
                     <strong>
@@ -1484,6 +1849,7 @@ function mostrarResultado(datos){
                     </code>
 
                 </div>
+
 
                 <div class="dato">
 
@@ -1497,6 +1863,7 @@ function mostrarResultado(datos){
 
                 </div>
 
+
                 <div class="dato">
 
                     <strong>
@@ -1508,6 +1875,7 @@ function mostrarResultado(datos){
                     </code>
 
                 </div>
+
 
                 <div class="dato">
 
@@ -1521,6 +1889,7 @@ function mostrarResultado(datos){
 
                 </div>
 
+
                 <div class="dato">
 
                     <strong>
@@ -1533,6 +1902,7 @@ function mostrarResultado(datos){
 
                 </div>
 
+
                 <div class="dato">
 
                     <strong>
@@ -1544,6 +1914,7 @@ function mostrarResultado(datos){
                     </code>
 
                 </div>
+
 
                 <div class="dato">
 
@@ -1566,7 +1937,7 @@ function mostrarResultado(datos){
 
 
     /* =================================================
-       RECHAZADO
+       NO ACEPTADO
     ================================================= */
 
     if(
@@ -1581,23 +1952,35 @@ function mostrarResultado(datos){
             <div class="message error">
 
                 <div class="icon">
-                    😔
+                    💌
                 </div>
 
                 <h3>
-                    Solicitud no seleccionada
+                    Gracias por participar
                 </h3>
 
                 <p>
-                    Gracias por tu interés,
+                    Hola
                     <strong>
                         ${escapar(datos.nombre)}
                     </strong>.
                 </p>
 
                 <p>
-                    Desafortunadamente no fuiste
-                    seleccionado en esta ocasión.
+                    Después de revisar las postulaciones,
+                    lamentablemente tu solicitud
+                    <strong>
+                        no fue seleccionada
+                    </strong>
+                    para esta edición de
+                    <strong>
+                        La Casa de los Famosos Roblox
+                    </strong>.
+                </p>
+
+                <p>
+                    Agradecemos mucho el tiempo que
+                    dedicaste a participar.
                 </p>
 
             </div>
@@ -1632,15 +2015,17 @@ function mostrarResultado(datos){
             </p>
 
             <p>
-
                 Tu solicitud con folio
-
                 <code>
                     ${escapar(datos.folio)}
                 </code>
-
                 continúa en proceso de evaluación.
+            </p>
 
+            <p>
+                Aún no se ha tomado una decisión final.
+                Te recomendamos volver a consultar
+                posteriormente.
             </p>
 
         </div>
@@ -1741,10 +2126,8 @@ document
                             margin-top:12px;
                             font-size:.73rem;
                         ">
-
-                            Verifica que el folio exista.
-                            
-
+                            Verifica que el folio exista
+                            e inténtalo nuevamente.
                         </p>
 
                     </div>
